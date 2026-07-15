@@ -549,7 +549,6 @@
     /* ---------- Testimonials ---------- */
     .testimonials {
       background: var(--ivory);
-      position: relative;
     }
     .testimonial-grid {
       display: grid;
@@ -837,4 +836,432 @@
         flex-direction: column;
         padding: 28px;
         gap: 18px;
-        box-shadow: 0 10
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .nav-links.open a { color: var(--charcoal); }
+      .hero-buttons { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; }
+      .hero-buttons .btn { width: 100%; justify-content: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 32px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid { grid-auto-rows: 180px; }
+      .lang-btn { padding: 5px 8px; font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-main">ÉTERNELLE</span>
+        <span class="logo-sub" data-i18n="logoSub">Wedding Planning</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-i18n="navHome">Home</a></li>
+        <li><a href="#about" data-i18n="navAbout">About</a></li>
+        <li><a href="#services" data-i18n="navServices">Services</a></li>
+        <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
+        <li><a href="#reviews" data-i18n="navReviews">Reviews</a></li>
+        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hy">ՀԱՅ</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+        <a href="#contact" class="btn btn-gold" style="padding: 10px 22px; font-size: 11px;" data-i18n="navCta">Book Now</a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero" id="home">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80" alt="Elegant wedding ceremony">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-ornament">✦</div>
+      <div class="hero-subtitle" data-i18n="heroSubtitle">Where dreams begin</div>
+      <h1 data-i18n="heroTitle">Your <em>forever</em><br>starts here</h1>
+      <p data-i18n="heroDesc">Luxury wedding planning crafted with elegance, passion, and meticulous attention to every detail — creating celebrations as unique as your love story.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary" data-i18n="heroCta1">Plan My Wedding</a>
+        <a href="#services" class="btn btn-outline" data-i18n="heroCta2">Our Services</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span data-i18n="scroll">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Wedding planner">
+        </div>
+        <div class="about-content reveal">
+          <div class="section-tag" data-i18n="aboutTag">Our Story</div>
+          <h2 data-i18n="aboutTitle">Crafting <em>timeless</em> celebrations</h2>
+          <p class="about-text" data-i18n="aboutP1">For over a decade, Éternelle has been the trusted name behind Armenia's most breathtaking weddings. We believe every love story deserves a celebration as extraordinary as the couple themselves.</p>
+          <p class="about-text" data-i18n="aboutP2">From intimate garden ceremonies in Yerevan to grand destination weddings across Europe, our team of dedicated planners transforms your vision into an unforgettable experience — with grace, precision, and heart.</p>
+          <div class="about-signature">Isabella</div>
+          <div class="about-role" data-i18n="aboutRole">Founder & Lead Planner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag" data-i18n="servicesTag">What We Offer</div>
+        <h2 data-i18n="servicesTitle">Our <em>Services</em></h2>
+        <p data-i18n="servicesDesc">From the first consultation to the final dance, we handle every detail so you can savor every moment.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 data-i18n="srv1Title">Full Planning</h3>
+          <p data-i18n="srv1Desc">Complete wedding planning from concept to execution. We manage every detail, so you enjoy a stress-free journey to your big day.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 data-i18n="srv2Title">Day-of Coordination</h3>
+          <p data-i18n="srv2Desc">You've planned it all — we bring it to life flawlessly. Professional coordination on your wedding day for perfect execution.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 data-i18n="srv3Title">Partial Planning</h3>
+          <p data-i18n="srv3Desc">Already started planning? Let us step in to handle the remaining details and bring your vision together seamlessly.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 data-i18n="srv4Title">Destination Weddings</h3>
+          <p data-i18n="srv4Desc">Dream of saying "I do" in Tuscany, Santorini, or Bali? We specialize in luxury destination weddings worldwide.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 data-i18n="srv5Title">Floral Design</h3>
+          <p data-i18n="srv5Desc">Bespoke floral arrangements and décor design that transform your venue into a breathtaking romantic paradise.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 data-i18n="srv6Title">Venue Selection</h3>
+          <p data-i18n="srv6Desc">Access to exclusive venues across Armenia and beyond. We help you find the perfect setting for your celebration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag" data-i18n="galleryTag">Our Portfolio</div>
+        <h2 data-i18n="galleryTitle">Love in <em>every detail</em></h2>
+        <p data-i18n="galleryDesc">A glimpse into the unforgettable celebrations we've had the honor of creating.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Wedding 1">
+          <div class="gallery-overlay"><span data-i18n="gal1">Garden Romance</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Wedding 2">
+          <div class="gallery-overlay"><span data-i18n="gal2">Classic Elegance</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=600&q=80" alt="Wedding 3">
+          <div class="gallery-overlay"><span data-i18n="gal3">Golden Hour</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&w=800&q=80" alt="Wedding 4">
+          <div class="gallery-overlay"><span data-i18n="gal4">Rustic Charm</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Wedding 5">
+          <div class="gallery-overlay"><span data-i18n="gal5">Modern Luxury</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Wedding 6">
+          <div class="gallery-overlay"><span data-i18n="gal6">Timeless Beauty</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="reviews">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag" data-i18n="testTag">Love Letters</div>
+        <h2 data-i18n="testTitle">Words from our <em>couples</em></h2>
+        <p data-i18n="testDesc">The greatest compliment is the joy we bring to the couples we serve.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial reveal">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p data-i18n="test1Text">Éternelle turned our dream wedding into reality. Every detail was perfect — from the flowers to the final toast. We couldn't have asked for a more magical day.</p>
+          <div class="testimonial-author">
+            <h4>Anna & David</h4>
+            <span data-i18n="test1Role">Yerevan, Armenia</span>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p data-i18n="test2Text">Working with Isabella and her team was the best decision we made. They handled everything with such grace and professionalism. Our guests are still talking about it!</p>
+          <div class="testimonial-author">
+            <h4>Sofia & Marcus</h4>
+            <span data-i18n="test2Role">Tuscany, Italy</span>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p data-i18n="test3Text">From our very first meeting, we felt completely at ease. Éternelle understood our vision perfectly and delivered a celebration beyond our wildest dreams. Truly unforgettable.</p>
+          <div class="testimonial-author">
+            <h4>Lilit & Armen</h4>
+            <span data-i18n="test3Role">Dilijan, Armenia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag" data-i18n="contactTag">Get in Touch</div>
+        <h2 data-i18n="contactTitle">Let's plan your <em>forever</em></h2>
+        <p data-i18n="contactDesc">Ready to begin your wedding journey? We'd love to hear your story.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3 data-i18n="contactInfoTitle">Begin your <em>journey</em> with us</h3>
+          <p data-i18n="contactInfoDesc">Schedule a complimentary consultation and let's discuss how we can bring your dream wedding to life.</p>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="contactPhone">Phone</h4>
+              <a href="tel:+37499123456">+374 99 123 456</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="contactEmail">Email</h4>
+              <a href="mailto:hello@eternelle.am">hello@eternelle.am</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="contactAddress">Studio</h4>
+              <p data-i18n="contactAddressValue">24 Abovyan Street, Yerevan, Armenia</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="contactHours">Hours</h4>
+              <p data-i18n="contactHoursValue">Mon — Sat: 10:00 — 19:00</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="formName">Your Name</label>
+              <input type="text" required data-i18n-placeholder="formNamePh" placeholder="Anna & David">
+            </div>
+            <div class="form-group">
+              <label data-i18n="formEmail">Email</label>
+              <input type="email" required data-i18n-placeholder="formEmailPh" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="formPhone">Phone</label>
+              <input type="tel" data-i18n-placeholder="formPhonePh" placeholder="+374 __ ___ ___">
+            </div>
+            <div class="form-group">
+              <label data-i18n="formDate">Wedding Date</label>
+              <input type="date">
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="formService">Service</label>
+            <select required>
+              <option value="" data-i18n="formServiceOpt0">Select a service</option>
+              <option data-i18n="formServiceOpt1">Full Planning</option>
+              <option data-i18n="formServiceOpt2">Partial Planning</option>
+              <option data-i18n="formServiceOpt3">Day-of Coordination</option>
+              <option data-i18n="formServiceOpt4">Destination Wedding</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="formMessage">Tell us about your vision</label>
+            <textarea data-i18n-placeholder="formMessagePh" placeholder="Share your dream wedding..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" data-i18n="formBtn">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-main">ÉTERNELLE</span>
+            <span class="logo-sub" data-i18n="logoSub">Wedding Planning</span>
+          </a>
+          <p data-i18n="footerDesc">Luxury wedding planning in Armenia and beyond. Creating timeless celebrations with love, elegance, and unparalleled attention to detail.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-4.37 23.17c-.1-.94-.2-2.4.04-3.44.22-.93 1.4-5.94 1.4-5.94s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-.99 3.99-.28 1.19.6 2.16 1.77 2.16 2.12 0 3.76-2.24 3.76-5.48 0-2.87-2.06-4.87-5.01-4.87-3.41 0-5.42 2.56-5.42 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.37-.29 1.19-.33 1.35-.05.22-.18.27-.41.16-1.55-.72-2.51-2.98-2.51-4.8 0-3.91 2.84-7.5 8.19-7.5 4.3 0 7.64 3.06 7.64 7.14 0 4.26-2.69 7.69-6.42 7.69-1.26 0-2.44-.65-2.84-1.42l-.77 2.95c-.28 1.07-1.04 2.42-1.54 3.23A12 12 0 1 0 12 0z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerServices">Services</h4>
+          <ul>
+            <li><a href="#" data-i18n="srv1Title">Full Planning</a></li>
+            <li><a href="#" data-i18n="srv2Title">Day-of Coordination</a></li>
+            <li><a href="#" data-i18n="srv3Title">Partial Planning</a></li>
+            <li><a href="#" data-i18n="srv4Title">Destination Weddings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerCompany">Company</h4>
+          <ul>
+            <li><a href="#about" data-i18n="navAbout">About</a></li>
+            <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
+            <li><a href="#" data-i18n="footerBlog">Journal</a></li>
+            <li><a href="#" data-i18n="footerFAQ">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footerContact">Contact</h4>
+          <ul>
+            <li><a href="tel:+37499123456">+374 99 123 456</a></li>
+            <li><a href="mailto:hello@eternelle.am">hello@eternelle.am</a></li>
+            <li data-i18n="footerAddress">24 Abovyan St, Yerevan</li>
+            <li data-i18n="footerCountry">Armenia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footerCopy">© 2026 Éternelle Wedding Planning. <em>Made with love</em> in Yerevan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- TRANSLATIONS ---------- */
+    const translations = {
+      en: {
+        pageTitle: "Éternelle — Luxury Wedding Planning",
+        logoSub: "Wedding Planning",
+        navHome: "Home", navAbout: "About", navServices: "Services",
+        navGallery: "Gallery", navReviews: "Reviews", navContact: "Contact",
+        navCta: "Book Now",
+        heroSubtitle: "Where dreams begin",
+        heroTitle: "Your <em>forever</em><br>starts here",
+        heroDesc: "Luxury wedding planning crafted with elegance, passion, and meticulous attention to every detail — creating celebrations as unique as your love story.",
+        heroCta1: "Plan My Wedding", heroCta2: "Our Services",
+        scroll: "Scroll",
+        aboutTag: "Our Story",
+        aboutTitle: "Crafting <em>timeless</em> celebrations",
+        aboutP1: "For over a decade, Éternelle has been the trusted name behind Armenia's most breathtaking weddings. We believe every love story deserves a celebration as extraordinary as the couple themselves.",
+        aboutP2: "From intimate garden ceremonies in Yerevan to grand destination weddings across Europe, our team of dedicated planners transforms your vision into an unforgettable experience — with grace, precision, and heart.",
+        aboutRole: "Founder & Lead Planner",
+        servicesTag: "What We Offer",
+        servicesTitle: "Our <em>Services</em>",
+        servicesDesc: "From the first consultation to the final dance, we handle every detail so you can savor every moment.",
+        srv1Title: "Full Planning", srv1Desc: "Complete wedding planning from concept to execution. We manage every detail, so you enjoy a stress-free journey to your big day.",
+        srv2Title: "Day-of Coordination", srv2Desc: "You've planned it all — we bring it to life flawlessly. Professional coordination on your wedding day for perfect execution.",
+        srv3Title: "Partial Planning", srv3Desc: "Already started planning? Let us step in to handle the remaining details and bring your vision together seamlessly.",
+        srv4Title: "Destination Weddings", srv4Desc: "Dream of saying \"I do\" in Tuscany, Santorini, or Bali? We specialize in luxury destination weddings worldwide.",
+        srv5Title: "Floral Design", srv5Desc: "Bespoke floral arrangements and décor design that transform your venue into a breathtaking romantic paradise.",
+        srv6Title: "Venue Selection", srv6Desc: "Access to exclusive venues across Armenia and beyond. We help you find the perfect setting for your celebration.",
+        galleryTag: "Our Portfolio",
+        galleryTitle: "Love in <em>every detail</em>",
+        galleryDesc: "A glimpse into the unforgettable celebrations we've had the honor of creating.",
+        gal1: "Garden Romance", gal2: "Classic Elegance", gal3: "Golden Hour",
+        gal4: "Rustic Charm", gal5: "Modern Luxury", gal6: "Timeless Beauty",
+        testTag: "Love Letters",
+        testTitle: "Words from our <em>couples</em>",
+        testDesc: "The greatest compliment is the joy we bring to the couples we serve.",
+        test1Text: "Éternelle turned our dream wedding into reality. Every detail was perfect — from the flowers to the final toast. We couldn't have asked for a more magical day.",
+        test1Role: "Yerevan, Armenia",
+        test2Text: "Working with Isabella and her team was the best decision we made. They handled everything with such grace and professionalism. Our guests are still talking about it!",
+        test2Role: "Tuscany, Italy",
+        test3Text: "From our very first meeting, we felt completely at ease. Éternelle understood our vision perfectly and delivered a celebration beyond our wildest dreams. Truly unforgettable.",
+        test3Role: "Dilijan, Armenia",
+        contactTag: "Get in Touch",
+        contactTitle: "Let's plan your <em>forever</em>",
+        contactDesc: "Ready to begin your wedding journey? We'd love to hear your story.",
+        contactInfoTitle: "Begin your <em>journey</em> with us",
+        contactInfoDesc: "Schedule a complimentary consultation and let's discuss how we can bring your dream wedding to life.",
+        contactPhone: "Phone", contactEmail: "Email",
+        contactAddress: "Studio", contactAddressValue: "24 Abovyan Street, Yerevan, Armenia",
+        contactHours: "Hours", contactHoursValue: "Mon — Sat: 10:00 — 19:00",
+        formName: "Your Name", formNamePh: "Anna & David",
+        formEmail: "Email", formEmailPh: "you@example.com",
+        formPhone: "Phone", formPhonePh: "+374 __ ___ ___",
+        formDate: "Wedding Date",
+        formService: "Service", formServiceOpt0: "Select a service",
+        formServiceOpt1: "Full Planning", formServiceOpt2: "Partial Planning",
+        formServiceOpt3: "Day-of Coordination", formServiceOpt4: "Destination Wedding",
+        formMessage: "Tell us about your vision", formMessagePh: "Share your dream wedding...",
+        formBtn: "Send Inquiry",
+        footerDesc: "Luxury wedding planning in Armenia and beyond. Creating timeless celebrations with love, elegance, and unparalleled attention to detail.",
+        footerServices: "Services", footerCompany: "Company", footerContact: "Contact",
+        footerBlog: "Journal", footerFAQ: "FAQ",
+        footerAddress: "24 Abovyan St, Yerevan", footerCountry: "Armenia",
+        footerCopy: "© 2026 Éternelle Wedding Planning. <em>Made with love</em> in Yerevan."
+      },
+      hy: {
+        pageTitle: "Էdelays — Շdelays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......",
+        logoSub: "Հdelays delays delays delays delays delays delays
