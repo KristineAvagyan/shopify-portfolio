@@ -3,98 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="pageTitle">Éternelle — Luxury Wedding Planning</title>
-  <meta name="description" content="Éternelle Wedding Planning — Crafting unforgettable weddings with elegance, passion, and attention to every detail." />
+  <title data-i18n="pageTitle">Ararat Trails — Discover Armenia & Beyond</title>
+  <meta name="description" content="Ararat Trails Tour Agency — Premium tours across Armenia, Georgia, and the Caucasus. Unforgettable adventures await." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --blush: #f5e6e0;
-      --blush-deep: #e8c4b8;
-      --ivory: #fdfbf7;
-      --cream: #faf5ef;
-      --gold: #c9a961;
-      --gold-dark: #a8893f;
-      --sage: #9caf9a;
-      --sage-dark: #7a8f78;
-      --charcoal: #2d2a26;
-      --text: #4a4540;
-      --text-light: #7a736d;
+      --navy: #0f2942;
+      --navy-deep: #081a2e;
+      --teal: #1a6b6b;
+      --teal-light: #2a8f8f;
+      --amber: #d4a574;
+      --amber-light: #e8c39e;
+      --amber-dark: #b8894f;
+      --sand: #f5efe6;
+      --cream: #faf7f2;
       --white: #ffffff;
-      --border: rgba(201, 169, 97, 0.2);
-      --shadow: 0 15px 50px rgba(45, 42, 38, 0.08);
-      --shadow-lg: 0 25px 70px rgba(45, 42, 38, 0.15);
+      --text: #2d3748;
+      --text-light: #64748b;
+      --border: rgba(15, 41, 66, 0.08);
+      --shadow: 0 10px 40px rgba(15, 41, 66, 0.08);
+      --shadow-lg: 0 25px 60px rgba(15, 41, 66, 0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
-      background: var(--ivory);
-      line-height: 1.7;
+      background: var(--cream);
+      line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4, h5 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
       line-height: 1.2;
-      color: var(--charcoal);
-    }
-    .script {
-      font-family: 'Great Vibes', cursive;
-      font-weight: 400;
+      color: var(--navy);
     }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
 
     /* ---------- Buttons ---------- */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 15px 38px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
+      padding: 15px 34px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.4s ease;
       border: none;
       font-family: inherit;
-      position: relative;
-      overflow: hidden;
+      border-radius: 2px;
     }
     .btn-primary {
-      background: var(--charcoal);
-      color: var(--white);
+      background: var(--amber);
+      color: var(--navy);
     }
     .btn-primary:hover {
-      background: var(--gold);
+      background: var(--amber-dark);
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.35);
+      box-shadow: 0 12px 30px rgba(212, 165, 116, 0.4);
     }
     .btn-outline {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
     }
     .btn-outline:hover {
       background: var(--white);
-      color: var(--charcoal);
+      color: var(--navy);
       border-color: var(--white);
     }
-    .btn-gold {
-      background: var(--gold);
+    .btn-dark {
+      background: var(--navy);
       color: var(--white);
     }
-    .btn-gold:hover {
-      background: var(--gold-dark);
+    .btn-dark:hover {
+      background: var(--teal);
       transform: translateY(-2px);
     }
 
@@ -102,15 +97,15 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      padding: 22px 0;
+      padding: 20px 0;
       z-index: 1000;
       transition: all 0.4s ease;
       background: transparent;
     }
     nav.scrolled {
-      background: rgba(253, 251, 247, 0.97);
+      background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(45, 42, 38, 0.06);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
       padding: 14px 0;
     }
     .nav-inner {
@@ -120,91 +115,109 @@
     }
     .logo {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 12px;
+    }
+    .logo-mark {
+      width: 44px; height: 44px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 22px;
+      transition: transform 0.4s;
+    }
+    .logo:hover .logo-mark { transform: rotate(-10deg); }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
       line-height: 1;
     }
-    .logo-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 500;
-      letter-spacing: 6px;
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
       color: var(--white);
+      letter-spacing: 1px;
       transition: color 0.4s;
     }
-    .logo-sub {
-      font-family: 'Montserrat', sans-serif;
+    .logo-tag {
       font-size: 9px;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--amber);
       margin-top: 4px;
+      font-weight: 500;
     }
-    nav.scrolled .logo-main { color: var(--charcoal); }
+    nav.scrolled .logo-name { color: var(--navy); }
 
     .nav-links {
       display: flex;
-      gap: 38px;
+      gap: 36px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--white);
+      font-weight: 500;
       transition: color 0.3s;
       position: relative;
-      font-weight: 400;
     }
-    nav.scrolled .nav-links a { color: var(--charcoal); }
+    nav.scrolled .nav-links a { color: var(--navy); }
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -6px; left: 50%;
-      width: 0; height: 1px;
-      background: var(--gold);
-      transition: all 0.3s;
-      transform: translateX(-50%);
+      bottom: -6px; left: 0;
+      width: 0; height: 2px;
+      background: var(--amber);
+      transition: width 0.3s;
     }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--amber); }
     .nav-links a:hover::after { width: 100%; }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
     }
     .lang-switcher {
       display: flex;
       gap: 2px;
       padding: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 2px;
       transition: all 0.4s;
     }
     nav.scrolled .lang-switcher {
-      background: var(--cream);
+      background: var(--sand);
       border-color: var(--border);
     }
     .lang-btn {
       background: transparent;
       border: none;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85);
       padding: 6px 12px;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.3s;
       font-family: inherit;
       text-transform: uppercase;
+      border-radius: 2px;
     }
     nav.scrolled .lang-btn { color: var(--text-light); }
-    .lang-btn:hover { color: var(--gold); }
+    .lang-btn:hover { color: var(--amber); }
     .lang-btn.active {
-      background: var(--gold);
-      color: var(--white);
+      background: var(--amber);
+      color: var(--navy);
     }
 
     .menu-toggle {
@@ -212,10 +225,10 @@
       background: none;
       border: none;
       color: var(--white);
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
     }
-    nav.scrolled .menu-toggle { color: var(--charcoal); }
+    nav.scrolled .menu-toggle { color: var(--navy); }
 
     /* ---------- Hero ---------- */
     .hero {
@@ -223,8 +236,6 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
       color: var(--white);
       overflow: hidden;
     }
@@ -236,75 +247,95 @@
     .hero-bg img {
       width: 100%; height: 100%;
       object-fit: cover;
-      animation: slowZoom 20s ease-in-out infinite alternate;
+      animation: slowZoom 25s ease-in-out infinite alternate;
     }
     @keyframes slowZoom {
       from { transform: scale(1); }
-      to { transform: scale(1.08); }
+      to { transform: scale(1.1); }
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(45, 42, 38, 0.4) 0%, rgba(45, 42, 38, 0.55) 50%, rgba(45, 42, 38, 0.7) 100%);
+      background: linear-gradient(135deg, rgba(8, 26, 46, 0.75) 0%, rgba(15, 41, 66, 0.55) 50%, rgba(26, 107, 107, 0.4) 100%);
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 820px;
-      padding: 0 24px;
-      animation: fadeUp 1.4s ease;
+      max-width: 780px;
+      padding: 0 28px;
+      animation: fadeUp 1.2s ease;
     }
-    .hero-ornament {
-      display: flex;
+    .hero-tag {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 24px;
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 4px;
+      gap: 12px;
+      padding: 8px 18px;
+      background: rgba(212, 165, 116, 0.2);
+      border: 1px solid rgba(212, 165, 116, 0.5);
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 28px;
+      font-weight: 500;
     }
-    .hero-ornament::before,
-    .hero-ornament::after {
+    .hero-tag::before {
       content: '';
-      width: 50px;
-      height: 1px;
-      background: var(--gold);
+      width: 8px; height: 8px;
+      background: var(--amber);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
     }
-    .hero-subtitle {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(32px, 5vw, 56px);
-      color: var(--gold);
-      margin-bottom: 12px;
-      font-weight: 400;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
     }
     .hero h1 {
-      font-size: clamp(42px, 7vw, 88px);
+      font-size: clamp(44px, 7vw, 84px);
       color: var(--white);
       margin-bottom: 24px;
-      font-weight: 400;
-      letter-spacing: 2px;
+      font-weight: 500;
+      line-height: 1.05;
     }
     .hero h1 em {
       font-style: italic;
-      color: var(--gold);
-      font-weight: 300;
+      color: var(--amber);
+      font-weight: 400;
     }
     .hero p {
-      font-size: 17px;
-      margin-bottom: 44px;
+      font-size: 18px;
+      margin-bottom: 40px;
       font-weight: 300;
-      max-width: 580px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 560px;
       opacity: 0.92;
-      letter-spacing: 0.5px;
+      line-height: 1.7;
     }
     .hero-buttons {
       display: flex;
       gap: 16px;
-      justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 50px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      flex-wrap: wrap;
+    }
+    .stat h3 {
+      font-size: 42px;
+      color: var(--amber);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .stat span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
     }
 
     @keyframes fadeUp {
@@ -312,63 +343,80 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--white);
-      font-size: 10px;
-      letter-spacing: 3px;
+    /* ---------- Search Bar ---------- */
+    .search-bar {
+      position: relative;
+      z-index: 3;
+      margin-top: -60px;
+      margin-bottom: 80px;
+    }
+    .search-inner {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 4px;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 20px;
+      align-items: end;
+    }
+    .search-field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0.7;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      font-weight: 600;
     }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
+    .search-field input,
+    .search-field select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--navy);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.3s;
     }
-    @keyframes scrollPulse {
-      0%, 100% { transform: scaleY(1); opacity: 1; }
-      50% { transform: scaleY(0.6); opacity: 0.5; }
+    .search-field input:focus,
+    .search-field select:focus {
+      border-color: var(--amber);
     }
 
     /* ---------- Section Headings ---------- */
-    section { padding: 120px 0; }
+    section { padding: 110px 0; }
     .section-head { text-align: center; margin-bottom: 70px; }
     .section-tag {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 14px;
       font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-      font-weight: 500;
+      color: var(--teal);
+      margin-bottom: 16px;
+      font-weight: 600;
     }
     .section-tag::before,
     .section-tag::after {
       content: '';
-      width: 40px;
+      width: 30px;
       height: 1px;
-      background: var(--gold);
+      background: var(--teal);
     }
     .section-head h2 {
-      font-size: clamp(36px, 5vw, 56px);
-      margin-bottom: 20px;
-      font-weight: 400;
+      font-size: clamp(34px, 5vw, 52px);
+      margin-bottom: 18px;
+      font-weight: 500;
     }
     .section-head h2 em {
       font-style: italic;
-      color: var(--gold-dark);
+      color: var(--teal);
+      font-weight: 400;
     }
     .section-head p {
       color: var(--text-light);
@@ -378,263 +426,352 @@
       font-weight: 300;
     }
 
-    /* ---------- About ---------- */
-    .about {
+    /* ---------- Destinations ---------- */
+    .destinations {
       background: var(--cream);
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-image {
-      position: relative;
-    }
-    .about-image img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      border-radius: 2px;
-      box-shadow: var(--shadow-lg);
-    }
-    .about-image::before {
-      content: '';
-      position: absolute;
-      top: -20px; left: -20px;
-      width: 100%; height: 100%;
-      border: 1px solid var(--gold);
-      border-radius: 2px;
-      z-index: -1;
-    }
-    .about-content .section-tag {
-      justify-content: flex-start;
-    }
-    .about-content .section-tag::before { display: none; }
-    .about-content h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      margin-bottom: 24px;
-      text-align: left;
-    }
-    .about-content h2 em {
-      font-style: italic;
-      color: var(--gold-dark);
-    }
-    .about-text {
-      color: var(--text-light);
-      margin-bottom: 18px;
-      font-size: 15px;
-      font-weight: 300;
-    }
-    .about-signature {
-      font-family: 'Great Vibes', cursive;
-      font-size: 42px;
-      color: var(--gold);
-      margin-top: 28px;
-    }
-    .about-role {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-top: 4px;
-    }
-
-    /* ---------- Services ---------- */
-    .services {
-      background: var(--ivory);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-    .service-card {
-      background: var(--white);
-      padding: 48px 32px;
-      text-align: center;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      transition: all 0.5s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.5s;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--gold);
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon {
-      width: 72px; height: 72px;
-      margin: 0 auto 24px;
-      background: var(--blush);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-dark);
-      transition: all 0.4s;
-    }
-    .service-card:hover .service-icon {
-      background: var(--gold);
-      color: var(--white);
-      transform: rotate(-5deg) scale(1.05);
-    }
-    .service-icon svg { width: 32px; height: 32px; }
-    .service-card h3 {
-      font-size: 26px;
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-    .service-card p {
-      color: var(--text-light);
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    /* ---------- Gallery ---------- */
-    .gallery {
-      background: var(--cream);
-    }
-    .gallery-grid {
+    .dest-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 220px;
-      gap: 16px;
+      grid-auto-rows: 280px;
+      gap: 20px;
     }
-    .gallery-item {
+    .dest-card {
       position: relative;
       overflow: hidden;
-      border-radius: 2px;
+      border-radius: 4px;
       cursor: pointer;
     }
-    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-    .gallery-item:nth-child(4) { grid-column: span 2; }
-    .gallery-item img {
+    .dest-card.large { grid-column: span 2; grid-row: span 2; }
+    .dest-card img {
       width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.8s ease;
     }
-    .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay {
+    .dest-card:hover img { transform: scale(1.08); }
+    .dest-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(45, 42, 38, 0.8), transparent 60%);
+      background: linear-gradient(to top, rgba(8, 26, 46, 0.9) 0%, rgba(8, 26, 46, 0.3) 50%, transparent 100%);
       display: flex;
-      align-items: flex-end;
-      padding: 24px;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay span {
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
       color: var(--white);
-      font-family: 'Cormorant Garamond', serif;
+      transition: all 0.4s;
+    }
+    .dest-card:hover .dest-overlay {
+      background: linear-gradient(to top, rgba(8, 26, 46, 0.95) 0%, rgba(8, 26, 46, 0.5) 60%, rgba(8, 26, 46, 0.2) 100%);
+    }
+    .dest-location {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .dest-overlay h3 {
+      color: var(--white);
+      font-size: 26px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .dest-card.large .dest-overlay h3 { font-size: 34px; }
+    .dest-price {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+    }
+    .dest-price strong {
+      color: var(--amber);
+      font-size: 18px;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ---------- Tours ---------- */
+    .tours {
+      background: var(--white);
+    }
+    .tours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .tour-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .tour-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .tour-image {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .tour-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .tour-card:hover .tour-image img { transform: scale(1.08); }
+    .tour-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--amber);
+      color: var(--navy);
+      padding: 6px 14px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+    .tour-duration {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      background: rgba(8, 26, 46, 0.85);
+      color: var(--white);
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      backdrop-filter: blur(10px);
+    }
+    .tour-content {
+      padding: 28px;
+    }
+    .tour-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .tour-card h3 {
       font-size: 22px;
-      font-style: italic;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .tour-card p {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .tour-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .tour-price {
+      font-family: 'Playfair Display', serif;
+    }
+    .tour-price .from {
+      font-size: 11px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Inter', sans-serif;
+    }
+    .tour-price .amount {
+      font-size: 28px;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .tour-price .per {
+      font-size: 13px;
+      color: var(--text-light);
+      font-family: 'Inter', sans-serif;
+    }
+    .tour-link {
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.3s;
+    }
+    .tour-link:hover { gap: 12px; color: var(--amber-dark); }
+
+    /* ---------- Why Us ---------- */
+    .why-us {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-us::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .why-us .section-head h2 { color: var(--white); }
+    .why-us .section-head p { color: rgba(255, 255, 255, 0.7); }
+    .why-us .section-tag { color: var(--amber); }
+    .why-us .section-tag::before,
+    .why-us .section-tag::after { background: var(--amber); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .why-card {
+      padding: 36px 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      transition: all 0.4s;
+      text-align: center;
+    }
+    .why-card:hover {
+      background: rgba(212, 165, 116, 0.1);
+      border-color: var(--amber);
+      transform: translateY(-6px);
+    }
+    .why-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 20px;
+      background: var(--amber);
+      color: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s;
+    }
+    .why-card:hover .why-icon {
+      transform: rotate(-10deg) scale(1.05);
+    }
+    .why-icon svg { width: 28px; height: 28px; }
+    .why-card h3 {
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .why-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     /* ---------- Testimonials ---------- */
     .testimonials {
-      background: var(--ivory);
+      background: var(--sand);
     }
-    .testimonial-grid {
+    .test-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
+      gap: 28px;
     }
-    .testimonial {
+    .test-card {
       background: var(--white);
-      padding: 44px 36px;
-      text-align: center;
-      border: 1px solid var(--border);
-      border-radius: 2px;
+      padding: 40px 32px;
+      border-radius: 4px;
       transition: all 0.4s;
       position: relative;
     }
-    .testimonial:hover {
+    .test-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
     }
-    .quote-mark {
-      font-family: 'Great Vibes', cursive;
-      font-size: 80px;
-      color: var(--gold);
-      line-height: 0.5;
-      margin-bottom: 20px;
-      opacity: 0.6;
+    .test-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      color: var(--amber);
+      line-height: 0.8;
+      opacity: 0.4;
+      margin-bottom: 12px;
     }
     .stars {
-      color: var(--gold);
-      margin-bottom: 18px;
+      color: var(--amber);
+      margin-bottom: 16px;
       letter-spacing: 3px;
       font-size: 14px;
     }
-    .testimonial p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      font-style: italic;
+    .test-card p {
+      font-size: 15px;
       color: var(--text);
-      margin-bottom: 28px;
-      line-height: 1.7;
-      font-weight: 400;
+      margin-bottom: 24px;
+      line-height: 1.8;
+      font-style: italic;
     }
-    .testimonial-author {
+    .test-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       padding-top: 20px;
       border-top: 1px solid var(--border);
     }
-    .testimonial-author h4 {
-      font-size: 18px;
-      margin-bottom: 4px;
-      font-weight: 500;
+    .author-avatar {
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: 'Playfair Display', serif;
     }
-    .testimonial-author span {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold-dark);
+    .test-author h4 {
+      font-size: 16px;
+      margin-bottom: 2px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .test-author span {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 1px;
     }
 
     /* ---------- Contact ---------- */
     .contact {
-      background: linear-gradient(rgba(45, 42, 38, 0.85), rgba(45, 42, 38, 0.9)),
-                  url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
-      color: var(--white);
+      background: var(--cream);
     }
-    .contact .section-head h2 { color: var(--white); }
-    .contact .section-head p { color: rgba(255, 255, 255, 0.75); }
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.2fr;
       gap: 60px;
       align-items: start;
     }
     .contact-info h3 {
       font-size: 32px;
-      color: var(--white);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      font-weight: 500;
     }
     .contact-info h3 em {
       font-style: italic;
-      color: var(--gold);
+      color: var(--teal);
     }
     .contact-info > p {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-light);
       margin-bottom: 36px;
-      font-weight: 300;
+      font-size: 15px;
     }
     .contact-item {
       display: flex;
@@ -643,45 +780,44 @@
       align-items: flex-start;
     }
     .contact-icon {
-      width: 48px; height: 48px;
-      background: rgba(201, 169, 97, 0.15);
-      border: 1px solid var(--gold);
+      width: 50px; height: 50px;
+      background: var(--navy);
+      color: var(--amber);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold);
       flex-shrink: 0;
       transition: all 0.3s;
     }
     .contact-item:hover .contact-icon {
-      background: var(--gold);
-      color: var(--white);
+      background: var(--amber);
+      color: var(--navy);
+      transform: rotate(-10deg);
     }
     .contact-icon svg { width: 20px; height: 20px; }
     .contact-item h4 {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--teal);
       margin-bottom: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
     }
     .contact-item p, .contact-item a {
-      color: var(--white);
+      color: var(--navy);
       font-size: 15px;
-      font-weight: 300;
+      font-weight: 500;
       transition: color 0.3s;
     }
-    .contact-item a:hover { color: var(--gold); }
+    .contact-item a:hover { color: var(--amber-dark); }
 
     .contact-form {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--white);
       padding: 44px;
-      border-radius: 2px;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
     }
     .form-row {
       display: grid;
@@ -696,35 +832,29 @@
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--navy);
       margin-bottom: 10px;
-      font-weight: 500;
+      font-weight: 600;
     }
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
       padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--cream);
+      border: 1px solid var(--border);
       border-radius: 2px;
-      color: var(--white);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 15px;
+      color: var(--navy);
       outline: none;
       transition: border-color 0.3s;
     }
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-    .form-group select option {
-      background: var(--charcoal);
+      border-color: var(--amber);
+      background: var(--white);
     }
     .form-group textarea {
       resize: vertical;
@@ -737,8 +867,8 @@
 
     /* ---------- Footer ---------- */
     footer {
-      background: var(--charcoal);
-      color: rgba(255, 255, 255, 0.6);
+      background: var(--navy-deep);
+      color: rgba(255, 255, 255, 0.7);
       padding: 80px 0 30px;
     }
     .footer-grid {
@@ -747,13 +877,12 @@
       gap: 50px;
       margin-bottom: 50px;
     }
-    .footer-brand .logo-main { color: var(--white); }
+    .footer-brand .logo-name { color: var(--white); }
     .footer-brand p {
       font-size: 14px;
       line-height: 1.8;
       margin: 20px 0;
       max-width: 320px;
-      font-weight: 300;
     }
     .socials { display: flex; gap: 12px; }
     .socials a {
@@ -767,9 +896,9 @@
       color: rgba(255, 255, 255, 0.7);
     }
     .socials a:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--white);
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--navy);
       transform: translateY(-3px);
     }
     .socials svg { width: 16px; height: 16px; }
@@ -779,29 +908,26 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 22px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 12px; }
     .footer-col a {
       font-size: 14px;
       transition: color 0.3s;
-      font-weight: 300;
     }
-    .footer-col a:hover { color: var(--gold); }
+    .footer-col a:hover { color: var(--amber); }
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 28px;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-    .footer-bottom em {
-      font-family: 'Great Vibes', cursive;
-      color: var(--gold);
-      font-size: 16px;
-      font-style: normal;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     /* ---------- Reveal Animation ---------- */
@@ -817,12 +943,11 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 1024px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-      .about-image img { height: 420px; }
+      .search-inner { grid-template-columns: 1fr 1fr; }
+      .dest-grid { grid-template-columns: repeat(2, 1fr); }
+      .dest-card.large { grid-column: span 2; grid-row: span 1; }
+      .contact-grid { grid-template-columns: 1fr; gap: 50px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-      .gallery-item:nth-child(4) { grid-column: span 1; }
     }
     @media (max-width: 768px) {
       section { padding: 80px 0; }
@@ -832,20 +957,26 @@
         display: flex;
         position: absolute;
         top: 100%; left: 0; right: 0;
-        background: var(--ivory);
+        background: var(--white);
         flex-direction: column;
         padding: 28px;
         gap: 18px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       }
-      .nav-links.open a { color: var(--charcoal); }
-      .hero-buttons { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; }
+      .nav-links.open a { color: var(--navy); }
+      .hero-buttons { flex-direction: column; width: 100%; max-width: 280px; }
       .hero-buttons .btn { width: 100%; justify-content: center; }
+      .hero-stats { gap: 30px; }
+      .stat h3 { font-size: 32px; }
+      .search-inner { grid-template-columns: 1fr; }
+      .search-bar { margin-top: -40px; }
+      .dest-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+      .dest-card.large { grid-column: span 1; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 32px 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-      .gallery-grid { grid-auto-rows: 180px; }
-      .lang-btn { padding: 5px 8px; font-size: 9px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .lang-btn { padding: 5px 8px; font-size: 10px; }
     }
   </style>
 </head>
@@ -855,14 +986,17 @@
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="#" class="logo">
-        <span class="logo-main">ÉTERNELLE</span>
-        <span class="logo-sub" data-i18n="logoSub">Wedding Planning</span>
+        <div class="logo-mark">A</div>
+        <div class="logo-text">
+          <span class="logo-name">ARARAT TRAILS</span>
+          <span class="logo-tag" data-i18n="logoTag">Tour Agency</span>
+        </div>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" data-i18n="navHome">Home</a></li>
-        <li><a href="#about" data-i18n="navAbout">About</a></li>
-        <li><a href="#services" data-i18n="navServices">Services</a></li>
-        <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
+        <li><a href="#destinations" data-i18n="navDest">Destinations</a></li>
+        <li><a href="#tours" data-i18n="navTours">Tours</a></li>
+        <li><a href="#why" data-i18n="navWhy">Why Us</a></li>
         <li><a href="#reviews" data-i18n="navReviews">Reviews</a></li>
         <li><a href="#contact" data-i18n="navContact">Contact</a></li>
       </ul>
@@ -872,7 +1006,7 @@
           <button class="lang-btn" data-lang="hy">ՀԱՅ</button>
           <button class="lang-btn" data-lang="ru">РУ</button>
         </div>
-        <a href="#contact" class="btn btn-gold" style="padding: 10px 22px; font-size: 11px;" data-i18n="navCta">Book Now</a>
+        <a href="#contact" class="btn btn-primary" style="padding: 10px 22px; font-size: 11px;" data-i18n="navCta">Book Tour</a>
         <button class="menu-toggle" id="menuToggle">☰</button>
       </div>
     </div>
@@ -881,131 +1015,235 @@
   <!-- ========== HERO ========== -->
   <header class="hero" id="home">
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80" alt="Elegant wedding ceremony">
+      <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=1920&q=80" alt="Mount Ararat landscape">
       <div class="hero-overlay"></div>
     </div>
-    <div class="hero-content">
-      <div class="hero-ornament">✦</div>
-      <div class="hero-subtitle" data-i18n="heroSubtitle">Where dreams begin</div>
-      <h1 data-i18n="heroTitle">Your <em>forever</em><br>starts here</h1>
-      <p data-i18n="heroDesc">Luxury wedding planning crafted with elegance, passion, and meticulous attention to every detail — creating celebrations as unique as your love story.</p>
+    <div class="container hero-content">
+      <div class="hero-tag" data-i18n="heroTag">Discover the Caucasus</div>
+      <h1 data-i18n="heroTitle">Journey through <em>ancient lands</em> & breathtaking peaks</h1>
+      <p data-i18n="heroDesc">From the biblical peaks of Mount Ararat to the monasteries of Tatev, explore Armenia and the Caucasus with expert local guides who bring every story to life.</p>
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary" data-i18n="heroCta1">Plan My Wedding</a>
-        <a href="#services" class="btn btn-outline" data-i18n="heroCta2">Our Services</a>
+        <a href="#tours" class="btn btn-primary" data-i18n="heroCta1">Explore Tours</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="heroCta2">Plan My Trip</a>
       </div>
-    </div>
-    <div class="scroll-indicator">
-      <span data-i18n="scroll">Scroll</span>
-      <div class="scroll-line"></div>
+      <div class="hero-stats">
+        <div class="stat">
+          <h3>150+</h3>
+          <span data-i18n="stat1">Unique Tours</span>
+        </div>
+        <div class="stat">
+          <h3>12K+</h3>
+          <span data-i18n="stat2">Happy Travelers</span>
+        </div>
+        <div class="stat">
+          <h3>15</h3>
+          <span data-i18n="stat3">Years Experience</span>
+        </div>
+        <div class="stat">
+          <h3>4.9★</h3>
+          <span data-i18n="stat4">Average Rating</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ========== ABOUT ========== -->
-  <section class="about" id="about">
+  <!-- ========== SEARCH BAR ========== -->
+  <div class="container search-bar">
+    <div class="search-inner reveal">
+      <div class="search-field">
+        <label data-i18n="searchDest">Destination</label>
+        <input type="text" data-i18n-placeholder="searchDestPh" placeholder="Where do you want to go?">
+      </div>
+      <div class="search-field">
+        <label data-i18n="searchDate">Travel Date</label>
+        <input type="date">
+      </div>
+      <div class="search-field">
+        <label data-i18n="searchGuests">Guests</label>
+        <select>
+          <option data-i18n="guest1">1 Guest</option>
+          <option data-i18n="guest2">2 Guests</option>
+          <option data-i18n="guest3">3-5 Guests</option>
+          <option data-i18n="guest4">6+ Guests</option>
+        </select>
+      </div>
+      <button class="btn btn-dark" data-i18n="searchBtn">Search</button>
+    </div>
+  </div>
+
+  <!-- ========== DESTINATIONS ========== -->
+  <section class="destinations" id="destinations">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-image reveal">
-          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Wedding planner">
+      <div class="section-head reveal">
+        <div class="section-tag" data-i18n="destTag">Top Destinations</div>
+        <h2 data-i18n="destTitle">Explore <em>Armenia's</em> wonders</h2>
+        <p data-i18n="destDesc">Discover the most breathtaking destinations across Armenia, handpicked by our expert travel designers.</p>
+      </div>
+      <div class="dest-grid">
+        <div class="dest-card large reveal">
+          <img src="https://images.unsplash.com/photo-1613387309292-3a5f4a0a5e9f?auto=format&fit=crop&w=1000&q=80" alt="Tatev Monastery" onerror="this.src='https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=1000&q=80'">
+          <div class="dest-overlay">
+            <span class="dest-location" data-i18n="dest1Loc">Syunik Region</span>
+            <h3 data-i18n="dest1Name">Tatev Monastery</h3>
+            <div class="dest-price"><span data-i18n="fromPrice">From</span> <strong>$189</strong> <span data-i18n="perPerson">/ person</span></div>
+          </div>
         </div>
-        <div class="about-content reveal">
-          <div class="section-tag" data-i18n="aboutTag">Our Story</div>
-          <h2 data-i18n="aboutTitle">Crafting <em>timeless</em> celebrations</h2>
-          <p class="about-text" data-i18n="aboutP1">For over a decade, Éternelle has been the trusted name behind Armenia's most breathtaking weddings. We believe every love story deserves a celebration as extraordinary as the couple themselves.</p>
-          <p class="about-text" data-i18n="aboutP2">From intimate garden ceremonies in Yerevan to grand destination weddings across Europe, our team of dedicated planners transforms your vision into an unforgettable experience — with grace, precision, and heart.</p>
-          <div class="about-signature">Isabella</div>
-          <div class="about-role" data-i18n="aboutRole">Founder & Lead Planner</div>
+        <div class="dest-card reveal">
+          <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=600&q=80" alt="Lake Sevan" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80'">
+          <div class="dest-overlay">
+            <span class="dest-location" data-i18n="dest2Loc">Gegharkunik</span>
+            <h3 data-i18n="dest2Name">Lake Sevan</h3>
+            <div class="dest-price"><span data-i18n="fromPrice">From</span> <strong>$99</strong></div>
+          </div>
+        </div>
+        <div class="dest-card reveal">
+          <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80" alt="Garni Temple" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80'">
+          <div class="dest-overlay">
+            <span class="dest-location" data-i18n="dest3Loc">Kotayk</span>
+            <h3 data-i18n="dest3Name">Garni & Geghard</h3>
+            <div class="dest-price"><span data-i18n="fromPrice">From</span> <strong>$79</strong></div>
+          </div>
+        </div>
+        <div class="dest-card reveal">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Dilijan" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80'">
+          <div class="dest-overlay">
+            <span class="dest-location" data-i18n="dest4Loc">Tavush</span>
+            <h3 data-i18n="dest4Name">Dilijan Forest</h3>
+            <div class="dest-price"><span data-i18n="fromPrice">From</span> <strong>$119</strong></div>
+          </div>
+        </div>
+        <div class="dest-card reveal">
+          <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=600&q=80" alt="Yerevan" onerror="this.src='https://images.unsplash.com/photo-1568454537842-d933259bb1ce?auto=format&fit=crop&w=600&q=80'">
+          <div class="dest-overlay">
+            <span class="dest-location" data-i18n="dest5Loc">Capital City</span>
+            <h3 data-i18n="dest5Name">Yerevan City Tour</h3>
+            <div class="dest-price"><span data-i18n="fromPrice">From</span> <strong>$59</strong></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SERVICES ========== -->
-  <section class="services" id="services">
+  <!-- ========== TOURS ========== -->
+  <section class="tours" id="tours">
     <div class="container">
       <div class="section-head reveal">
-        <div class="section-tag" data-i18n="servicesTag">What We Offer</div>
-        <h2 data-i18n="servicesTitle">Our <em>Services</em></h2>
-        <p data-i18n="servicesDesc">From the first consultation to the final dance, we handle every detail so you can savor every moment.</p>
+        <div class="section-tag" data-i18n="toursTag">Popular Tours</div>
+        <h2 data-i18n="toursTitle">Unforgettable <em>adventures</em></h2>
+        <p data-i18n="toursDesc">Handcrafted itineraries designed to showcase the very best of Armenia and the Caucasus region.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <div class="tours-grid">
+        <div class="tour-card reveal">
+          <div class="tour-image">
+            <span class="tour-badge" data-i18n="badgePopular">Popular</span>
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Caucasus Explorer">
+            <span class="tour-duration" data-i18n="tour1Dur">8 Days</span>
           </div>
-          <h3 data-i18n="srv1Title">Full Planning</h3>
-          <p data-i18n="srv1Desc">Complete wedding planning from concept to execution. We manage every detail, so you enjoy a stress-free journey to your big day.</p>
+          <div class="tour-content">
+            <div class="tour-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="tour1Loc">Armenia & Georgia</span>
+            </div>
+            <h3 data-i18n="tour1Title">Caucasus Explorer</h3>
+            <p data-i18n="tour1Desc">An epic journey through two ancient nations — from Yerevan's brandy cellars to Tbilisi's old town and the peaks of Kazbegi.</p>
+            <div class="tour-footer">
+              <div class="tour-price">
+                <div class="from" data-i18n="fromLabel">From</div>
+                <span class="amount">$1,290</span>
+                <span class="per" data-i18n="perPerson">/ person</span>
+              </div>
+              <a href="#contact" class="tour-link" data-i18n="bookNow">Book Now →</a>
+            </div>
+          </div>
         </div>
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+
+        <div class="tour-card reveal">
+          <div class="tour-image">
+            <span class="tour-badge" data-i18n="badgeNew">New</span>
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" alt="Wine & Culture">
+            <span class="tour-duration" data-i18n="tour2Dur">5 Days</span>
           </div>
-          <h3 data-i18n="srv2Title">Day-of Coordination</h3>
-          <p data-i18n="srv2Desc">You've planned it all — we bring it to life flawlessly. Professional coordination on your wedding day for perfect execution.</p>
+          <div class="tour-content">
+            <div class="tour-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="tour2Loc">Armenia</span>
+            </div>
+            <h3 data-i18n="tour2Title">Wine & Culture Trail</h3>
+            <p data-i18n="tour2Desc">Discover 6,000-year-old winemaking traditions, visit ancient monasteries, and taste authentic Armenian cuisine.</p>
+            <div class="tour-footer">
+              <div class="tour-price">
+                <div class="from" data-i18n="fromLabel">From</div>
+                <span class="amount">$789</span>
+                <span class="per" data-i18n="perPerson">/ person</span>
+              </div>
+              <a href="#contact" class="tour-link" data-i18n="bookNow">Book Now →</a>
+            </div>
+          </div>
         </div>
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+
+        <div class="tour-card reveal">
+          <div class="tour-image">
+            <span class="tour-badge" data-i18n="badgeAdventure">Adventure</span>
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" alt="Mountain Trek" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80'">
+            <span class="tour-duration" data-i18n="tour3Dur">10 Days</span>
           </div>
-          <h3 data-i18n="srv3Title">Partial Planning</h3>
-          <p data-i18n="srv3Desc">Already started planning? Let us step in to handle the remaining details and bring your vision together seamlessly.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="tour-content">
+            <div class="tour-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="tour3Loc">Armenia Highlands</span>
+            </div>
+            <h3 data-i18n="tour3Title">Highland Trekking</h3>
+            <p data-i18n="tour3Desc">Challenge yourself with guided treks through Armenia's most dramatic mountain landscapes and hidden valleys.</p>
+            <div class="tour-footer">
+              <div class="tour-price">
+                <div class="from" data-i18n="fromLabel">From</div>
+                <span class="amount">$1,490</span>
+                <span class="per" data-i18n="perPerson">/ person</span>
+              </div>
+              <a href="#contact" class="tour-link" data-i18n="bookNow">Book Now →</a>
+            </div>
           </div>
-          <h3 data-i18n="srv4Title">Destination Weddings</h3>
-          <p data-i18n="srv4Desc">Dream of saying "I do" in Tuscany, Santorini, or Bali? We specialize in luxury destination weddings worldwide.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3 data-i18n="srv5Title">Floral Design</h3>
-          <p data-i18n="srv5Desc">Bespoke floral arrangements and décor design that transform your venue into a breathtaking romantic paradise.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <h3 data-i18n="srv6Title">Venue Selection</h3>
-          <p data-i18n="srv6Desc">Access to exclusive venues across Armenia and beyond. We help you find the perfect setting for your celebration.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== GALLERY ========== -->
-  <section class="gallery" id="gallery">
+  <!-- ========== WHY US ========== -->
+  <section class="why-us" id="why">
     <div class="container">
       <div class="section-head reveal">
-        <div class="section-tag" data-i18n="galleryTag">Our Portfolio</div>
-        <h2 data-i18n="galleryTitle">Love in <em>every detail</em></h2>
-        <p data-i18n="galleryDesc">A glimpse into the unforgettable celebrations we've had the honor of creating.</p>
+        <div class="section-tag" data-i18n="whyTag">Why Choose Us</div>
+        <h2 data-i18n="whyTitle">Travel with <em>confidence</em></h2>
+        <p data-i18n="whyDesc">We don't just plan trips — we craft life-changing experiences backed by local expertise and genuine care.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Wedding 1">
-          <div class="gallery-overlay"><span data-i18n="gal1">Garden Romance</span></div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 data-i18n="why1Title">Local Experts</h3>
+          <p data-i18n="why1Desc">Born-and-raised guides who share authentic stories and hidden gems you won't find in guidebooks.</p>
         </div>
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Wedding 2">
-          <div class="gallery-overlay"><span data-i18n="gal2">Classic Elegance</span></div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 data-i18n="why2Title">Tailor-Made</h3>
+          <p data-i18n="why2Desc">Every itinerary is customized to your interests, pace, and travel style — no two trips are alike.</p>
         </div>
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=600&q=80" alt="Wedding 3">
-          <div class="gallery-overlay"><span data-i18n="gal3">Golden Hour</span></div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 data-i18n="why3Title">Safe & Secure</h3>
+          <p data-i18n="why3Desc">Fully licensed, insured, and committed to the highest safety standards on every adventure.</p>
         </div>
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&w=800&q=80" alt="Wedding 4">
-          <div class="gallery-overlay"><span data-i18n="gal4">Rustic Charm</span></div>
-        </div>
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Wedding 5">
-          <div class="gallery-overlay"><span data-i18n="gal5">Modern Luxury</span></div>
-        </div>
-        <div class="gallery-item reveal">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Wedding 6">
-          <div class="gallery-overlay"><span data-i18n="gal6">Timeless Beauty</span></div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 data-i18n="why4Title">24/7 Support</h3>
+          <p data-i18n="why4Desc">Our team is available around the clock — before, during, and after your journey with us.</p>
         </div>
       </div>
     </div>
@@ -1015,36 +1253,45 @@
   <section class="testimonials" id="reviews">
     <div class="container">
       <div class="section-head reveal">
-        <div class="section-tag" data-i18n="testTag">Love Letters</div>
-        <h2 data-i18n="testTitle">Words from our <em>couples</em></h2>
-        <p data-i18n="testDesc">The greatest compliment is the joy we bring to the couples we serve.</p>
+        <div class="section-tag" data-i18n="testTag">Traveler Stories</div>
+        <h2 data-i18n="testTitle">Loved by <em>travelers</em> worldwide</h2>
+        <p data-i18n="testDesc">Real stories from guests who've explored Armenia and beyond with us.</p>
       </div>
-      <div class="testimonial-grid">
-        <div class="testimonial reveal">
-          <div class="quote-mark">"</div>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <div class="test-quote">"</div>
           <div class="stars">★★★★★</div>
-          <p data-i18n="test1Text">Éternelle turned our dream wedding into reality. Every detail was perfect — from the flowers to the final toast. We couldn't have asked for a more magical day.</p>
-          <div class="testimonial-author">
-            <h4>Anna & David</h4>
-            <span data-i18n="test1Role">Yerevan, Armenia</span>
+          <p data-i18n="test1Text">An absolutely unforgettable experience! Our guide was incredibly knowledgeable, and every detail was perfectly planned. Armenia exceeded all our expectations.</p>
+          <div class="test-author">
+            <div class="author-avatar">SM</div>
+            <div>
+              <h4>Sarah Mitchell</h4>
+              <span data-i18n="test1Role">London, UK</span>
+            </div>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <div class="quote-mark">"</div>
+        <div class="test-card reveal">
+          <div class="test-quote">"</div>
           <div class="stars">★★★★★</div>
-          <p data-i18n="test2Text">Working with Isabella and her team was the best decision we made. They handled everything with such grace and professionalism. Our guests are still talking about it!</p>
-          <div class="testimonial-author">
-            <h4>Sofia & Marcus</h4>
-            <span data-i18n="test2Role">Tuscany, Italy</span>
+          <p data-i18n="test2Text">From the moment we landed to our final day, Ararat Trails made everything seamless. The Caucasus Explorer tour was the trip of a lifetime. Highly recommended!</p>
+          <div class="test-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <h4>Marco Rossi</h4>
+              <span data-i18n="test2Role">Milan, Italy</span>
+            </div>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <div class="quote-mark">"</div>
+        <div class="test-card reveal">
+          <div class="test-quote">"</div>
           <div class="stars">★★★★★</div>
-          <p data-i18n="test3Text">From our very first meeting, we felt completely at ease. Éternelle understood our vision perfectly and delivered a celebration beyond our wildest dreams. Truly unforgettable.</p>
-          <div class="testimonial-author">
-            <h4>Lilit & Armen</h4>
-            <span data-i18n="test3Role">Dilijan, Armenia</span>
+          <p data-i18n="test3Text">We traveled as a family with three kids, and every activity was perfectly suited for all ages. The local food experiences were a highlight. Can't wait to return!</p>
+          <div class="test-author">
+            <div class="author-avatar">EK</div>
+            <div>
+              <h4>Emma Kowalski</h4>
+              <span data-i18n="test3Role">Berlin, Germany</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1056,17 +1303,17 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="section-tag" data-i18n="contactTag">Get in Touch</div>
-        <h2 data-i18n="contactTitle">Let's plan your <em>forever</em></h2>
-        <p data-i18n="contactDesc">Ready to begin your wedding journey? We'd love to hear your story.</p>
+        <h2 data-i18n="contactTitle">Start your <em>journey</em> today</h2>
+        <p data-i18n="contactDesc">Ready to explore? Our travel experts are here to design your perfect adventure.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <h3 data-i18n="contactInfoTitle">Begin your <em>journey</em> with us</h3>
-          <p data-i18n="contactInfoDesc">Schedule a complimentary consultation and let's discuss how we can bring your dream wedding to life.</p>
+          <h3 data-i18n="contactInfoTitle">Let's plan your <em>adventure</em></h3>
+          <p data-i18n="contactInfoDesc">Reach out for a free consultation. We'll craft a personalized itinerary just for you.</p>
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
             <div>
               <h4 data-i18n="contactPhone">Phone</h4>
@@ -1076,31 +1323,31 @@
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
               <h4 data-i18n="contactEmail">Email</h4>
-              <a href="mailto:hello@eternelle.am">hello@eternelle.am</a>
+              <a href="mailto:hello@ararattrails.am">hello@ararattrails.am</a>
             </div>
           </div>
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
-              <h4 data-i18n="contactAddress">Studio</h4>
-              <p data-i18n="contactAddressValue">24 Abovyan Street, Yerevan, Armenia</p>
+              <h4 data-i18n="contactAddress">Office</h4>
+              <p data-i18n="contactAddressValue">14 Mashtots Avenue, Yerevan, Armenia</p>
             </div>
           </div>
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
-              <h4 data-i18n="contactHours">Hours</h4>
-              <p data-i18n="contactHoursValue">Mon — Sat: 10:00 — 19:00</p>
+              <h4 data-i18n="contactHours">Working Hours</h4>
+              <p data-i18n="contactHoursValue">Mon — Sun: 09:00 — 20:00</p>
             </div>
           </div>
         </div>
@@ -1108,8 +1355,8 @@
         <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
           <div class="form-row">
             <div class="form-group">
-              <label data-i18n="formName">Your Name</label>
-              <input type="text" required data-i18n-placeholder="formNamePh" placeholder="Anna & David">
+              <label data-i18n="formName">Full Name</label>
+              <input type="text" required data-i18n-placeholder="formNamePh" placeholder="John Smith">
             </div>
             <div class="form-group">
               <label data-i18n="formEmail">Email</label>
@@ -1122,25 +1369,25 @@
               <input type="tel" data-i18n-placeholder="formPhonePh" placeholder="+374 __ ___ ___">
             </div>
             <div class="form-group">
-              <label data-i18n="formDate">Wedding Date</label>
+              <label data-i18n="formDate">Travel Date</label>
               <input type="date">
             </div>
           </div>
           <div class="form-group">
-            <label data-i18n="formService">Service</label>
+            <label data-i18n="formTour">Interested Tour</label>
             <select required>
-              <option value="" data-i18n="formServiceOpt0">Select a service</option>
-              <option data-i18n="formServiceOpt1">Full Planning</option>
-              <option data-i18n="formServiceOpt2">Partial Planning</option>
-              <option data-i18n="formServiceOpt3">Day-of Coordination</option>
-              <option data-i18n="formServiceOpt4">Destination Wedding</option>
+              <option value="" data-i18n="formTourOpt0">Select a tour</option>
+              <option data-i18n="tour1Title">Caucasus Explorer</option>
+              <option data-i18n="tour2Title">Wine & Culture Trail</option>
+              <option data-i18n="tour3Title">Highland Trekking</option>
+              <option data-i18n="formTourOpt4">Custom Itinerary</option>
             </select>
           </div>
           <div class="form-group">
-            <label data-i18n="formMessage">Tell us about your vision</label>
-            <textarea data-i18n-placeholder="formMessagePh" placeholder="Share your dream wedding..."></textarea>
+            <label data-i18n="formMessage">Your Message</label>
+            <textarea data-i18n-placeholder="formMessagePh" placeholder="Tell us about your dream trip..."></textarea>
           </div>
-          <button type="submit" class="btn btn-gold" data-i18n="formBtn">Send Inquiry</button>
+          <button type="submit" class="btn btn-primary" data-i18n="formBtn">Send Inquiry</button>
         </form>
       </div>
     </div>
@@ -1152,47 +1399,51 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="logo">
-            <span class="logo-main">ÉTERNELLE</span>
-            <span class="logo-sub" data-i18n="logoSub">Wedding Planning</span>
+            <div class="logo-mark">A</div>
+            <div class="logo-text">
+              <span class="logo-name">ARARAT TRAILS</span>
+              <span class="logo-tag" data-i18n="logoTag">Tour Agency</span>
+            </div>
           </a>
-          <p data-i18n="footerDesc">Luxury wedding planning in Armenia and beyond. Creating timeless celebrations with love, elegance, and unparalleled attention to detail.</p>
+          <p data-i18n="footerDesc">Your trusted partner for unforgettable journeys across Armenia and the Caucasus. Creating memories that last a lifetime.</p>
           <div class="socials">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-4.37 23.17c-.1-.94-.2-2.4.04-3.44.22-.93 1.4-5.94 1.4-5.94s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-.99 3.99-.28 1.19.6 2.16 1.77 2.16 2.12 0 3.76-2.24 3.76-5.48 0-2.87-2.06-4.87-5.01-4.87-3.41 0-5.42 2.56-5.42 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.37-.29 1.19-.33 1.35-.05.22-.18.27-.41.16-1.55-.72-2.51-2.98-2.51-4.8 0-3.91 2.84-7.5 8.19-7.5 4.3 0 7.64 3.06 7.64 7.14 0 4.26-2.69 7.69-6.42 7.69-1.26 0-2.44-.65-2.84-1.42l-.77 2.95c-.28 1.07-1.04 2.42-1.54 3.23A12 12 0 1 0 12 0z"/></svg></a>
-            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
           </div>
         </div>
         <div class="footer-col">
-          <h4 data-i18n="footerServices">Services</h4>
+          <h4 data-i18n="footerExplore">Explore</h4>
           <ul>
-            <li><a href="#" data-i18n="srv1Title">Full Planning</a></li>
-            <li><a href="#" data-i18n="srv2Title">Day-of Coordination</a></li>
-            <li><a href="#" data-i18n="srv3Title">Partial Planning</a></li>
-            <li><a href="#" data-i18n="srv4Title">Destination Weddings</a></li>
+            <li><a href="#destinations" data-i18n="navDest">Destinations</a></li>
+            <li><a href="#tours" data-i18n="navTours">Tours</a></li>
+            <li><a href="#" data-i18n="footerBlog">Travel Blog</a></li>
+            <li><a href="#" data-i18n="footerGallery">Gallery</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footerCompany">Company</h4>
           <ul>
-            <li><a href="#about" data-i18n="navAbout">About</a></li>
-            <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
-            <li><a href="#" data-i18n="footerBlog">Journal</a></li>
-            <li><a href="#" data-i18n="footerFAQ">FAQ</a></li>
+            <li><a href="#" data-i18n="footerAbout">About Us</a></li>
+            <li><a href="#" data-i18n="footerTeam">Our Team</a></li>
+            <li><a href="#" data-i18n="footerCareers">Careers</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footerContact">Contact</h4>
           <ul>
             <li><a href="tel:+37499123456">+374 99 123 456</a></li>
-            <li><a href="mailto:hello@eternelle.am">hello@eternelle.am</a></li>
-            <li data-i18n="footerAddress">24 Abovyan St, Yerevan</li>
+            <li><a href="mailto:hello@ararattrails.am">hello@ararattrails.am</a></li>
+            <li data-i18n="footerAddress">14 Mashtots Ave, Yerevan</li>
             <li data-i18n="footerCountry">Armenia</li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p data-i18n="footerCopy">© 2026 Éternelle Wedding Planning. <em>Made with love</em> in Yerevan.</p>
+        <p data-i18n="footerCopy">© 2026 Ararat Trails Tour Agency. All rights reserved.</p>
+        <p data-i18n="footerMade">Crafted with ❤ in Yerevan</p>
       </div>
     </div>
   </footer>
@@ -1201,67 +1452,80 @@
     /* ---------- TRANSLATIONS ---------- */
     const translations = {
       en: {
-        pageTitle: "Éternelle — Luxury Wedding Planning",
-        logoSub: "Wedding Planning",
-        navHome: "Home", navAbout: "About", navServices: "Services",
-        navGallery: "Gallery", navReviews: "Reviews", navContact: "Contact",
-        navCta: "Book Now",
-        heroSubtitle: "Where dreams begin",
-        heroTitle: "Your <em>forever</em><br>starts here",
-        heroDesc: "Luxury wedding planning crafted with elegance, passion, and meticulous attention to every detail — creating celebrations as unique as your love story.",
-        heroCta1: "Plan My Wedding", heroCta2: "Our Services",
-        scroll: "Scroll",
-        aboutTag: "Our Story",
-        aboutTitle: "Crafting <em>timeless</em> celebrations",
-        aboutP1: "For over a decade, Éternelle has been the trusted name behind Armenia's most breathtaking weddings. We believe every love story deserves a celebration as extraordinary as the couple themselves.",
-        aboutP2: "From intimate garden ceremonies in Yerevan to grand destination weddings across Europe, our team of dedicated planners transforms your vision into an unforgettable experience — with grace, precision, and heart.",
-        aboutRole: "Founder & Lead Planner",
-        servicesTag: "What We Offer",
-        servicesTitle: "Our <em>Services</em>",
-        servicesDesc: "From the first consultation to the final dance, we handle every detail so you can savor every moment.",
-        srv1Title: "Full Planning", srv1Desc: "Complete wedding planning from concept to execution. We manage every detail, so you enjoy a stress-free journey to your big day.",
-        srv2Title: "Day-of Coordination", srv2Desc: "You've planned it all — we bring it to life flawlessly. Professional coordination on your wedding day for perfect execution.",
-        srv3Title: "Partial Planning", srv3Desc: "Already started planning? Let us step in to handle the remaining details and bring your vision together seamlessly.",
-        srv4Title: "Destination Weddings", srv4Desc: "Dream of saying \"I do\" in Tuscany, Santorini, or Bali? We specialize in luxury destination weddings worldwide.",
-        srv5Title: "Floral Design", srv5Desc: "Bespoke floral arrangements and décor design that transform your venue into a breathtaking romantic paradise.",
-        srv6Title: "Venue Selection", srv6Desc: "Access to exclusive venues across Armenia and beyond. We help you find the perfect setting for your celebration.",
-        galleryTag: "Our Portfolio",
-        galleryTitle: "Love in <em>every detail</em>",
-        galleryDesc: "A glimpse into the unforgettable celebrations we've had the honor of creating.",
-        gal1: "Garden Romance", gal2: "Classic Elegance", gal3: "Golden Hour",
-        gal4: "Rustic Charm", gal5: "Modern Luxury", gal6: "Timeless Beauty",
-        testTag: "Love Letters",
-        testTitle: "Words from our <em>couples</em>",
-        testDesc: "The greatest compliment is the joy we bring to the couples we serve.",
-        test1Text: "Éternelle turned our dream wedding into reality. Every detail was perfect — from the flowers to the final toast. We couldn't have asked for a more magical day.",
-        test1Role: "Yerevan, Armenia",
-        test2Text: "Working with Isabella and her team was the best decision we made. They handled everything with such grace and professionalism. Our guests are still talking about it!",
-        test2Role: "Tuscany, Italy",
-        test3Text: "From our very first meeting, we felt completely at ease. Éternelle understood our vision perfectly and delivered a celebration beyond our wildest dreams. Truly unforgettable.",
-        test3Role: "Dilijan, Armenia",
+        pageTitle: "Ararat Trails — Discover Armenia & Beyond",
+        logoTag: "Tour Agency",
+        navHome: "Home", navDest: "Destinations", navTours: "Tours",
+        navWhy: "Why Us", navReviews: "Reviews", navContact: "Contact",
+        navCta: "Book Tour",
+        heroTag: "Discover the Caucasus",
+        heroTitle: "Journey through <em>ancient lands</em> & breathtaking peaks",
+        heroDesc: "From the biblical peaks of Mount Ararat to the monasteries of Tatev, explore Armenia and the Caucasus with expert local guides who bring every story to life.",
+        heroCta1: "Explore Tours", heroCta2: "Plan My Trip",
+        stat1: "Unique Tours", stat2: "Happy Travelers", stat3: "Years Experience", stat4: "Average Rating",
+        searchDest: "Destination", searchDestPh: "Where do you want to go?",
+        searchDate: "Travel Date", searchGuests: "Guests",
+        guest1: "1 Guest", guest2: "2 Guests", guest3: "3-5 Guests", guest4: "6+ Guests",
+        searchBtn: "Search",
+        destTag: "Top Destinations",
+        destTitle: "Explore <em>Armenia's</em> wonders",
+        destDesc: "Discover the most breathtaking destinations across Armenia, handpicked by our expert travel designers.",
+        dest1Loc: "Syunik Region", dest1Name: "Tatev Monastery",
+        dest2Loc: "Gegharkunik", dest2Name: "Lake Sevan",
+        dest3Loc: "Kotayk", dest3Name: "Garni & Geghard",
+        dest4Loc: "Tavush", dest4Name: "Dilijan Forest",
+        dest5Loc: "Capital City", dest5Name: "Yerevan City Tour",
+        fromPrice: "From", perPerson: "/ person",
+        toursTag: "Popular Tours",
+        toursTitle: "Unforgettable <em>adventures</em>",
+        toursDesc: "Handcrafted itineraries designed to showcase the very best of Armenia and the Caucasus region.",
+        badgePopular: "Popular", badgeNew: "New", badgeAdventure: "Adventure",
+        tour1Dur: "8 Days", tour1Loc: "Armenia & Georgia", tour1Title: "Caucasus Explorer",
+        tour1Desc: "An epic journey through two ancient nations — from Yerevan's brandy cellars to Tbilisi's old town and the peaks of Kazbegi.",
+        tour2Dur: "5 Days", tour2Loc: "Armenia", tour2Title: "Wine & Culture Trail",
+        tour2Desc: "Discover 6,000-year-old winemaking traditions, visit ancient monasteries, and taste authentic Armenian cuisine.",
+        tour3Dur: "10 Days", tour3Loc: "Armenia Highlands", tour3Title: "Highland Trekking",
+        tour3Desc: "Challenge yourself with guided treks through Armenia's most dramatic mountain landscapes and hidden valleys.",
+        fromLabel: "From", bookNow: "Book Now →",
+        whyTag: "Why Choose Us",
+        whyTitle: "Travel with <em>confidence</em>",
+        whyDesc: "We don't just plan trips — we craft life-changing experiences backed by local expertise and genuine care.",
+        why1Title: "Local Experts", why1Desc: "Born-and-raised guides who share authentic stories and hidden gems you won't find in guidebooks.",
+        why2Title: "Tailor-Made", why2Desc: "Every itinerary is customized to your interests, pace, and travel style — no two trips are alike.",
+        why3Title: "Safe & Secure", why3Desc: "Fully licensed, insured, and committed to the highest safety standards on every adventure.",
+        why4Title: "24/7 Support", why4Desc: "Our team is available around the clock — before, during, and after your journey with us.",
+        testTag: "Traveler Stories",
+        testTitle: "Loved by <em>travelers</em> worldwide",
+        testDesc: "Real stories from guests who've explored Armenia and beyond with us.",
+        test1Text: "An absolutely unforgettable experience! Our guide was incredibly knowledgeable, and every detail was perfectly planned. Armenia exceeded all our expectations.",
+        test1Role: "London, UK",
+        test2Text: "From the moment we landed to our final day, Ararat Trails made everything seamless. The Caucasus Explorer tour was the trip of a lifetime. Highly recommended!",
+        test2Role: "Milan, Italy",
+        test3Text: "We traveled as a family with three kids, and every activity was perfectly suited for all ages. The local food experiences were a highlight. Can't wait to return!",
+        test3Role: "Berlin, Germany",
         contactTag: "Get in Touch",
-        contactTitle: "Let's plan your <em>forever</em>",
-        contactDesc: "Ready to begin your wedding journey? We'd love to hear your story.",
-        contactInfoTitle: "Begin your <em>journey</em> with us",
-        contactInfoDesc: "Schedule a complimentary consultation and let's discuss how we can bring your dream wedding to life.",
+        contactTitle: "Start your <em>journey</em> today",
+        contactDesc: "Ready to explore? Our travel experts are here to design your perfect adventure.",
+        contactInfoTitle: "Let's plan your <em>adventure</em>",
+        contactInfoDesc: "Reach out for a free consultation. We'll craft a personalized itinerary just for you.",
         contactPhone: "Phone", contactEmail: "Email",
-        contactAddress: "Studio", contactAddressValue: "24 Abovyan Street, Yerevan, Armenia",
-        contactHours: "Hours", contactHoursValue: "Mon — Sat: 10:00 — 19:00",
-        formName: "Your Name", formNamePh: "Anna & David",
+        contactAddress: "Office", contactAddressValue: "14 Mashtots Avenue, Yerevan, Armenia",
+        contactHours: "Working Hours", contactHoursValue: "Mon — Sun: 09:00 — 20:00",
+        formName: "Full Name", formNamePh: "John Smith",
         formEmail: "Email", formEmailPh: "you@example.com",
         formPhone: "Phone", formPhonePh: "+374 __ ___ ___",
-        formDate: "Wedding Date",
-        formService: "Service", formServiceOpt0: "Select a service",
-        formServiceOpt1: "Full Planning", formServiceOpt2: "Partial Planning",
-        formServiceOpt3: "Day-of Coordination", formServiceOpt4: "Destination Wedding",
-        formMessage: "Tell us about your vision", formMessagePh: "Share your dream wedding...",
+        formDate: "Travel Date",
+        formTour: "Interested Tour", formTourOpt0: "Select a tour",
+        formTourOpt4: "Custom Itinerary",
+        formMessage: "Your Message", formMessagePh: "Tell us about your dream trip...",
         formBtn: "Send Inquiry",
-        footerDesc: "Luxury wedding planning in Armenia and beyond. Creating timeless celebrations with love, elegance, and unparalleled attention to detail.",
-        footerServices: "Services", footerCompany: "Company", footerContact: "Contact",
-        footerBlog: "Journal", footerFAQ: "FAQ",
-        footerAddress: "24 Abovyan St, Yerevan", footerCountry: "Armenia",
-        footerCopy: "© 2026 Éternelle Wedding Planning. <em>Made with love</em> in Yerevan."
+        footerDesc: "Your trusted partner for unforgettable journeys across Armenia and the Caucasus. Creating memories that last a lifetime.",
+        footerExplore: "Explore", footerCompany: "Company", footerContact: "Contact",
+        footerBlog: "Travel Blog", footerGallery: "Gallery",
+        footerAbout: "About Us", footerTeam: "Our Team", footerCareers: "Careers",
+        footerAddress: "14 Mashtots Ave, Yerevan", footerCountry: "Armenia",
+        footerCopy: "© 2026 Ararat Trails Tour Agency. All rights reserved.",
+        footerMade: "Crafted with ❤ in Yerevan"
       },
       hy: {
-        pageTitle: "Էdelays — Շdelays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......",
-        logoSub: "Հdelays delays delays delays delays delays delays
+        pageTitle: "Արdelays — Բdelays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......",
+        logoTag: "Տdelays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......
