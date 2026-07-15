@@ -470,3 +470,548 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armenia Horizon | Travel Agency</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1565017922669-b77d367c66f4?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+        }
+
+        /* Language Dropdown */
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            color: black;
+            min-width: 120px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            z-index: 50;
+        }
+        .lang-group:hover .lang-dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white py-4" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl md:text-3xl font-bold serif-font tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-mountain-sun text-orange-500"></i> <span data-i18n="brand">ARMENIA HORIZON</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="#home" class="hover:text-orange-400 transition" data-i18n="nav_home">Home</a>
+                <a href="#destinations" class="hover:text-orange-400 transition" data-i18n="nav_tours">Tours</a>
+                <a href="#services" class="hover:text-orange-400 transition" data-i18n="nav_services">Services</a>
+                <a href="#contact" class="hover:text-orange-400 transition" data-i18n="nav_contact">Contact</a>
+                
+                <!-- Language Selector -->
+                <div class="relative lang-group cursor-pointer ml-4 border-l border-white/30 pl-6">
+                    <div class="flex items-center gap-2 hover:text-orange-400 transition">
+                        <i class="fa-solid fa-globe"></i>
+                        <span id="current-lang-label">EN</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="lang-dropdown mt-2 py-2">
+                        <button onclick="changeLanguage('en')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇺🇸 English</button>
+                        <button onclick="changeLanguage('hy')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇦🇲 Հայերեն</button>
+                        <button onclick="changeLanguage('ru')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇷🇺 Русский</button>
+                    </div>
+                </div>
+
+                <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition font-bold shadow-lg" data-i18n="btn_book">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center gap-4 md:hidden">
+                 <!-- Mobile Lang Switcher Simple -->
+                 <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/50 rounded text-sm p-1 text-white focus:outline-none">
+                    <option value="en" class="text-black">EN</option>
+                    <option value="hy" class="text-black">HY</option>
+                    <option value="ru" class="text-black">RU</option>
+                </select>
+
+                <button class="text-2xl focus:outline-none" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-white text-gray-800 absolute w-full left-0 top-full shadow-xl">
+            <div class="flex flex-col p-6 space-y-4 font-semibold text-center">
+                <a href="#home" onclick="toggleMenu()" class="hover:text-orange-500" data-i18n="nav_home">Home</a>
+                <a href="#destinations" onclick="toggleMenu()" class="hover:text-orange-500" data-i18n="nav_tours">Tours</a>
+                <a href="#services" onclick="toggleMenu()" class="hover:text-orange-500" data-i18n="nav_services">Services</a>
+                <a href="#contact" onclick="toggleMenu()" class="hover:text-orange-500" data-i18n="nav_contact">Contact</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-orange-600 font-bold" data-i18n="btn_book">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative h-screen flex items-center justify-center hero-bg text-white">
+        <div class="text-center px-6 max-w-4xl fade-in-up">
+            <span class="uppercase tracking-[0.2em] text-sm md:text-base font-bold mb-4 block text-orange-400" data-i18n="hero_subtitle">Discover the Land of Stones</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-i18n="hero_title">Explore the Ancient Beauty<br>of Armenia</h1>
+            <p class="text-lg md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto" data-i18n="hero_desc">From the peaks of Aragats to the monasteries of Tatev. Experience authentic hospitality and timeless history.</p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#destinations" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold transition transform hover:scale-105 shadow-xl" data-i18n="btn_packages">View Packages</a>
+                <a href="#contact" class="border-2 border-white hover:bg-white hover:text-black px-8 py-4 rounded-full font-bold transition transform hover:scale-105" data-i18n="btn_agent">Contact Agent</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- Search Widget -->
+    <section class="py-10 bg-white -mt-20 relative z-10 container mx-auto px-4 md:px-12">
+        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 border border-gray-100 flex flex-col md:flex-row gap-4 items-end">
+            <div class="w-full">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1" data-i18n="lbl_dest">Destination</label>
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <i class="fa-solid fa-location-dot text-orange-500 mr-2"></i>
+                    <input type="text" data-placeholder="ph_dest" placeholder="e.g. Sevan, Gyumri" class="w-full outline-none text-gray-700 font-medium bg-transparent">
+                </div>
+            </div>
+            <div class="w-full">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1" data-i18n="lbl_date">Date</label>
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <i class="fa-regular fa-calendar text-orange-500 mr-2"></i>
+                    <input type="date" class="w-full outline-none text-gray-700 font-medium bg-transparent">
+                </div>
+            </div>
+            <div class="w-full">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1" data-i18n="lbl_guests">Guests</label>
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <i class="fa-solid fa-user-group text-orange-500 mr-2"></i>
+                    <select class="w-full outline-none text-gray-700 font-medium bg-transparent cursor-pointer">
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="family">Family</option>
+                    </select>
+                </div>
+            </div>
+            <button class="w-full md:w-auto bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="btn_search">Search</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4" data-i18n="sec_dest_title">Top Armenian Destinations</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto" data-i18n="sec_dest_desc">Explore the cultural heart of the Caucasus with our guided tours.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer card-hover fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1627838734264-6076b39f854e?q=80&w=1000&auto=format&fit=crop" alt="Lake Sevan" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block" data-i18n="tag_nature">Nature</span>
+                        <h3 class="text-2xl font-bold mb-1" data-i18n="card1_title">Lake Sevan</h3>
+                        <p class="text-gray-300 text-sm mb-3"><i class="fa-regular fa-clock mr-1"></i> <span data-i18n="time_1day">1 Day Tour</span></p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">25,000 AMD</span>
+                            <span class="text-sm underline decoration-orange-500 decoration-2 underline-offset-4 group-hover:text-orange-400 transition" data-i18n="link_details">View Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer card-hover fade-in-up" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1569388330292-79cc1ec67270?q=80&w=1000&auto=format&fit=crop" alt="Garni Temple" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block" data-i18n="tag_history">History</span>
+                        <h3 class="text-2xl font-bold mb-1" data-i18n="card2_title">Garni & Geghard</h3>
+                        <p class="text-gray-300 text-sm mb-3"><i class="fa-regular fa-clock mr-1"></i> <span data-i18n="time_6h">6 Hours</span></p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">30,000 AMD</span>
+                            <span class="text-sm underline decoration-orange-500 decoration-2 underline-offset-4 group-hover:text-orange-400 transition" data-i18n="link_details">View Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer card-hover fade-in-up" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1568297747717-16e4b96945f6?q=80&w=1000&auto=format&fit=crop" alt="Yerevan" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <span class="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block" data-i18n="tag_urban">Urban</span>
+                        <h3 class="text-2xl font-bold mb-1" data-i18n="card3_title">Yerevan City</h3>
+                        <p class="text-gray-300 text-sm mb-3"><i class="fa-regular fa-clock mr-1"></i> <span data-i18n="time_4h">4 Hours</span></p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">20,000 AMD</span>
+                            <span class="text-sm underline decoration-orange-500 decoration-2 underline-offset-4 group-hover:text-orange-400 transition" data-i18n="link_details">View Details</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1605218427306-022ba6c07470?q=80&w=1000&auto=format&fit=crop" alt="Hospitality" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                </div>
+                <div class="lg:w-1/2 fade-in-up">
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6" data-i18n="why_title">Experience True Hospitality</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed" data-i18n="why_desc">We are a local agency based in Yerevan. We know every stone, every legend, and the best places to taste authentic Armenian cuisine.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-orange-100 p-3 rounded-full text-orange-600">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800" data-i18n="feat_1_title">Licensed Guides</h4>
+                                <p class="text-gray-500 text-sm mt-1" data-i18n="feat_1_desc">Certified historians speaking English, Russian, and French.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                                <i class="fa-solid fa-van-shuttle text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800" data-i18n="feat_2_title">Comfortable Transport</h4>
+                                <p class="text-gray-500 text-sm mt-1" data-i18n="feat_2_desc">Modern Mercedes vehicles for all transfers across the country.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="fade-in-up">
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6" data-i18n="contact_title">Visit Our Office</h2>
+                    <p class="text-gray-600 mb-8" data-i18n="contact_desc">We are located in the heart of Yerevan. Stop by for a cup of Armenian coffee.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 shrink-0">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-lg" data-i18n="lbl_addr">Address</h5>
+                                <p class="text-gray-600">24 Mashtots Avenue, Kentron<br>Yerevan 0015, Armenia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 shrink-0">
+                                <i class="fa-solid fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-lg" data-i18n="lbl_phone">Phone</h5>
+                                <p class="text-gray-600">Main: +374 10 55 55 55</p>
+                                <p class="text-gray-600">WhatsApp: +374 99 12 34 56</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 fade-in-up">
+                    <form onsubmit="event.preventDefault(); alert('Message sent!');">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_name">Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-900" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_email">Email</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-900" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_msg">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-900" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-900 text-white font-bold py-3 rounded-lg hover:bg-blue-800 transition shadow-md" data-i18n="btn_send">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 Armenia Horizon Travel Agency. <span data-i18n="footer_rights">All rights reserved.</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Logic & Translations -->
+    <script>
+        // --- Translation Data ---
+        const translations = {
+            en: {
+                brand: "ARMENIA HORIZON",
+                nav_home: "Home",
+                nav_tours: "Tours",
+                nav_services: "Services",
+                nav_contact: "Contact",
+                btn_book: "Book Now",
+                hero_subtitle: "Discover the Land of Stones",
+                hero_title: "Explore the Ancient Beauty<br>of Armenia",
+                hero_desc: "From the peaks of Aragats to the monasteries of Tatev. Experience authentic hospitality and timeless history.",
+                btn_packages: "View Packages",
+                btn_agent: "Contact Agent",
+                lbl_dest: "Destination",
+                ph_dest: "e.g. Sevan, Gyumri",
+                lbl_date: "Date",
+                lbl_guests: "Guests",
+                btn_search: "Search",
+                sec_dest_title: "Top Armenian Destinations",
+                sec_dest_desc: "Explore the cultural heart of the Caucasus with our guided tours.",
+                tag_nature: "Nature",
+                tag_history: "History",
+                tag_urban: "Urban",
+                card1_title: "Lake Sevan",
+                card2_title: "Garni & Geghard",
+                card3_title: "Yerevan City",
+                time_1day: "1 Day Tour",
+                time_6h: "6 Hours",
+                time_4h: "4 Hours",
+                link_details: "View Details",
+                why_title: "Experience True Hospitality",
+                why_desc: "We are a local agency based in Yerevan. We know every stone, every legend, and the best places to taste authentic Armenian cuisine.",
+                feat_1_title: "Licensed Guides",
+                feat_1_desc: "Certified historians speaking English, Russian, and French.",
+                feat_2_title: "Comfortable Transport",
+                feat_2_desc: "Modern Mercedes vehicles for all transfers across the country.",
+                contact_title: "Visit Our Office",
+                contact_desc: "We are located in the heart of Yerevan. Stop by for a cup of Armenian coffee.",
+                lbl_addr: "Address",
+                lbl_phone: "Phone",
+                form_name: "Name",
+                form_email: "Email",
+                form_msg: "Message",
+                btn_send: "Send Inquiry",
+                footer_rights: "All rights reserved."
+            },
+            hy: {
+                brand: "ՀԱՅԱՍՏԱՆ ՀՈՐԻԶՈՆ",
+                nav_home: "Գլխավոր",
+                nav_tours: "Տուրեր",
+                nav_services: "Ծառայություններ",
+                nav_contact: "Կապ",
+                btn_book: "Ամրագրել",
+                hero_subtitle: "Բացահայտեք Քարի երկիրը",
+                hero_title: "Հետազոտեք Հայաստանի<br>հնագույն գեղեցիկությունը",
+                hero_desc: "Արագածի գագաթներից մինչև Տաթևի վանք։ Վայելեք իսկական հյուրընկալությունը և անժամանց պատմությունը։",
+                btn_packages: "Փաթեթներ",
+                btn_agent: "Կապվել գործակալի հետ",
+                lbl_dest: "Վայր",
+                ph_dest: "օր. Սևան, Գյումրի",
+                lbl_date: "Ամսաթիվ",
+                lbl_guests: "Հյուրեր",
+                btn_search: "Փնտրել",
+                sec_dest_title: "Լավագույն ուղղությունները",
+                sec_dest_desc: "Հետազոտեք Կովկասի մշակութային սիրտը մեր ուղեկցվող շրջայցերով։",
+                tag_nature: "Բնություն",
+                tag_history: "Պատմություն",
+                tag_urban: "Քաղաք",
+                card1_title: "Սևանա լիճ",
+                card2_title: "Գառնի և Գեղարդ",
+                card3_title: "Երևան Քաղաք",
+                time_1day: "1 Օր",
+                time_6h: "6 Ժամ",
+                time_4h: "4 Ժամ",
+                link_details: "Մանրամասն",
+                why_title: "Իսկական հյուրընկալություն",
+                why_desc: "Մենք տեղական գործակալություն ենք՝ տեղակայված Երևանում։ Մենք գիտենք յուրաքանչյուր քար և լեգենդ։",
+                feat_1_title: "Արտոնագրված ուղեկցորդներ",
+                feat_1_desc: "Հավաստագրված պատմաբաններ, ովքեր խոսում են անգլերեն, ռուսերեն և ֆրանսերեն։",
+                feat_2_title: "Հարմարավետ տրանսպորտ",
+                feat_2_desc: "Ժամանակակից Mercedes մեքենաներ երկրի ներսում բոլոր տեղափոխումների համար։",
+                contact_title: "Այցելեք մեր գրասենյակ",
+                contact_desc: "Մենք գտնվում ենք Երևանի կենտրոնում։ Այցելեք մեզ՝ մի բաժակ հայկական սուրճի համար։",
+                lbl_addr: "Հասցե",
+                lbl_phone: "Հեռախոս",
+                form_name: "Անուն",
+                form_email: "Էլ. հասցե",
+                form_msg: "Հաղորդագրություն",
+                btn_send: "Ուղարկել",
+                footer_rights: "Բոլոր իրավունքները պաշտպանված են։"
+            },
+            ru: {
+                brand: "АРМЕНИЯ ГОРИЗОНТ",
+                nav_home: "Главная",
+                nav_tours: "Туры",
+                nav_services: "Услуги",
+                nav_contact: "Контакты",
+                btn_book: "Бронировать",
+                hero_subtitle: "Откройте для себя страну камней",
+                hero_title: "Исследуйте древнюю красоту<br>Армении",
+                hero_desc: "От вершин Арагаца до монастырей Татева. Испытайте настоящее гостеприимство и прикоснитесь к вечной истории.",
+                btn_packages: "Пакеты туров",
+                btn_agent: "Связаться с агентом",
+                lbl_dest: "Направление",
+                ph_dest: "напр. Севан, Гюмри",
+                lbl_date: "Дата",
+                lbl_guests: "Гости",
+                btn_search: "Поиск",
+                sec_dest_title: "Лучшие направления",
+                sec_dest_desc: "Исследуйте культурное сердце Кавказа с нашими гидрами.",
+                tag_nature: "Природа",
+                tag_history: "История",
+                tag_urban: "Город",
+                card1_title: "Озеро Севан",
+                card2_title: "Гарни и Гегард",
+                card3_title: "Ереван",
+                time_1day: "1 день",
+                time_6h: "6 часов",
+                time_4h: "4 часа",
+                link_details: "Подробнее",
+                why_title: "Настоящее гостеприимство",
+                why_desc: "Мы местное агентство в Ереване. Мы знаем каждый камень и легенду, а также лучшие места армянской кухни.",
+                feat_1_title: "Лицензированные гиды",
+                feat_1_desc: "Сертифицированные историки, говорящие на английском, русском и французском.",
+                feat_2_title: "Комфортный транспорт",
+                feat_2_desc: "Современные автомобили Mercedes для всех трансферов по стране.",
+                contact_title: "Посетите наш офис",
+                contact_desc: "Мы находимся в центре Еревана. Зайдите к нам на чашечку армянского кофе.",
+                lbl_addr: "Адрес",
+                lbl_phone: "Телефон",
+                form_name: "Имя",
+                form_email: "Email",
+                form_msg: "Сообщение",
+                btn_send: "Отправить запрос",
+                footer_rights: "Все права защищены."
+            }
+        };
+
+        // --- Logic ---
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('bg-blue-900', 'shadow-md', 'py-2');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-4');
+                navbar.classList.remove('bg-blue-900', 'shadow-md', 'py-2');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        }
+
+        // Intersection Observer for Fade-in Animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Language Switcher Logic
+        function changeLanguage(lang) {
+            // Update Label in Desktop Menu
+            const labels = { 'en': 'EN', 'hy': 'HY', 'ru': 'RU' };
+            document.getElementById('current-lang-label').innerText = labels[lang];
+
+            // Update Text Content
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update Placeholders
+            const placeholders = document.querySelectorAll('[data-placeholder]');
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Set HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
