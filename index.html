@@ -3,810 +3,696 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexus AI — Build Your Website in Seconds</title>
+<title>AURUM — Premium Coffee Experience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Armenian:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---bg:#0a0a0f;
---bg-2:#12121a;
---card:rgba(255,255,255,0.03);
---card-hover:rgba(255,255,255,0.06);
---border:rgba(255,255,255,0.08);
---border-hover:rgba(255,255,255,0.15);
---text:#f5f5f7;
---text-dim:#8a8a95;
---accent:#6366f1;
---accent-2:#8b5cf6;
---accent-3:#ec4899;
---gradient:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
---font:'Inter','Noto Sans Armenian',sans-serif;
+--coffee-dark:#1a0f0a;
+--coffee:#2d1810;
+--coffee-mid:#4a2c1a;
+--coffee-light:#8b5a3c;
+--cream:#f5e6d3;
+--cream-light:#faf4ec;
+--gold:#c9a961;
+--gold-light:#e4c97e;
+--gold-dark:#a88842;
+--espresso:#0d0705;
+--text-dark:#1a0f0a;
+--text-light:#f5e6d3;
+--font-display:'Playfair Display',serif;
+--font-elegant:'Cormorant Garamond',serif;
+--font-body:'Inter',sans-serif;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+font-family:var(--font-body);
+background:var(--espresso);
+color:var(--text-light);
+overflow-x:hidden;
+min-height:100vh;
+}
 
-/* SCROLL PROGRESS */
-.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--gradient);z-index:10001;width:0%;transition:width .1s}
+/* PRELOADER */
+.preloader{
+position:fixed;inset:0;
+background:var(--espresso);
+z-index:10000;
+display:flex;align-items:center;justify-content:center;
+flex-direction:column;gap:2rem;
+transition:opacity 1s,visibility 1s;
+}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-text{
+font-family:var(--font-display);
+font-size:clamp(2rem,5vw,3.5rem);
+font-weight:300;
+letter-spacing:.3em;
+color:var(--gold);
+opacity:0;
+animation:fadeIn 1s .3s forwards;
+}
+.preloader-line{
+width:0;height:1px;
+background:linear-gradient(90deg,transparent,var(--gold),transparent);
+animation:lineGrow 2s .8s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes lineGrow{to{width:200px}}
+
+/* SLIDE CONTAINER */
+.slide{
+position:relative;
+min-height:100vh;
+display:flex;
+align-items:center;
+overflow:hidden;
+}
 
 /* BACKGROUND */
-.bg-grid{position:fixed;inset:0;z-index:-2;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.05) 1px,transparent 0);background-size:40px 40px}
-.bg-glow{position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:1200px;height:1200px;background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 60%);z-index:-1;pointer-events:none;animation:glowPulse 8s ease-in-out infinite}
-@keyframes glowPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
-.bg-glow-2{position:fixed;bottom:-30%;right:-10%;width:800px;height:800px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 60%);z-index:-1;pointer-events:none;animation:glowPulse2 10s ease-in-out infinite}
-@keyframes glowPulse2{0%,100%{opacity:.5}50%{opacity:.8}}
+.bg-layer{
+position:absolute;inset:0;
+z-index:0;
+}
+.bg-image{
+position:absolute;inset:0;
+background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=2000&q=90');
+background-size:cover;
+background-position:center;
+filter:brightness(.4) saturate(1.1);
+transform:scale(1.1);
+animation:bgZoom 20s ease-in-out infinite alternate;
+}
+@keyframes bgZoom{
+0%{transform:scale(1.1)}
+100%{transform:scale(1.2)}
+}
+.bg-overlay{
+position:absolute;inset:0;
+background:
+linear-gradient(135deg,rgba(13,7,5,0.85) 0%,rgba(26,15,10,0.6) 50%,rgba(13,7,5,0.9) 100%),
+radial-gradient(ellipse at 20% 80%,rgba(201,169,97,0.1),transparent 50%);
+}
+.bg-grain{
+position:absolute;inset:0;
+opacity:.03;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.bg-vignette{
+position:absolute;inset:0;
+background:radial-gradient(ellipse at center,transparent 40%,rgba(13,7,5,0.6) 100%);
+}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s;backdrop-filter:blur(10px)}
-.nav.scrolled{padding:.75rem 3rem;background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
-.nav-logo-mark{width:32px;height:32px;border-radius:8px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:.9rem;box-shadow:0 4px 20px rgba(99,102,241,0.4)}
-.nav-menu{display:flex;gap:2rem;align-items:center}
-.nav-link{font-size:.9rem;font-weight:500;color:var(--text-dim);transition:color .3s}
-.nav-link:hover{color:var(--text)}
-.nav-right{display:flex;align-items:center;gap:1rem}
-.lang-switch{display:flex;gap:.25rem;padding:.25rem;background:var(--card);border:1px solid var(--border);border-radius:100px}
-.lang-btn{padding:.4rem .75rem;font-size:.7rem;font-weight:600;letter-spacing:.05em;border-radius:100px;transition:all .3s;color:var(--text-dim)}
-.lang-btn.active{background:var(--gradient);color:white}
-.btn{padding:.75rem 1.5rem;font-size:.85rem;font-weight:600;border-radius:100px;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
-.btn-primary{background:var(--gradient);color:white;box-shadow:0 4px 20px rgba(99,102,241,0.3)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,0.5)}
-.btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--text)}
-.btn-ghost:hover{background:var(--card-hover);border-color:var(--border-hover)}
-.burger{display:none;flex-direction:column;gap:5px;padding:.5rem}
-.burger span{width:22px;height:1.5px;background:var(--text);transition:all .3s}
-@media(max-width:1024px){.nav-menu{display:none}.burger{display:flex}.nav{padding:1rem 1.5rem}}
-.mobile-menu{position:fixed;inset:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(30px);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;visibility:hidden;transition:all .4s}
-.mobile-menu.open{opacity:1;visibility:visible}
-.mobile-menu a{font-size:1.5rem;font-weight:600;color:var(--text)}
-
-/* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 2rem 4rem;text-align:center;overflow:hidden}
-.hero-content{max-width:1000px;position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:.8rem;color:var(--text-dim);margin-bottom:2rem;backdrop-filter:blur(20px);animation:fadeUp 1s .2s backwards}
-.hero-badge::before{content:'';width:6px;height:6px;background:#10b981;border-radius:50%;box-shadow:0 0 10px #10b981;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero-title{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp 1s .4s backwards}
-.hero-title em{font-style:normal;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-subtitle{font-size:clamp(1rem,1.5vw,1.25rem);color:var(--text-dim);max-width:650px;margin:0 auto 2.5rem;font-weight:400;animation:fadeUp 1s .6s backwards}
-.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .8s backwards}
-.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;flex-wrap:wrap;animation:fadeUp 1s 1s backwards}
-.hero-stat{text-align:center}
-.hero-stat .num{font-size:2rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-stat .lbl{font-size:.8rem;color:var(--text-dim);letter-spacing:.05em;text-transform:uppercase}
-.hero-preview{margin-top:5rem;position:relative;animation:fadeUp 1s 1.2s backwards}
-.hero-preview-img{width:100%;max-width:1100px;margin:0 auto;border-radius:16px;border:1px solid var(--border);background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.5)}
-.hero-preview-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(236,72,153,0.1));animation:gradientShift 6s ease-in-out infinite}
-@keyframes gradientShift{0%,100%{background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(236,72,153,0.1))}50%{background:linear-gradient(135deg,rgba(236,72,153,0.2),rgba(99,102,241,0.1))}}
-.preview-content{position:relative;z-index:1;padding:3rem;text-align:left;width:100%}
-.preview-bar{display:flex;gap:.5rem;margin-bottom:2rem}
-.preview-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.2)}
-.preview-grid{display:grid;grid-template-columns:1fr 2fr;gap:1.5rem}
-.preview-side{background:rgba(255,255,255,0.05);border-radius:8px;padding:1rem;min-height:200px}
-.preview-main{background:rgba(255,255,255,0.03);border-radius:8px;padding:1.5rem;min-height:200px}
-.preview-line{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:.75rem}
-.preview-line.short{width:60%}
-.preview-line.med{width:80%}
-.preview-line.accent{background:var(--gradient);width:40%}
-@media(max-width:768px){.preview-grid{grid-template-columns:1fr}}
-
-/* SECTIONS */
-section{position:relative;padding:6rem 2rem;z-index:5}
-.container{max-width:1200px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:4rem}
-.section-tag{display:inline-block;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;padding:.4rem 1rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);border-radius:100px}
-.section-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
-.section-title em{font-style:normal;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-.section-subtitle{font-size:1.1rem;color:var(--text-dim);max-width:600px;margin:0 auto}
-.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
-
-/* GENERATOR */
-.generator{background:linear-gradient(180deg,transparent,rgba(99,102,241,0.03),transparent)}
-.generator-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
-@media(max-width:1024px){.generator-wrap{grid-template-columns:1fr}}
-.generator-form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(20px)}
-.form-group{margin-bottom:1.5rem}
-.form-group label{display:block;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:.85rem 1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:inherit;font-size:.95rem;transition:all .3s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);background:rgba(99,102,241,0.05)}
-.form-group textarea{min-height:100px;resize:vertical}
-.color-picker{display:flex;gap:.75rem;flex-wrap:wrap}
-.color-opt{width:40px;height:40px;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:all .3s;position:relative}
-.color-opt.active{border-color:white;transform:scale(1.1)}
-.color-opt.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-.generator-preview{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;backdrop-filter:blur(20px);position:sticky;top:6rem}
-.preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.preview-title{font-size:.85rem;font-weight:600;color:var(--text-dim);letter-spacing:.05em;text-transform:uppercase}
-.preview-status{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:#10b981}
-.preview-status::before{content:'';width:6px;height:6px;background:#10b981;border-radius:50%;box-shadow:0 0 10px #10b981;animation:pulse 2s infinite}
-.preview-mockup{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.05));border-radius:12px;aspect-ratio:4/3;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden}
-.preview-mockup::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(99,102,241,0.1),transparent 30%);animation:rotate 4s linear infinite;opacity:0;transition:opacity .4s}
-.generator-form.loading .preview-mockup::before{opacity:1}
+/* DECORATIVE ELEMENTS */
+.deco-circle{
+position:absolute;
+border:1px solid rgba(201,169,97,0.15);
+border-radius:50%;
+pointer-events:none;
+}
+.deco-circle-1{
+width:600px;height:600px;
+top:-200px;right:-200px;
+animation:rotate 60s linear infinite;
+}
+.deco-circle-2{
+width:400px;height:400px;
+bottom:-100px;left:-100px;
+animation:rotate 40s linear infinite reverse;
+}
+.deco-circle-3{
+width:300px;height:300px;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+border-style:dashed;
+opacity:.5;
+animation:rotate 30s linear infinite;
+}
 @keyframes rotate{to{transform:rotate(360deg)}}
-.mockup-line{height:6px;background:rgba(255,255,255,0.08);border-radius:3px;animation:shimmer 1.5s infinite}
-@keyframes shimmer{0%{opacity:.3}50%{opacity:.8}100%{opacity:.3}}
-.mockup-line.l1{width:70%}
-.mockup-line.l2{width:90%}
-.mockup-line.l3{width:50%}
-.mockup-line.l4{width:80%;background:var(--gradient)}
-.mockup-blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:auto}
-.mockup-block{aspect-ratio:1;background:rgba(255,255,255,0.05);border-radius:6px}
-.generated-pages{margin-top:1.5rem;display:flex;flex-direction:column;gap:.5rem}
-.gen-page{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;font-size:.85rem}
-.gen-page-name{font-weight:600}
-.gen-page-status{font-size:.7rem;color:#10b981;letter-spacing:.05em;text-transform:uppercase}
+.deco-circle-3{animation:rotateDash 30s linear infinite}
+@keyframes rotateDash{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-@media(max-width:1024px){.features-grid{grid-template-columns:1fr}}
-.feature-card{padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:16px;transition:all .4s;position:relative;overflow:hidden}
-.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s}
-.feature-card:hover{transform:translateY(-5px);border-color:var(--border-hover);background:var(--card-hover)}
-.feature-card:hover::before{opacity:1}
-.feature-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(139,92,246,0.15));border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}
-.feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
-.feature-card p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+.deco-line{
+position:absolute;
+background:linear-gradient(180deg,transparent,var(--gold),transparent);
+width:1px;
+opacity:.2;
+}
+.deco-line-1{height:100%;left:10%;animation:lineFloat 8s ease-in-out infinite}
+.deco-line-2{height:80%;right:15%;animation:lineFloat 10s ease-in-out infinite reverse}
+@keyframes lineFloat{0%,100%{opacity:.1;transform:scaleY(.8)}50%{opacity:.3;transform:scaleY(1)}}
 
-/* DASHBOARD */
-.dashboard{background:linear-gradient(180deg,transparent,rgba(139,92,246,0.03),transparent)}
-.dash-wrap{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px);margin-top:3rem}
-.dash-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.dash-tabs{display:flex;gap:.5rem;flex-wrap:wrap}
-.dash-tab{padding:.5rem 1rem;font-size:.8rem;font-weight:600;border-radius:8px;color:var(--text-dim);transition:all .3s;cursor:pointer}
-.dash-tab.active{background:var(--gradient);color:white}
-.dash-body{padding:2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-@media(max-width:1024px){.dash-body{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.dash-body{grid-template-columns:1fr}}
-.dash-card{padding:1.5rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;transition:all .3s}
-.dash-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
-.dash-card-title{font-size:.75rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
-.dash-card-value{font-size:2rem;font-weight:800;margin-bottom:.25rem}
-.dash-card-sub{font-size:.8rem;color:var(--text-dim)}
-.dash-card-value.gradient{background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-.dash-websites{padding:2rem;border-top:1px solid var(--border)}
-.dash-websites-title{font-size:1rem;font-weight:700;margin-bottom:1rem}
-.website-list{display:flex;flex-direction:column;gap:.75rem}
-.website-item{display:flex;align-items:center;justify-content:space-between;padding:1rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;transition:all .3s}
-.website-item:hover{border-color:var(--border-hover);background:rgba(255,255,255,0.04)}
-.website-info{display:flex;align-items:center;gap:1rem}
-.website-thumb{width:40px;height:40px;border-radius:8px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:.9rem}
-.website-name{font-weight:600;font-size:.95rem}
-.website-url{font-size:.75rem;color:var(--text-dim)}
-.website-actions{display:flex;gap:.5rem}
-.website-btn{padding:.4rem .75rem;font-size:.75rem;font-weight:600;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);transition:all .3s}
-.website-btn:hover{background:var(--accent);border-color:var(--accent)}
+/* PARTICLES */
+.particles{
+position:absolute;inset:0;
+pointer-events:none;
+overflow:hidden;
+}
+.particle{
+position:absolute;
+width:2px;height:2px;
+background:var(--gold);
+border-radius:50%;
+opacity:0;
+animation:particleFloat 10s infinite;
+}
+@keyframes particleFloat{
+0%{opacity:0;transform:translateY(100vh) scale(0)}
+10%{opacity:.6}
+90%{opacity:.6}
+100%{opacity:0;transform:translateY(-100px) scale(1)}
+}
 
-/* AI ASSISTANT */
-.assistant-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
-@media(max-width:1024px){.assistant-wrap{grid-template-columns:1fr}}
-.chat-window{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px);display:flex;flex-direction:column;height:550px}
-.chat-header{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
-.chat-avatar{width:36px;height:36px;border-radius:10px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:.85rem}
-.chat-name{font-weight:700;font-size:.95rem}
-.chat-status{font-size:.7rem;color:#10b981;display:flex;align-items:center;gap:.3rem}
-.chat-status::before{content:'';width:5px;height:5px;background:#10b981;border-radius:50%;box-shadow:0 0 8px #10b981}
-.chat-body{flex:1;padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:1rem}
-.msg{display:flex;gap:.75rem;max-width:85%;animation:msgIn .4s ease-out}
-@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.msg.user{margin-left:auto;flex-direction:row-reverse}
-.msg-avatar{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
-.msg.ai .msg-avatar{background:var(--gradient);color:white}
-.msg.user .msg-avatar{background:rgba(255,255,255,0.1);color:var(--text)}
-.msg-bubble{padding:.75rem 1rem;border-radius:12px;font-size:.9rem;line-height:1.5}
-.msg.ai .msg-bubble{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-top-left-radius:2px}
-.msg.user .msg-bubble{background:var(--gradient);color:white;border-top-right-radius:2px}
-.chat-input{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.5rem;align-items:center}
-.chat-input input{flex:1;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;transition:all .3s}
-.chat-input input:focus{border-color:var(--accent)}
-.chat-send{width:40px;height:40px;border-radius:10px;background:var(--gradient);color:white;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.chat-send:hover{transform:scale(1.05)}
-.assistant-suggestions{display:flex;flex-direction:column;gap:1rem}
-.suggestion-card{padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s;cursor:pointer}
-.suggestion-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
-.suggestion-icon{font-size:1.5rem;margin-bottom:.75rem}
-.suggestion-card h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem}
-.suggestion-card p{font-size:.8rem;color:var(--text-dim);line-height:1.5}
+/* CONTENT */
+.content{
+position:relative;
+z-index:5;
+width:100%;
+max-width:1400px;
+margin:0 auto;
+padding:4rem 3rem;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:4rem;
+align-items:center;
+}
+@media(max-width:1024px){
+.content{grid-template-columns:1fr;text-align:center;padding:3rem 2rem}
+}
 
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-@media(max-width:1024px){.pricing-grid{grid-template-columns:1fr}}
-.price-card{padding:2.5rem;background:var(--card);border:1px solid var(--border);border-radius:20px;transition:all .4s;position:relative;overflow:hidden}
-.price-card.featured{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.05));border-color:rgba(99,102,241,0.3)}
-.price-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient)}
-.price-card:hover{transform:translateY(-5px);border-color:var(--border-hover)}
-.price-badge{position:absolute;top:1.5rem;right:1.5rem;padding:.25rem .75rem;background:var(--gradient);color:white;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px}
-.price-name{font-size:.85rem;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
-.price-amount{font-size:3rem;font-weight:800;margin-bottom:.25rem;letter-spacing:-.02em}
-.price-amount span{font-size:1rem;color:var(--text-dim);font-weight:500}
-.price-desc{color:var(--text-dim);font-size:.9rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
-.price-features li{display:flex;align-items:center;gap:.75rem;font-size:.9rem;color:var(--text-dim)}
-.price-features li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,0.15);color:#10b981;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
-.price-btn{width:100%;padding:.85rem;border-radius:10px;font-weight:600;font-size:.9rem;transition:all .3s;text-align:center}
-.price-btn.primary{background:var(--gradient);color:white}
-.price-btn.primary:hover{box-shadow:0 10px 30px rgba(99,102,241,0.4)}
-.price-btn.ghost{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text)}
-.price-btn.ghost:hover{background:rgba(255,255,255,0.06)}
+/* LEFT - TEXT */
+.text-side{
+animation:slideInLeft 1.2s cubic-bezier(.2,.8,.2,1) .5s backwards;
+}
+@keyframes slideInLeft{
+from{opacity:0;transform:translateX(-60px)}
+to{opacity:1;transform:translateX(0)}
+}
+.brand-tag{
+display:inline-flex;
+align-items:center;
+gap:.75rem;
+font-family:var(--font-body);
+font-size:.7rem;
+font-weight:500;
+letter-spacing:.4em;
+text-transform:uppercase;
+color:var(--gold);
+margin-bottom:2rem;
+}
+.brand-tag::before,.brand-tag::after{
+content:'';
+width:30px;height:1px;
+background:var(--gold);
+opacity:.5;
+}
+.brand-tag::before{display:none}
+@media(max-width:1024px){.brand-tag::before{display:block}}
 
-/* FAQ */
-.faq-list{max-width:800px;margin:3rem auto 0;display:flex;flex-direction:column;gap:.75rem}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
-.faq-item.active{border-color:var(--accent)}
-.faq-question{padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:1rem;cursor:pointer}
-.faq-icon{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;font-size:.9rem}
-.faq-item.active .faq-icon{background:var(--gradient);color:white;transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1)}
-.faq-answer-inner{padding:0 1.5rem 1.5rem;color:var(--text-dim);line-height:1.7;font-size:.95rem}
+.headline{
+font-family:var(--font-display);
+font-size:clamp(3rem,7vw,6.5rem);
+font-weight:400;
+line-height:1;
+letter-spacing:-.02em;
+margin-bottom:1.5rem;
+color:var(--cream-light);
+}
+.headline em{
+font-style:italic;
+color:var(--gold);
+font-weight:500;
+}
+.headline .line{
+display:block;
+overflow:hidden;
+}
+.headline .line span{
+display:inline-block;
+animation:slideUp 1s cubic-bezier(.2,.8,.2,1) forwards;
+opacity:0;
+transform:translateY(100%);
+}
+.headline .line:nth-child(1) span{animation-delay:.7s}
+.headline .line:nth-child(2) span{animation-delay:.9s}
+.headline .line:nth-child(3) span{animation-delay:1.1s}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
-@media(max-width:1024px){.contact-grid{grid-template-columns:1fr}}
-.contact-info h3{font-size:2rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em}
-.contact-info h3 em{font-style:normal;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-.contact-info p{color:var(--text-dim);margin-bottom:2rem;line-height:1.7}
-.contact-details{display:flex;flex-direction:column;gap:1rem}
-.contact-item{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:all .3s}
-.contact-item:hover{border-color:var(--accent)}
-.contact-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(139,92,246,0.15));border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.contact-item-text .lbl{font-size:.7rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem}
-.contact-item-text .val{font-weight:600;font-size:.95rem}
-.contact-form{padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px)}
+.divider{
+width:80px;height:1px;
+background:linear-gradient(90deg,var(--gold),transparent);
+margin:2rem 0;
+animation:fadeIn 1s 1.3s backwards;
+}
+@media(max-width:1024px){.divider{margin:2rem auto}}
 
-/* FOOTER */
-.footer{padding:4rem 2rem 2rem;background:#05050a;border-top:1px solid var(--border);position:relative;z-index:5}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;max-width:1200px;margin-left:auto;margin-right:auto}
-@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
-@media(max-width:640px){.footer-grid{grid-template-columns:1fr}}
-.footer-brand .logo{font-weight:800;font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.footer-brand p{color:var(--text-dim);line-height:1.7;margin-bottom:1.5rem;font-size:.9rem;max-width:350px}
-.social-links{display:flex;gap:.5rem}
-.social-link{width:36px;height:36px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:.85rem}
-.social-link:hover{background:var(--gradient);border-color:var(--gradient);color:white;transform:translateY(-2px)}
-.footer-col h4{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:700}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.footer-col a{color:var(--text-dim);font-size:.85rem;transition:color .3s}
-.footer-col a:hover{color:var(--text)}
-.footer-bottom{padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem;color:var(--text-dim);max-width:1200px;margin:0 auto}
+.subtitle{
+font-family:var(--font-elegant);
+font-size:clamp(1.1rem,1.8vw,1.5rem);
+font-weight:300;
+font-style:italic;
+line-height:1.6;
+color:rgba(245,230,211,0.7);
+max-width:500px;
+margin-bottom:2.5rem;
+animation:fadeIn 1s 1.5s backwards;
+}
+@media(max-width:1024px){.subtitle{margin-left:auto;margin-right:auto}}
 
-/* RIPPLE */
-.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:rippleAnim .6s linear;pointer-events:none}
-@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+.cta-group{
+display:flex;
+gap:1rem;
+flex-wrap:wrap;
+animation:fadeIn 1s 1.7s backwards;
+}
+@media(max-width:1024px){.cta-group{justify-content:center}}
+
+.btn{
+position:relative;
+padding:1rem 2.5rem;
+font-family:var(--font-body);
+font-size:.75rem;
+font-weight:500;
+letter-spacing:.25em;
+text-transform:uppercase;
+border-radius:0;
+transition:all .4s cubic-bezier(.2,.8,.2,1);
+overflow:hidden;
+display:inline-flex;
+align-items:center;
+gap:.75rem;
+}
+.btn-primary{
+background:var(--gold);
+color:var(--espresso);
+border:1px solid var(--gold);
+}
+.btn-primary::before{
+content:'';
+position:absolute;inset:0;
+background:linear-gradient(45deg,transparent,rgba(255,255,255,0.3),transparent);
+transform:translateX(-100%);
+transition:transform .6s;
+}
+.btn-primary:hover::before{transform:translateX(100%)}
+.btn-primary:hover{
+background:var(--gold-light);
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(201,169,97,0.3);
+}
+.btn-ghost{
+background:transparent;
+color:var(--cream);
+border:1px solid rgba(245,230,211,0.3);
+}
+.btn-ghost:hover{
+border-color:var(--gold);
+color:var(--gold);
+transform:translateY(-2px);
+}
+
+/* RIGHT - VISUAL */
+.visual-side{
+position:relative;
+animation:slideInRight 1.2s cubic-bezier(.2,.8,.2,1) .8s backwards;
+}
+@keyframes slideInRight{
+from{opacity:0;transform:translateX(60px)}
+to{opacity:1;transform:translateX(0)}
+}
+@media(max-width:1024px){
+.visual-side{max-width:500px;margin:0 auto}
+}
+
+.coffee-frame{
+position:relative;
+aspect-ratio:3/4;
+border-radius:8px;
+overflow:hidden;
+}
+.coffee-frame::before{
+content:'';
+position:absolute;inset:0;
+border:1px solid rgba(201,169,97,0.3);
+border-radius:8px;
+z-index:2;
+pointer-events:none;
+}
+.coffee-frame::after{
+content:'';
+position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 60%,rgba(13,7,5,0.6) 100%);
+z-index:1;
+}
+.coffee-img{
+width:100%;height:100%;
+object-fit:cover;
+transition:transform 8s cubic-bezier(.2,.8,.2,1);
+animation:imgZoom 20s ease-in-out infinite alternate;
+}
+@keyframes imgZoom{
+0%{transform:scale(1)}
+100%{transform:scale(1.1)}
+}
+
+/* FLOATING BADGE */
+.float-badge{
+position:absolute;
+bottom:-30px;left:-30px;
+background:rgba(13,7,5,0.9);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid rgba(201,169,97,0.3);
+padding:1.5rem 2rem;
+z-index:3;
+animation:floatBadge 1s 2s backwards,floating 4s 3s ease-in-out infinite;
+}
+@keyframes floatBadge{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floating{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:1024px){
+.float-badge{bottom:-20px;left:50%;transform:translateX(-50%)}
+@keyframes floatBadge{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes floating{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+}
+.badge-label{
+font-family:var(--font-body);
+font-size:.6rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--gold);
+margin-bottom:.5rem;
+}
+.badge-value{
+font-family:var(--font-display);
+font-size:1.75rem;
+font-weight:500;
+color:var(--cream-light);
+line-height:1;
+}
+.badge-sub{
+font-family:var(--font-elegant);
+font-size:.85rem;
+font-style:italic;
+color:rgba(245,230,211,0.6);
+margin-top:.25rem;
+}
+
+/* CORNER DECORATIONS */
+.corner{
+position:absolute;
+width:40px;height:40px;
+border:1px solid var(--gold);
+opacity:.4;
+z-index:3;
+}
+.corner-tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
+.corner-tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
+.corner-bl{bottom:-1px;left:-1px;border-right:none;border-top:none}
+.corner-br{bottom:-1px;right:-1px;border-left:none;border-top:none}
+
+/* BOTTOM BAR */
+.bottom-bar{
+position:absolute;
+bottom:0;left:0;right:0;
+z-index:5;
+padding:2rem 3rem;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-top:1px solid rgba(201,169,97,0.1);
+background:linear-gradient(180deg,transparent,rgba(13,7,5,0.5));
+animation:fadeIn 1s 2.5s backwards;
+}
+@media(max-width:768px){
+.bottom-bar{
+flex-direction:column;
+gap:1rem;
+padding:1.5rem 2rem;
+text-align:center;
+}
+}
+.bottom-info{
+display:flex;
+gap:3rem;
+flex-wrap:wrap;
+}
+@media(max-width:768px){.bottom-info{justify-content:center;gap:2rem}}
+.info-item{
+display:flex;
+flex-direction:column;
+gap:.25rem;
+}
+.info-label{
+font-size:.6rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--gold);
+opacity:.7;
+}
+.info-value{
+font-family:var(--font-elegant);
+font-size:.95rem;
+color:var(--cream);
+font-weight:400;
+}
+.scroll-hint{
+display:flex;
+align-items:center;
+gap:.75rem;
+font-size:.65rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:rgba(245,230,211,0.5);
+}
+.scroll-line{
+width:40px;height:1px;
+background:var(--gold);
+position:relative;
+overflow:hidden;
+}
+.scroll-line::after{
+content:'';
+position:absolute;
+top:0;left:0;
+width:50%;height:100%;
+background:var(--cream-light);
+animation:scrollAnim 2s infinite;
+}
+@keyframes scrollAnim{0%{left:-50%}100%{left:100%}}
+
+/* TOP BAR */
+.top-bar{
+position:absolute;
+top:0;left:0;right:0;
+z-index:5;
+padding:2rem 3rem;
+display:flex;
+justify-content:space-between;
+align-items:center;
+animation:fadeIn 1s .3s backwards;
+}
+@media(max-width:768px){.top-bar{padding:1.5rem 2rem}}
+.logo{
+font-family:var(--font-display);
+font-size:1.25rem;
+font-weight:500;
+letter-spacing:.3em;
+color:var(--gold);
+display:flex;
+align-items:center;
+gap:.75rem;
+}
+.logo-mark{
+width:32px;height:32px;
+border:1px solid var(--gold);
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:.7rem;
+font-weight:700;
+}
+.top-nav{
+display:flex;
+gap:2rem;
+}
+@media(max-width:768px){.top-nav{display:none}}
+.top-nav a{
+font-size:.7rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:rgba(245,230,211,0.6);
+transition:color .3s;
+}
+.top-nav a:hover{color:var(--gold)}
+
+/* STEAM ANIMATION */
+.steam{
+position:absolute;
+top:20%;left:50%;
+transform:translateX(-50%);
+z-index:2;
+pointer-events:none;
+}
+.steam-line{
+position:absolute;
+width:2px;
+background:linear-gradient(180deg,transparent,rgba(245,230,211,0.3),transparent);
+animation:steam 3s infinite;
+opacity:0;
+}
+.steam-line:nth-child(1){left:-10px;height:60px;animation-delay:0s}
+.steam-line:nth-child(2){left:0;height:80px;animation-delay:.5s}
+.steam-line:nth-child(3){left:10px;height:50px;animation-delay:1s}
+@keyframes steam{
+0%{opacity:0;transform:translateY(0) scaleY(0)}
+50%{opacity:.5}
+100%{opacity:0;transform:translateY(-40px) scaleY(1.5)}
+}
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-<div class="bg-grid"></div>
-<div class="bg-glow"></div>
-<div class="bg-glow-2"></div>
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+<div class="preloader-text">AURUM</div>
+<div class="preloader-line"></div>
+</div>
 
-<nav class="nav" id="nav">
-<a href="#" class="nav-logo">
-<div class="nav-logo-mark">N</div>
-<span>Nexus AI</span>
-</a>
-<div class="nav-menu">
-<a href="#generator" class="nav-link" data-i18n="navGen">Generator</a>
-<a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
-<a href="#dashboard" class="nav-link" data-i18n="navDash">Dashboard</a>
-<a href="#pricing" class="nav-link" data-i18n="navPricing">Pricing</a>
-<a href="#contact" class="nav-link" data-i18n="navContact">Contact</a>
+<!-- SLIDE -->
+<div class="slide">
+
+<!-- BACKGROUND -->
+<div class="bg-layer">
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
+<div class="bg-grain"></div>
+<div class="bg-vignette"></div>
 </div>
-<div class="nav-right">
-<div class="lang-switch">
-<button class="lang-btn active" data-lang="en">EN</button>
-<button class="lang-btn" data-lang="hy">ՀԱՅ</button>
-<button class="lang-btn" data-lang="ru">RU</button>
+
+<!-- DECORATIVE -->
+<div class="deco-circle deco-circle-1"></div>
+<div class="deco-circle deco-circle-2"></div>
+<div class="deco-circle deco-circle-3"></div>
+<div class="deco-line deco-line-1"></div>
+<div class="deco-line deco-line-2"></div>
+
+<!-- PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+<div class="logo">
+<div class="logo-mark">A</div>
+AURUM
 </div>
-<a href="#generator" class="btn btn-primary" data-i18n="navCta">Get Started</a>
-<div class="burger" id="burger"><span></span><span></span><span></span></div>
-</div>
+<nav class="top-nav">
+<a href="#">Collection</a>
+<a href="#">Story</a>
+<a href="#">Experience</a>
+<a href="#">Reserve</a>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-<a href="#generator" data-i18n="navGen">Generator</a>
-<a href="#features" data-i18n="navFeatures">Features</a>
-<a href="#dashboard" data-i18n="navDash">Dashboard</a>
-<a href="#pricing" data-i18n="navPricing">Pricing</a>
-<a href="#contact" data-i18n="navContact">Contact</a>
 </div>
 
-<section class="hero">
-<div class="hero-content">
-<div class="hero-badge"><span data-i18n="heroBadge">AI-Powered Website Builder</span></div>
-<h1 class="hero-title" data-i18n="heroTitle">Build Your Website <em>in Seconds</em></h1>
-<p class="hero-subtitle" data-i18n="heroSubtitle">Enter your business info and let our AI create a stunning, professional website tailored to your brand. No coding required.</p>
-<div class="hero-buttons">
-<a href="#generator" class="btn btn-primary"><span data-i18n="heroBtn1">Start Building</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-<a href="#features" class="btn btn-ghost" data-i18n="heroBtn2">See How It Works</a>
-</div>
-<div class="hero-stats">
-<div class="hero-stat"><div class="num">50K+</div><div class="lbl" data-i18n="stat1">Websites Built</div></div>
-<div class="hero-stat"><div class="num">4.9★</div><div class="lbl" data-i18n="stat2">User Rating</div></div>
-<div class="hero-stat"><div class="num">30s</div><div class="lbl" data-i18n="stat3">Avg. Build Time</div></div>
-</div>
-<div class="hero-preview">
-<div class="hero-preview-img">
-<div class="preview-content">
-<div class="preview-bar"><div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div></div>
-<div class="preview-grid">
-<div class="preview-side">
-<div class="preview-line short"></div>
-<div class="preview-line"></div>
-<div class="preview-line med"></div>
-<div class="preview-line short"></div>
-<div class="preview-line"></div>
-</div>
-<div class="preview-main">
-<div class="preview-line accent"></div>
-<div class="preview-line"></div>
-<div class="preview-line med"></div>
-<div class="preview-line"></div>
-<div class="preview-line short"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+<!-- CONTENT -->
+<div class="content">
 
-<section id="generator" class="generator">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="genTag">AI Website Generator</span>
-<h2 class="section-title" data-i18n="genTitle">Create Your Website <em>Now</em></h2>
-<p class="section-subtitle" data-i18n="genSubtitle">Fill in your business details and watch the magic happen.</p>
-</div>
-<div class="generator-wrap">
-<form class="generator-form reveal" id="generatorForm" onsubmit="event.preventDefault();generateSite();">
-<div class="form-group">
-<label data-i18n="formName">Business Name</label>
-<input type="text" id="bizName" placeholder="e.g. Aurora Coffee" required>
-</div>
-<div class="form-group">
-<label data-i18n="formCategory">Business Category</label>
-<select id="bizCategory" required>
-<option value="" data-i18n="formSelectCat">Select category...</option>
-<option value="restaurant" data-i18n="catRestaurant">Restaurant / Café</option>
-<option value="shop" data-i18n="catShop">Shop / Retail</option>
-<option value="agency" data-i18n="catAgency">Agency / Studio</option>
-<option value="services" data-i18n="catServices">Services</option>
-<option value="tech" data-i18n="catTech">Technology</option>
-<option value="health" data-i18n="catHealth">Health & Wellness</option>
-</select>
-</div>
-<div class="form-group">
-<label data-i18n="formColors">Brand Style</label>
-<div class="color-picker" id="colorPicker">
-<div class="color-opt active" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)" data-color="purple"></div>
-<div class="color-opt" style="background:linear-gradient(135deg,#ec4899,#f43f5e)" data-color="pink"></div>
-<div class="color-opt" style="background:linear-gradient(135deg,#10b981,#059669)" data-color="green"></div>
-<div class="color-opt" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-color="orange"></div>
-<div class="color-opt" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6)" data-color="blue"></div>
-<div class="color-opt" style="background:linear-gradient(135deg,#1f2937,#111827)" data-color="dark"></div>
+<!-- LEFT -->
+<div class="text-side">
+<div class="brand-tag">Est. 2024 — Artisan Coffee</div>
+<h1 class="headline">
+<span class="line"><span>The Art of</span></span>
+<span class="line"><span><em>Premium</em></span></span>
+<span class="line"><span>Coffee</span></span>
+</h1>
+<div class="divider"></div>
+<p class="subtitle">
+Where every cup tells a story — hand-selected beans, masterfully roasted, and served with timeless elegance.
+</p>
+<div class="cta-group">
+<a href="#" class="btn btn-primary">
+Discover Collection
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+<a href="#" class="btn btn-ghost">Our Story</a>
 </div>
 </div>
-<div class="form-group">
-<label data-i18n="formGoal">Website Goal</label>
-<textarea id="bizGoal" placeholder="e.g. Showcase our menu and allow online reservations..." required></textarea>
-</div>
-<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center" id="generateBtn">
-<span data-i18n="formGenerate">Generate Website</span>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-</button>
-</form>
-<div class="generator-preview reveal reveal-delay-1">
-<div class="preview-header">
-<div class="preview-title" data-i18n="prevTitle">Live Preview</div>
-<div class="preview-status" id="prevStatus" data-i18n="prevReady">Ready</div>
-</div>
-<div class="preview-mockup" id="previewMockup">
-<div class="mockup-line l1"></div>
-<div class="mockup-line l2"></div>
-<div class="mockup-line l3"></div>
-<div class="mockup-line l4"></div>
-<div class="mockup-blocks">
-<div class="mockup-block"></div>
-<div class="mockup-block"></div>
-<div class="mockup-block"></div>
-</div>
-</div>
-<div class="generated-pages" id="generatedPages"></div>
-</div>
-</div>
-</div>
-</section>
 
-<section id="features">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="featTag">Powerful Features</span>
-<h2 class="section-title" data-i18n="featTitle">Everything You <em>Need</em></h2>
-<p class="section-subtitle" data-i18n="featSubtitle">Built for small businesses who want professional results fast.</p>
-</div>
-<div class="features-grid">
-<div class="feature-card reveal"><div class="feature-icon">⚡</div><h3 data-i18n="feat1Title">Instant Generation</h3><p data-i18n="feat1Desc">Get a complete website in under 30 seconds. AI handles design, copy, and SEO automatically.</p></div>
-<div class="feature-card reveal reveal-delay-1"><div class="feature-icon">🎨</div><h3 data-i18n="feat2Title">Custom Branding</h3><p data-i18n="feat2Desc">Choose colors, styles, and layouts that match your brand identity perfectly.</p></div>
-<div class="feature-card reveal reveal-delay-2"><div class="feature-icon">🔍</div><h3 data-i18n="feat3Title">SEO Optimized</h3><p data-i18n="feat3Desc">Every page is optimized for search engines with proper meta tags and structure.</p></div>
-<div class="feature-card reveal"><div class="feature-icon">📱</div><h3 data-i18n="feat4Title">Fully Responsive</h3><p data-i18n="feat4Desc">Your website looks perfect on every device — mobile, tablet, and desktop.</p></div>
-<div class="feature-card reveal reveal-delay-1"><div class="feature-icon">🤖</div><h3 data-i18n="feat5Title">AI Assistant</h3><p data-i18n="feat5Desc">Get help with copywriting, marketing ideas, and content improvements anytime.</p></div>
-<div class="feature-card reveal reveal-delay-2"><div class="feature-icon">📊</div><h3 data-i18n="feat6Title">Built-in Analytics</h3><p data-i18n="feat6Desc">Track visitors, conversions, and performance with our integrated dashboard.</p></div>
+<!-- RIGHT -->
+<div class="visual-side">
+<div class="coffee-frame">
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+<img class="coffee-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1000&q=90" alt="Premium Coffee">
+<div class="steam">
+<div class="steam-line"></div>
+<div class="steam-line"></div>
+<div class="steam-line"></div>
 </div>
 </div>
-</section>
+<div class="float-badge">
+<div class="badge-label">Single Origin</div>
+<div class="badge-value">Ethiopia</div>
+<div class="badge-sub">Yirgacheffe Region</div>
+</div>
+</div>
 
-<section id="dashboard" class="dashboard">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="dashTag">User Dashboard</span>
-<h2 class="section-title" data-i18n="dashTitle">Manage Everything <em>in One Place</em></h2>
-<p class="section-subtitle" data-i18n="dashSubtitle">A powerful dashboard to create, edit, preview, and publish your websites.</p>
 </div>
-<div class="dash-wrap reveal">
-<div class="dash-header">
-<div class="dash-tabs">
-<div class="dash-tab active" data-i18n="tabOverview">Overview</div>
-<div class="dash-tab" data-i18n="tabSites">My Websites</div>
-<div class="dash-tab" data-i18n="tabAnalytics">Analytics</div>
-<div class="dash-tab" data-i18n="tabSettings">Settings</div>
-</div>
-<button class="btn btn-primary" style="padding:.5rem 1rem;font-size:.8rem" data-i18n="btnNew">+ New Website</button>
-</div>
-<div class="dash-body">
-<div class="dash-card"><div class="dash-card-title" data-i18n="dashTotal">Total Sites</div><div class="dash-card-value gradient">5</div><div class="dash-card-sub" data-i18n="dashActive">All active</div></div>
-<div class="dash-card"><div class="dash-card-title" data-i18n="dashViews">Total Views</div><div class="dash-card-value">24.8K</div><div class="dash-card-sub" style="color:#10b981">↑ 12% this week</div></div>
-<div class="dash-card"><div class="dash-card-title" data-i18n="dashConv">Conversions</div><div class="dash-card-value">342</div><div class="dash-card-sub" style="color:#10b981">↑ 8% this week</div></div>
-<div class="dash-card"><div class="dash-card-title" data-i18n="dashUptime">Uptime</div><div class="dash-card-value">99.9%</div><div class="dash-card-sub" data-i18n="dashHealthy">All systems healthy</div></div>
-</div>
-<div class="dash-websites">
-<div class="dash-websites-title" data-i18n="dashRecent">Recent Websites</div>
-<div class="website-list">
-<div class="website-item"><div class="website-info"><div class="website-thumb">A</div><div><div class="website-name">Aurora Coffee</div><div class="website-url">auroracoffee.nexus.ai</div></div></div><div class="website-actions"><button class="website-btn" data-i18n="btnEdit">Edit</button><button class="website-btn" data-i18n="btnPreview">Preview</button><button class="website-btn" data-i18n="btnPublish">Publish</button></div></div>
-<div class="website-item"><div class="website-info"><div class="website-thumb" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">B</div><div><div class="website-name">Bloom Studio</div><div class="website-url">bloomstudio.nexus.ai</div></div></div><div class="website-actions"><button class="website-btn" data-i18n="btnEdit">Edit</button><button class="website-btn" data-i18n="btnPreview">Preview</button><button class="website-btn" data-i18n="btnPublish">Publish</button></div></div>
-<div class="website-item"><div class="website-info"><div class="website-thumb" style="background:linear-gradient(135deg,#10b981,#059669)">N</div><div><div class="website-name">Nova Fitness</div><div class="website-url">novafitness.nexus.ai</div></div></div><div class="website-actions"><button class="website-btn" data-i18n="btnEdit">Edit</button><button class="website-btn" data-i18n="btnPreview">Preview</button><button class="website-btn" data-i18n="btnPublish">Publish</button></div></div>
-</div>
-</div>
-</div>
-</div>
-</section>
 
-<section id="assistant">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="asstTag">AI Business Assistant</span>
-<h2 class="section-title" data-i18n="asstTitle">Your Personal <em>AI Consultant</em></h2>
-<p class="section-subtitle" data-i18n="asstSubtitle">Get expert advice on copy, marketing, SEO, and content — anytime.</p>
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+<div class="bottom-info">
+<div class="info-item">
+<span class="info-label">Temperature</span>
+<span class="info-value">92°C Optimal</span>
 </div>
-<div class="assistant-wrap">
-<div class="chat-window reveal">
-<div class="chat-header">
-<div class="chat-avatar">AI</div>
-<div><div class="chat-name">Nexus Assistant</div><div class="chat-status" data-i18n="chatStatus">Online</div></div>
+<div class="info-item">
+<span class="info-label">Roast Level</span>
+<span class="info-value">Medium Artisan</span>
 </div>
-<div class="chat-body" id="chatBody">
-<div class="msg ai"><div class="msg-avatar">AI</div><div class="msg-bubble" data-i18n="chatMsg1">Hi! I'm your AI business assistant. I can help with sales copy, ads, SEO, and marketing ideas. What do you need?</div></div>
-<div class="msg user"><div class="msg-avatar">U</div><div class="msg-bubble" data-i18n="chatMsg2">Write a tagline for my coffee shop</div></div>
-<div class="msg ai"><div class="msg-avatar">AI</div><div class="msg-bubble" data-i18n="chatMsg3">Here are 3 options: "Brewed with Purpose" • "Where Mornings Begin" • "Every Cup, A Story". Which resonates?</div></div>
-</div>
-<div class="chat-input">
-<input type="text" id="chatInput" data-i18n-placeholder="chatPlaceholder" placeholder="Ask me anything...">
-<button class="chat-send" id="chatSend">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-</button>
+<div class="info-item">
+<span class="info-label">Tasting Notes</span>
+<span class="info-value">Chocolate · Citrus · Floral</span>
 </div>
 </div>
-<div class="assistant-suggestions reveal reveal-delay-1">
-<div class="suggestion-card"><div class="suggestion-icon">✍️</div><h4 data-i18n="sug1Title">Sales Copy</h4><p data-i18n="sug1Desc">Generate compelling copy that converts visitors into customers.</p></div>
-<div class="suggestion-card"><div class="suggestion-icon">📢</div><h4 data-i18n="sug2Title">Ad Campaigns</h4><p data-i18n="sug2Desc">Create Facebook, Google, and Instagram ad copy in seconds.</p></div>
-<div class="suggestion-card"><div class="suggestion-icon">🔍</div><h4 data-i18n="sug3Title">SEO Optimization</h4><p data-i18n="sug3Desc">Improve your rankings with AI-powered SEO recommendations.</p></div>
-<div class="suggestion-card"><div class="suggestion-icon">💡</div><h4 data-i18n="sug4Title">Marketing Ideas</h4><p data-i18n="sug4Desc">Get fresh marketing strategies tailored to your business.</p></div>
+<div class="scroll-hint">
+<span>Explore</span>
+<div class="scroll-line"></div>
 </div>
 </div>
-</div>
-</section>
 
-<section id="pricing">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="priceTag">Pricing</span>
-<h2 class="section-title" data-i18n="priceTitle">Simple, <em>Transparent</em> Pricing</h2>
-<p class="section-subtitle" data-i18n="priceSubtitle">Choose the plan that fits your business. Cancel anytime.</p>
 </div>
-<div class="pricing-grid">
-<div class="price-card reveal">
-<div class="price-name" data-i18n="plan1Name">Starter</div>
-<div class="price-amount">$9<span data-i18n="perMonth">/month</span></div>
-<p class="price-desc" data-i18n="plan1Desc">Perfect for getting started with your first website.</p>
-<ul class="price-features">
-<li data-i18n="plan1F1">1 website</li>
-<li data-i18n="plan1F2">Basic AI generation</li>
-<li data-i18n="plan1F3">5 templates</li>
-<li data-i18n="plan1F4">Basic support</li>
-</ul>
-<button class="price-btn ghost" data-i18n="btnChoose">Choose Starter</button>
-</div>
-<div class="price-card featured reveal reveal-delay-1">
-<div class="price-badge" data-i18n="popular">Most Popular</div>
-<div class="price-name" data-i18n="plan2Name">Business</div>
-<div class="price-amount">$29<span data-i18n="perMonth">/month</span></div>
-<p class="price-desc" data-i18n="plan2Desc">For growing businesses that need more power.</p>
-<ul class="price-features">
-<li data-i18n="plan2F1">5 websites</li>
-<li data-i18n="plan2F2">Advanced AI tools</li>
-<li data-i18n="plan2F3">SEO optimization</li>
-<li data-i18n="plan2F4">Custom branding</li>
-<li data-i18n="plan2F5">Priority support</li>
-</ul>
-<button class="price-btn primary" data-i18n="btnChooseBiz">Choose Business</button>
-</div>
-<div class="price-card reveal reveal-delay-2">
-<div class="price-name" data-i18n="plan3Name">Pro</div>
-<div class="price-amount">$79<span data-i18n="perMonth">/month</span></div>
-<p class="price-desc" data-i18n="plan3Desc">For agencies and power users who need everything.</p>
-<ul class="price-features">
-<li data-i18n="plan3F1">Unlimited websites</li>
-<li data-i18n="plan3F2">Advanced AI assistant</li>
-<li data-i18n="plan3F3">Full analytics</li>
-<li data-i18n="plan3F4">Premium templates</li>
-<li data-i18n="plan3F5">White-label option</li>
-<li data-i18n="plan3F6">24/7 support</li>
-</ul>
-<button class="price-btn ghost" data-i18n="btnChoosePro">Choose Pro</button>
-</div>
-</div>
-</div>
-</section>
-
-<section id="faq">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="faqTag">FAQ</span>
-<h2 class="section-title" data-i18n="faqTitle">Frequently <em>Asked</em></h2>
-</div>
-<div class="faq-list">
-<div class="faq-item reveal"><div class="faq-question"><span data-i18n="faq1Q">How fast can I build a website?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq1A">Most websites are generated in under 30 seconds. You can then customize every detail to match your vision.</div></div></div>
-<div class="faq-item reveal"><div class="faq-question"><span data-i18n="faq2Q">Do I need coding skills?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq2A">Not at all. Our AI handles everything — design, code, and content. You just provide your business info.</div></div></div>
-<div class="faq-item reveal"><div class="faq-question"><span data-i18n="faq3Q">Can I use my own domain?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq3A">Yes! You can connect any custom domain to your website. We also provide free subdomains on all plans.</div></div></div>
-<div class="faq-item reveal"><div class="faq-question"><span data-i18n="faq4Q">Is there a free trial?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq4A">Yes, all plans come with a 14-day free trial. No credit card required to get started.</div></div></div>
-<div class="faq-item reveal"><div class="faq-question"><span data-i18n="faq5Q">Can I cancel anytime?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq5A">Absolutely. Cancel anytime with no questions asked. Your websites remain accessible until the end of your billing period.</div></div></div>
-</div>
-</div>
-</section>
-
-<section id="contact" class="contact">
-<div class="container">
-<div class="section-header reveal">
-<span class="section-tag" data-i18n="contactTag">Get in Touch</span>
-<h2 class="section-title" data-i18n="contactTitle">Let's <em>Talk</em></h2>
-</div>
-<div class="contact-grid">
-<div class="contact-info reveal">
-<h3 data-i18n="contactHead">Ready to Build <em>Something Amazing?</em></h3>
-<p data-i18n="contactDesc">Have questions? Our team is here to help you succeed. Reach out anytime.</p>
-<div class="contact-details">
-<div class="contact-item"><div class="contact-icon">✉</div><div class="contact-item-text"><div class="lbl">Email</div><div class="val">hello@nexus-ai.com</div></div></div>
-<div class="contact-item"><div class="contact-icon">☎</div><div class="contact-item-text"><div class="lbl" data-i18n="contactPhone">Phone</div><div class="val">+1 (555) 123-4567</div></div></div>
-<div class="contact-item"><div class="contact-icon">◉</div><div class="contact-item-text"><div class="lbl" data-i18n="contactAddr">Address</div><div class="val">San Francisco, CA</div></div></div>
-</div>
-</div>
-<form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault();alert('Message sent!');this.reset();">
-<div class="form-group"><label data-i18n="formName2">Your Name</label><input type="text" required></div>
-<div class="form-group"><label data-i18n="formEmail">Email</label><input type="email" required></div>
-<div class="form-group"><label data-i18n="formMsg">Message</label><textarea required></textarea></div>
-<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center"><span data-i18n="formSend">Send Message</span></button>
-</form>
-</div>
-</div>
-</section>
-
-<footer class="footer">
-<div class="footer-grid">
-<div class="footer-brand">
-<div class="logo"><div class="nav-logo-mark" style="width:28px;height:28px;font-size:.8rem">N</div>Nexus AI</div>
-<p data-i18n="footerDesc">Build professional websites in seconds with the power of AI. Trusted by 50,000+ businesses worldwide.</p>
-<div class="social-links">
-<a href="#" class="social-link">𝕏</a>
-<a href="#" class="social-link">in</a>
-<a href="#" class="social-link">ig</a>
-<a href="#" class="social-link">yt</a>
-</div>
-</div>
-<div class="footer-col">
-<h4 data-i18n="footerProd">Product</h4>
-<ul>
-<li><a href="#generator" data-i18n="navGen">Generator</a></li>
-<li><a href="#features" data-i18n="navFeatures">Features</a></li>
-<li><a href="#pricing" data-i18n="navPricing">Pricing</a></li>
-<li><a href="#dashboard" data-i18n="navDash">Dashboard</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4 data-i18n="footerComp">Company</h4>
-<ul>
-<li><a href="#" data-i18n="footerAbout">About</a></li>
-<li><a href="#" data-i18n="footerBlog">Blog</a></li>
-<li><a href="#" data-i18n="footerCareers">Careers</a></li>
-<li><a href="#contact" data-i18n="navContact">Contact</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4 data-i18n="footerLegal">Legal</h4>
-<ul>
-<li><a href="#" data-i18n="footerPriv">Privacy</a></li>
-<li><a href="#" data-i18n="footerTerms">Terms</a></li>
-<li><a href="#" data-i18n="footerSec">Security</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<div>© 2026 Nexus AI. <span data-i18n="footerRights">All rights reserved.</span></div>
-<div data-i18n="footerMade">Made with AI & ❤️</div>
-</div>
-</footer>
 
 <script>
-const translations={
-en:{navGen:"Generator",navFeatures:"Features",navDash:"Dashboard",navPricing:"Pricing",navContact:"Contact",navCta:"Get Started",heroBadge:"AI-Powered Website Builder",heroTitle:'Build Your Website <em>in Seconds</em>',heroSubtitle:"Enter your business info and let our AI create a stunning, professional website tailored to your brand. No coding required.",heroBtn1:"Start Building",heroBtn2:"See How It Works",stat1:"Websites Built",stat2:"User Rating",stat3:"Avg. Build Time",genTag:"AI Website Generator",genTitle:'Create Your Website <em>Now</em>',genSubtitle:"Fill in your business details and watch the magic happen.",formName:"Business Name",formCategory:"Business Category",formSelectCat:"Select category...",catRestaurant:"Restaurant / Café",catShop:"Shop / Retail",catAgency:"Agency / Studio",catServices:"Services",catTech:"Technology",catHealth:"Health & Wellness",formColors:"Brand Style",formGoal:"Website Goal",formGenerate:"Generate Website",prevTitle:"Live Preview",prevReady:"Ready",prevGenerating:"Generating...",prevDone:"Done!",featTag:"Powerful Features",featTitle:'Everything You <em>Need</em>',featSubtitle:"Built for small businesses who want professional results fast.",feat1Title:"Instant Generation",feat1Desc:"Get a complete website in under 30 seconds. AI handles design, copy, and SEO automatically.",feat2Title:"Custom Branding",feat2Desc:"Choose colors, styles, and layouts that match your brand identity perfectly.",feat3Title:"SEO Optimized",feat3Desc:"Every page is optimized for search engines with proper meta tags and structure.",feat4Title:"Fully Responsive",feat4Desc:"Your website looks perfect on every device — mobile, tablet, and desktop.",feat5Title:"AI Assistant",feat5Desc:"Get help with copywriting, marketing ideas, and content improvements anytime.",feat6Title:"Built-in Analytics",feat6Desc:"Track visitors, conversions, and performance with our integrated dashboard.",dashTag:"User Dashboard",dashTitle:'Manage Everything <em>in One Place</em>',dashSubtitle:"A powerful dashboard to create, edit, preview, and publish your websites.",tabOverview:"Overview",tabSites:"My Websites",tabAnalytics:"Analytics",tabSettings:"Settings",btnNew:"+ New Website",dashTotal:"Total Sites",dashActive:"All active",dashViews:"Total Views",dashConv:"Conversions",dashUptime:"Uptime",dashHealthy:"All systems healthy",dashRecent:"Recent Websites",btnEdit:"Edit",btnPreview:"Preview",btnPublish:"Publish",asstTag:"AI Business Assistant",asstTitle:'Your Personal <em>AI Consultant</em>',asstSubtitle:"Get expert advice on copy, marketing, SEO, and content — anytime.",chatStatus:"Online",chatMsg1:"Hi! I'm your AI business assistant. I can help with sales copy, ads, SEO, and marketing ideas. What do you need?",chatMsg2:"Write a tagline for my coffee shop",chatMsg3:'Here are 3 options: "Brewed with Purpose" • "Where Mornings Begin" • "Every Cup, A Story". Which resonates?',chatPlaceholder:"Ask me anything...",sug1Title:"Sales Copy",sug1Desc:"Generate compelling copy that converts visitors into customers.",sug2Title:"Ad Campaigns",sug2Desc:"Create Facebook, Google, and Instagram ad copy in seconds.",sug3Title:"SEO Optimization",sug3Desc:"Improve your rankings with AI-powered SEO recommendations.",sug4Title:"Marketing Ideas",sug4Desc:"Get fresh marketing strategies tailored to your business.",priceTag:"Pricing",priceTitle:'Simple, <em>Transparent</em> Pricing',priceSubtitle:"Choose the plan that fits your business. Cancel anytime.",perMonth:"/month",plan1Name:"Starter",plan1Desc:"Perfect for getting started with your first website.",plan1F1:"1 website",plan1F2:"Basic AI generation",plan1F3:"5 templates",plan1F4:"Basic support",plan2Name:"Business",plan2Desc:"For growing businesses that need more power.",plan2F1:"5 websites",plan2F2:"Advanced AI tools",plan2F3:"SEO optimization",plan2F4:"Custom branding",plan2F5:"Priority support",plan3Name:"Pro",plan3Desc:"For agencies and power users who need everything.",plan3F1:"Unlimited websites",plan3F2:"Advanced AI assistant",plan3F3:"Full analytics",plan3F4:"Premium templates",plan3F5:"White-label option",plan3F6:"24/7 support",popular:"Most Popular",btnChoose:"Choose Starter",btnChooseBiz:"Choose Business",btnChoosePro:"Choose Pro",faqTag:"FAQ",faqTitle:'Frequently <em>Asked</em>',faq1Q:"How fast can I build a website?",faq1A:"Most websites are generated in under 30 seconds. You can then customize every detail to match your vision.",faq2Q:"Do I need coding skills?",faq2A:"Not at all. Our AI handles everything — design, code, and content. You just provide your business info.",faq3Q:"Can I use my own domain?",faq3A:"Yes! You can connect any custom domain to your website. We also provide free subdomains on all plans.",faq4Q:"Is there a free trial?",faq4A:"Yes, all plans come with a 14-day free trial. No credit card required to get started.",faq5Q:"Can I cancel anytime?",faq5A:"Absolutely. Cancel anytime with no questions asked. Your websites remain accessible until the end of your billing period.",contactTag:"Get in Touch",contactTitle:"Let's <em>Talk</em>",contactHead:'Ready to Build <em>Something Amazing?</em>',contactDesc:"Have questions? Our team is here to help you succeed. Reach out anytime.",contactPhone:"Phone",contactAddr:"Address",formName2:"Your Name",formEmail:"Email",formMsg:"Message",formSend:"Send Message",footerDesc:"Build professional websites in seconds with the power of AI. Trusted by 50,000+ businesses worldwide.",footerProd:"Product",footerComp:"Company",footerLegal:"Legal",footerAbout:"About",footerBlog:"Blog",footerCareers:"Careers",footerPriv:"Privacy",footerTerms:"Terms",footerSec:"Security",footerRights:"All rights reserved.",footerMade:"Made with AI & ❤️"},
-hy:{navGen:"Գdelays",navFeatures:"Հdelays",navDash:"Վdelays",navPricing:"Գdelays",navContact:"Կdelays",navCta:"Սdelays",heroBadge:"AI-ով Կdelays",heroTitle:'Սdelays <em> Delays</em>',heroSubtitle:"Delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......"}
-};
-
-let currentLang='en';
-function setLanguage(lang){
-currentLang=lang;
-document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
-document.querySelectorAll('[data-i18n]').forEach(el=>{
-const key=el.dataset.i18n;
-if(translations[lang]&&translations[lang][key]){
-if(translations[lang][key].includes('<em>'))el.innerHTML=translations[lang][key];
-else el.textContent=translations[lang][key];
-}
-});
-document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-const key=el.dataset.i18nPlaceholder;
-if(translations[lang]&&translations[lang][key])el.placeholder=translations[lang][key];
-});
-document.documentElement.lang=lang;
-}
-document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-
-// SCROLL PROGRESS
-window.addEventListener('scroll',()=>{
-const nav=document.getElementById('nav');
-nav.classList.toggle('scrolled',window.scrollY>50);
-const p=document.getElementById('scrollProgress');
-const h=document.documentElement.scrollHeight-window.innerHeight;
-p.style.width=(window.scrollY/h*100)+'%';
-});
-
-// MOBILE MENU
-document.getElementById('burger').addEventListener('click',()=>{
-document.getElementById('mobileMenu').classList.toggle('open');
-});
-document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
-
-// REVEAL
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// COLOR PICKER
-document.querySelectorAll('.color-opt').forEach(opt=>{
-opt.addEventListener('click',()=>{
-document.querySelectorAll('.color-opt').forEach(o=>o.classList.remove('active'));
-opt.classList.add('active');
-});
-});
-
-// GENERATE WEBSITE
-function generateSite(){
-const form=document.getElementById('generatorForm');
-const btn=document.getElementById('generateBtn');
-const status=document.getElementById('prevStatus');
-const pages=document.getElementById('generatedPages');
-const name=document.getElementById('bizName').value||'Your Business';
-form.classList.add('loading');
-btn.disabled=true;
-btn.innerHTML='<span>Generating...</span>';
-status.textContent='Generating...';
-pages.innerHTML='';
+// PRELOADER
+window.addEventListener('load',()=>{
 setTimeout(()=>{
-const sitePages=['Homepage','Services','About','Contact'];
-sitePages.forEach((p,i)=>{
-setTimeout(()=>{
-const div=document.createElement('div');
-div.className='gen-page';
-div.style.animation='msgIn .4s ease-out';
-div.innerHTML=`<span class="gen-page-name">${p}</span><span class="gen-page-status">✓ Generated</span>`;
-pages.appendChild(div);
-},i*300);
+document.getElementById('preloader').classList.add('hidden');
+},2200);
 });
-setTimeout(()=>{
-form.classList.remove('loading');
-btn.disabled=false;
-btn.innerHTML='<span>Generate Website</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-status.textContent='Done!';
-status.style.color='#10b981';
-},sitePages.length*300+200);
-},1500);
+
+// PARTICLES
+const particlesContainer=document.getElementById('particles');
+for(let i=0;i<30;i++){
+const p=document.createElement('div');
+p.className='particle';
+p.style.left=Math.random()*100+'%';
+p.style.animationDelay=Math.random()*10+'s';
+p.style.animationDuration=(8+Math.random()*6)+'s';
+particlesContainer.appendChild(p);
 }
 
-// CHAT
-const chatResponses=[
-"Great question! Here's what I suggest: focus on your unique value proposition and keep it simple.",
-"I can help with that. Let me generate some options for you...",
-"Based on your business, I recommend emphasizing quality and customer experience in your messaging.",
-"Here's a proven formula: Problem → Solution → Benefit. Try applying it to your copy.",
-"SEO tip: Use descriptive titles, meta descriptions, and alt text on all images.",
-"Try A/B testing different headlines — small changes can have big impacts on conversions."
-];
-let respIdx=0;
-document.getElementById('chatSend').addEventListener('click',sendMsg);
-document.getElementById('chatInput').addEventListener('keypress',e=>{if(e.key==='Enter')sendMsg()});
-function sendMsg(){
-const input=document.getElementById('chatInput');
-const body=document.getElementById('chatBody');
-const text=input.value.trim();
-if(!text)return;
-const userMsg=document.createElement('div');
-userMsg.className='msg user';
-userMsg.innerHTML=`<div class="msg-avatar">U</div><div class="msg-bubble">${text}</div>`;
-body.appendChild(userMsg);
-input.value='';
-body.scrollTop=body.scrollHeight;
-setTimeout(()=>{
-const aiMsg=document.createElement('div');
-aiMsg.className='msg ai';
-aiMsg.innerHTML=`<div class="msg-avatar">AI</div><div class="msg-bubble">${chatResponses[respIdx%chatResponses.length]}</div>`;
-body.appendChild(aiMsg);
-body.scrollTop=body.scrollHeight;
-respIdx++;
-},800);
-}
-
-// FAQ
-document.querySelectorAll('.faq-item').forEach(item=>{
-item.querySelector('.faq-question').addEventListener('click',()=>{
-const active=item.classList.contains('active');
-document.querySelectorAll('.faq-item').forEach(i=>{
-i.classList.remove('active');
-i.querySelector('.faq-answer').style.maxHeight=null;
+// PARALLAX ON MOUSE
+document.addEventListener('mousemove',e=>{
+const x=(e.clientX/window.innerWidth-.5)*20;
+const y=(e.clientY/window.innerHeight-.5)*20;
+const bg=document.querySelector('.bg-image');
+if(bg)bg.style.transform=`scale(1.15) translate(${x*.3}px,${y*.3}px)`;
+const frame=document.querySelector('.coffee-frame');
+if(frame)frame.style.transform=`translate(${x*.5}px,${y*.5}px)`;
 });
-if(!active){
-item.classList.add('active');
-item.querySelector('.faq-answer').style.maxHeight=item.querySelector('.faq-answer').scrollHeight+'px';
-}
-});
-});
-
-// DASHBOARD TABS
-document.querySelectorAll('.dash-tab').forEach(tab=>{
-tab.addEventListener('click',()=>{
-document.querySelectorAll('.dash-tab').forEach(t=>t.classList.remove('active'));
-tab.classList.add('active');
-});
-});
-
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-a.addEventListener('click',e=>{
-e.preventDefault();
-const t=document.querySelector(a.getAttribute('href'));
-if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
-});
-});
-
-setLanguage('en');
 </script>
 </body>
 </html>
