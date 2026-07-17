@@ -3,967 +3,1768 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURUM — The Art of Premium Coffee</title>
+<title>FLEUR — Luxury Floral Atelier</title>
+<meta name="description" content="FLEUR — Premium floral atelier crafting bespoke bouquets and luxury arrangements for life's most beautiful moments.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@200;300;400;500;600&family=Noto+Sans+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---espresso:#0d0705;
---coffee-dark:#1a0f0a;
---coffee:#2d1810;
---coffee-mid:#4a2c1a;
---coffee-light:#8b5a3c;
---cream:#f5e6d3;
---cream-light:#faf4ec;
+--bg:#faf6f1;
+--bg-2:#f3ebe1;
+--cream:#fdf9f3;
+--blush:#f5d5d0;
+--blush-deep:#e8a8a0;
+--rose:#d4788c;
+--rose-deep:#b85570;
+--sage:#a8b89e;
+--sage-deep:#7a8f6f;
+--burgundy:#6b2d3e;
+--burgundy-deep:#4a1f2b;
 --gold:#c9a961;
 --gold-light:#e4c97e;
---gold-dark:#a88842;
+--ink:#2a1f1a;
+--ink-soft:#4a3a32;
+--text:#2a1f1a;
+--text-dim:#7a6a5e;
 --font-display:'Playfair Display',serif;
 --font-elegant:'Cormorant Garamond',serif;
---font-body:'Inter',sans-serif;
+--font-body:'Inter','Noto Sans Armenian',sans-serif;
 }
-html,body{overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
 font-family:var(--font-body);
-background:var(--espresso);
-color:var(--cream-light);
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 min-height:100vh;
 cursor:none;
+line-height:1.6;
+-webkit-font-smoothing:antialiased;
 }
 @media(max-width:768px){body{cursor:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:none;border:none;background:none;color:inherit}
+@media(max-width:768px){button,a{cursor:pointer}}
 
 /* CUSTOM CURSOR */
 .cursor-dot,.cursor-ring{
 position:fixed;top:0;left:0;
-pointer-events:none;
-z-index:9999;
-mix-blend-mode:difference;
+pointer-events:none;z-index:9999;
+mix-blend-mode:multiply;
 }
 .cursor-dot{
-width:6px;height:6px;
-background:var(--gold-light);
+width:8px;height:8px;
+background:var(--rose-deep);
 border-radius:50%;
 transform:translate(-50%,-50%);
-box-shadow:0 0 15px var(--gold);
+transition:transform .2s;
 }
 .cursor-ring{
 width:40px;height:40px;
-border:1px solid var(--gold);
+border:1px solid var(--rose);
 border-radius:50%;
 transform:translate(-50%,-50%);
-transition:width .3s,height .3s,background .3s;
+transition:all .25s cubic-bezier(.2,.8,.2,1);
 }
 .cursor-ring.hover{
 width:70px;height:70px;
-background:rgba(201,169,97,0.1);
-border-color:var(--gold-light);
+background:rgba(212,120,140,0.1);
+border-color:var(--rose-deep);
 }
-.cursor-glow{
+.cursor-petal{
 position:fixed;
-width:500px;height:500px;
-border-radius:50%;
-background:radial-gradient(circle,rgba(201,169,97,0.08),transparent 60%);
 pointer-events:none;
-z-index:1;
+z-index:9998;
+font-size:14px;
+opacity:0;
 transform:translate(-50%,-50%);
+}
+
+/* SCROLL PROGRESS */
+.scroll-progress{
+position:fixed;top:0;left:0;
+height:2px;
+background:linear-gradient(90deg,var(--rose),var(--gold),var(--rose));
+z-index:10001;
+width:0%;
+transition:width .1s;
+box-shadow:0 0 10px rgba(212,120,140,0.5);
 }
 
 /* PRELOADER */
 .preloader{
 position:fixed;inset:0;
-background:var(--espresso);
+background:var(--cream);
 z-index:10000;
 display:flex;align-items:center;justify-content:center;
-flex-direction:column;gap:2.5rem;
+flex-direction:column;gap:2rem;
 transition:opacity 1.2s cubic-bezier(.77,0,.18,1),visibility 1.2s;
 }
 .preloader.hidden{opacity:0;visibility:hidden}
-.preloader-logo{
-font-family:var(--font-display);
-font-size:clamp(2.5rem,6vw,4rem);
-font-weight:400;
-letter-spacing:.5em;
-color:var(--gold);
+.preloader-flower{
+width:80px;height:80px;
 position:relative;
-overflow:hidden;
+animation:flowerSpin 3s linear infinite;
 }
-.preloader-logo span{
+@keyframes flowerSpin{to{transform:rotate(360deg)}}
+.preloader-flower .petal{
+position:absolute;
+top:50%;left:50%;
+width:20px;height:35px;
+background:var(--rose);
+border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+transform-origin:center bottom;
+opacity:.8;
+}
+.preloader-flower .petal:nth-child(1){transform:translate(-50%,-100%) rotate(0deg)}
+.preloader-flower .petal:nth-child(2){transform:translate(-50%,-100%) rotate(45deg);background:var(--blush-deep)}
+.preloader-flower .petal:nth-child(3){transform:translate(-50%,-100%) rotate(90deg)}
+.preloader-flower .petal:nth-child(4){transform:translate(-50%,-100%) rotate(135deg);background:var(--blush-deep)}
+.preloader-flower .petal:nth-child(5){transform:translate(-50%,-100%) rotate(180deg)}
+.preloader-flower .petal:nth-child(6){transform:translate(-50%,-100%) rotate(225deg);background:var(--blush-deep)}
+.preloader-flower .petal:nth-child(7){transform:translate(-50%,-100%) rotate(270deg)}
+.preloader-flower .petal:nth-child(8){transform:translate(-50%,-100%) rotate(315deg);background:var(--blush-deep)}
+.preloader-flower .center{
+position:absolute;
+top:50%;left:50%;
+width:16px;height:16px;
+background:var(--gold);
+border-radius:50%;
+transform:translate(-50%,-50%);
+box-shadow:0 0 20px rgba(201,169,97,0.6);
+}
+.preloader-text{
+font-family:var(--font-display);
+font-size:clamp(1.5rem,3vw,2rem);
+font-weight:400;
+letter-spacing:.4em;
+color:var(--burgundy);
+}
+.preloader-text span{
 display:inline-block;
 opacity:0;
-transform:translateY(100%);
-animation:letterReveal .8s cubic-bezier(.2,.8,.2,1) forwards;
+animation:letterFade .6s forwards;
 }
-@keyframes letterReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes letterFade{to{opacity:1}}
 .preloader-line{
 width:0;height:1px;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
-animation:lineGrow 2s 1s cubic-bezier(.77,0,.18,1) forwards;
+background:linear-gradient(90deg,transparent,var(--rose),transparent);
+animation:lineGrow 2s .8s forwards;
 }
-@keyframes lineGrow{to{width:280px}}
-.preloader-sub{
-font-family:var(--font-elegant);
-font-style:italic;
-font-size:.9rem;
-letter-spacing:.3em;
-color:rgba(245,230,211,0.5);
-opacity:0;
-animation:fadeIn 1s 2s forwards;
-}
-@keyframes fadeIn{to{opacity:1}}
-.preloader-counter{
-position:absolute;
-bottom:3rem;right:3rem;
-font-family:var(--font-body);
-font-size:.7rem;
-letter-spacing:.3em;
-color:var(--gold);
-opacity:0;
-animation:fadeIn 1s 1.5s forwards;
-}
+@keyframes lineGrow{to{width:200px}}
 
-/* SLIDE */
-.slide{
-position:relative;
-min-height:100vh;
-display:flex;
-align-items:center;
+/* BACKGROUND DECOR */
+.bg-deco{
+position:fixed;inset:0;
+z-index:-1;
+pointer-events:none;
 overflow:hidden;
 }
-
-/* BACKGROUND LAYERS */
-.bg-layer{position:absolute;inset:0;z-index:0}
-.bg-image{
-position:absolute;inset:-10%;
-background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=2400&q=90');
-background-size:cover;
-background-position:center;
-filter:brightness(.35) saturate(1.2) contrast(1.1);
-transform:scale(1.15);
-will-change:transform;
-}
-.bg-overlay{
-position:absolute;inset:0;
-background:
-linear-gradient(135deg,rgba(13,7,5,0.9) 0%,rgba(26,15,10,0.5) 40%,rgba(13,7,5,0.85) 100%),
-radial-gradient(ellipse at 20% 80%,rgba(201,169,97,0.15),transparent 50%),
-radial-gradient(ellipse at 80% 20%,rgba(139,90,60,0.1),transparent 50%);
-}
-.bg-grain{
-position:absolute;inset:0;
-opacity:.04;
-pointer-events:none;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.bg-vignette{
-position:absolute;inset:0;
-background:radial-gradient(ellipse at center,transparent 30%,rgba(13,7,5,0.7) 100%);
-}
-
-/* CANVAS */
-canvas#particles{
-position:absolute;inset:0;
-z-index:2;
-pointer-events:none;
-}
-
-/* DECORATIVE ORBITALS */
-.orbital{
+.bg-blob{
 position:absolute;
-border:1px solid rgba(201,169,97,0.12);
 border-radius:50%;
-pointer-events:none;
+filter:blur(80px);
+opacity:.4;
+animation:blobFloat 20s ease-in-out infinite;
 }
-.orbital-1{
-width:700px;height:700px;
-top:-250px;right:-250px;
-animation:orbitSpin 80s linear infinite;
-}
-.orbital-2{
+.bg-blob-1{
 width:500px;height:500px;
-bottom:-150px;left:-150px;
-animation:orbitSpin 60s linear infinite reverse;
+background:var(--blush);
+top:-100px;left:-100px;
 }
-.orbital-3{
-width:350px;height:350px;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-border-style:dashed;
-opacity:.3;
-animation:orbitDash 40s linear infinite;
+.bg-blob-2{
+width:400px;height:400px;
+background:var(--sage);
+bottom:-100px;right:-100px;
+animation-delay:-10s;
 }
-@keyframes orbitSpin{to{transform:rotate(360deg)}}
-@keyframes orbitDash{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.orbital-dot{
-position:absolute;
-width:6px;height:6px;
-background:var(--gold);
-border-radius:50%;
-box-shadow:0 0 15px var(--gold);
+.bg-blob-3{
+width:300px;height:300px;
+background:var(--gold-light);
+top:40%;left:50%;
+opacity:.2;
+animation-delay:-5s;
 }
-.orbital-1 .orbital-dot{top:0;left:50%;transform:translate(-50%,-50%)}
-.orbital-2 .orbital-dot{bottom:0;left:50%;transform:translate(-50%,50%)}
+@keyframes blobFloat{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(50px,-30px) scale(1.1)}
+66%{transform:translate(-30px,40px) scale(.95)}
+}
 
-/* VERTICAL LINES */
-.v-line{
-position:absolute;
-top:0;bottom:0;
-width:1px;
-background:linear-gradient(180deg,transparent,rgba(201,169,97,0.15),transparent);
+canvas#petals{
+position:fixed;inset:0;
+z-index:0;
 pointer-events:none;
 }
-.v-line-1{left:8%}
-.v-line-2{right:8%}
 
-/* TOP BAR */
-.top-bar{
-position:absolute;
-top:0;left:0;right:0;
-z-index:10;
-padding:2rem 3rem;
-display:flex;
-justify-content:space-between;
-align-items:center;
-opacity:0;
-animation:slideDown 1s 2.5s cubic-bezier(.2,.8,.2,1) forwards;
+/* NAV */
+.nav{
+position:fixed;top:0;left:0;right:0;
+z-index:100;
+padding:1.5rem 3rem;
+display:flex;align-items:center;justify-content:space-between;
+transition:all .4s cubic-bezier(.2,.8,.2,1);
 }
-@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){.top-bar{padding:1.5rem 1.5rem}}
-
-.logo{
+.nav.scrolled{
+padding:1rem 3rem;
+background:rgba(253,249,243,0.85);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(212,120,140,0.1);
+}
+.nav-logo{
 font-family:var(--font-display);
-font-size:1.1rem;
+font-size:1.5rem;
 font-weight:500;
-letter-spacing:.4em;
-color:var(--gold);
-display:flex;
-align-items:center;
-gap:.85rem;
+letter-spacing:.3em;
+color:var(--burgundy);
+display:flex;align-items:center;gap:.75rem;
 }
-.logo-mark{
+.nav-logo-mark{
 width:36px;height:36px;
-border:1px solid var(--gold);
+position:relative;
+}
+.nav-logo-mark svg{width:100%;height:100%}
+.nav-menu{display:flex;gap:2.5rem;align-items:center}
+.nav-link{
+position:relative;
+font-size:.8rem;
+font-weight:500;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--ink-soft);
+transition:color .3s;
+padding:.5rem 0;
+}
+.nav-link::after{
+content:'';
+position:absolute;
+bottom:0;left:50%;
+width:0;height:1px;
+background:var(--rose);
+transition:all .4s cubic-bezier(.2,.8,.2,1);
+transform:translateX(-50%);
+}
+.nav-link:hover{color:var(--rose-deep)}
+.nav-link:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-switch{
+display:flex;gap:.25rem;
+padding:.3rem;
+background:rgba(255,255,255,0.6);
+border:1px solid rgba(212,120,140,0.15);
+border-radius:100px;
+backdrop-filter:blur(20px);
+}
+.lang-btn{
+padding:.4rem .8rem;
+font-size:.7rem;
+font-weight:600;
+letter-spacing:.1em;
+border-radius:100px;
+transition:all .3s;
+color:var(--text-dim);
+}
+.lang-btn.active{
+background:var(--rose);
+color:white;
+box-shadow:0 4px 15px rgba(212,120,140,0.3);
+}
+.nav-cart{
+position:relative;
+width:40px;height:40px;
+border-radius:50%;
+background:rgba(255,255,255,0.6);
+border:1px solid rgba(212,120,140,0.15);
+display:flex;align-items:center;justify-content:center;
+transition:all .3s;
+}
+.nav-cart:hover{background:var(--rose);color:white;border-color:var(--rose)}
+.nav-cart-count{
+position:absolute;
+top:-4px;right:-4px;
+width:18px;height:18px;
+background:var(--burgundy);
+color:white;
+font-size:.65rem;
+font-weight:700;
 border-radius:50%;
 display:flex;align-items:center;justify-content:center;
-font-size:.75rem;
-font-weight:700;
+}
+.burger{display:none;flex-direction:column;gap:5px;padding:.5rem}
+.burger span{width:22px;height:1.5px;background:var(--burgundy);transition:all .3s}
+@media(max-width:1024px){
+.nav-menu{display:none}
+.burger{display:flex}
+.nav{padding:1rem 1.5rem}
+.nav.scrolled{padding:.75rem 1.5rem}
+}
+.mobile-menu{
+position:fixed;inset:0;
+background:rgba(253,249,243,0.98);
+backdrop-filter:blur(30px);
+z-index:99;
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+opacity:0;visibility:hidden;
+transition:all .4s;
+}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu a{
+font-family:var(--font-display);
+font-size:2rem;
+font-weight:400;
+letter-spacing:.1em;
+color:var(--burgundy);
+transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--rose)}
+
+/* HERO */
+.hero{
 position:relative;
+min-height:100vh;
+display:flex;align-items:center;
+padding:8rem 3rem 4rem;
 overflow:hidden;
 }
-.logo-mark::before{
-content:'';
-position:absolute;inset:0;
-background:conic-gradient(from 0deg,transparent,var(--gold),transparent);
-animation:logoSpin 4s linear infinite;
-opacity:.3;
-}
-@keyframes logoSpin{to{transform:rotate(360deg)}}
-
-.top-nav{display:flex;gap:2.5rem}
-@media(max-width:768px){.top-nav{display:none}}
-.top-nav a{
-position:relative;
-font-size:.7rem;
-letter-spacing:.25em;
-text-transform:uppercase;
-color:rgba(245,230,211,0.6);
-transition:color .4s;
-padding:.25rem 0;
-}
-.top-nav a::after{
-content:'';
-position:absolute;
-bottom:0;left:0;
-width:0;height:1px;
-background:var(--gold);
-transition:width .4s cubic-bezier(.2,.8,.2,1);
-}
-.top-nav a:hover{color:var(--gold)}
-.top-nav a:hover::after{width:100%}
-
-/* CONTENT */
-.content{
-position:relative;
-z-index:5;
-width:100%;
-max-width:1400px;
+.hero-content{
+position:relative;z-index:5;
+width:100%;max-width:1400px;
 margin:0 auto;
-padding:8rem 3rem 6rem;
 display:grid;
 grid-template-columns:1.1fr 1fr;
-gap:5rem;
+gap:4rem;
 align-items:center;
 }
 @media(max-width:1024px){
-.content{grid-template-columns:1fr;text-align:center;padding:7rem 2rem 5rem;gap:3rem}
+.hero-content{grid-template-columns:1fr;text-align:center;padding:0 1rem}
+.hero{padding:7rem 1.5rem 3rem}
 }
-
-/* TEXT SIDE */
-.text-side{position:relative}
-.text-side>*{
-opacity:0;
-transform:translateY(40px);
-}
-.text-side.animate > *{
-animation:revealUp 1s cubic-bezier(.2,.8,.2,1) forwards;
-}
-.text-side.animate > *:nth-child(1){animation-delay:.2s}
-.text-side.animate > *:nth-child(2){animation-delay:.4s}
-.text-side.animate > *:nth-child(3){animation-delay:.6s}
-.text-side.animate > *:nth-child(4){animation-delay:.8s}
-.text-side.animate > *:nth-child(5){animation-delay:1s}
-@keyframes revealUp{to{opacity:1;transform:translateY(0)}}
-
-.brand-tag{
-display:inline-flex;
-align-items:center;
-gap:1rem;
-font-family:var(--font-body);
+.hero-text{position:relative}
+.hero-tag{
+display:inline-flex;align-items:center;gap:.75rem;
 font-size:.7rem;
 font-weight:500;
-letter-spacing:.45em;
+letter-spacing:.4em;
 text-transform:uppercase;
-color:var(--gold);
-margin-bottom:2.5rem;
-position:relative;
+color:var(--rose-deep);
+margin-bottom:2rem;
+padding:.5rem 1.25rem;
+background:rgba(245,213,208,0.3);
+border:1px solid rgba(212,120,140,0.2);
+border-radius:100px;
+backdrop-filter:blur(10px);
+opacity:0;
+animation:fadeUp 1s .3s forwards;
 }
-.brand-tag::before{
+.hero-tag::before{
 content:'';
-width:40px;height:1px;
-background:var(--gold);
+width:6px;height:6px;
+background:var(--rose);
+border-radius:50%;
+animation:pulse 2s infinite;
 }
-@media(max-width:1024px){
-.brand-tag{justify-content:center}
-.brand-tag::before{display:none}
-}
-
-.headline{
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-title{
 font-family:var(--font-display);
-font-size:clamp(3.2rem,7.5vw,7rem);
+font-size:clamp(3rem,7.5vw,6.5rem);
 font-weight:400;
 line-height:.95;
 letter-spacing:-.02em;
 margin-bottom:2rem;
-color:var(--cream-light);
+color:var(--burgundy);
 }
-.headline .line{
+.hero-title .line{
 display:block;
 overflow:hidden;
-padding-bottom:.1em;
 }
-.headline .line span{
+.hero-title .line span{
 display:inline-block;
-transform:translateY(110%);
-transition:transform 1.2s cubic-bezier(.2,.8,.2,1);
+opacity:0;
+transform:translateY(100%);
+animation:slideUp 1.2s cubic-bezier(.2,.8,.2,1) forwards;
 }
-.text-side.animate .headline .line:nth-child(1) span{transform:translateY(0);transition-delay:.5s}
-.text-side.animate .headline .line:nth-child(2) span{transform:translateY(0);transition-delay:.7s}
-.text-side.animate .headline .line:nth-child(3) span{transform:translateY(0);transition-delay:.9s}
-.headline em{
+.hero-title .line:nth-child(1) span{animation-delay:.5s}
+.hero-title .line:nth-child(2) span{animation-delay:.7s}
+.hero-title .line:nth-child(3) span{animation-delay:.9s}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+.hero-title em{
 font-style:italic;
 font-weight:500;
-background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+color:var(--rose-deep);
 position:relative;
 }
-
-.divider{
-width:80px;height:1px;
-background:linear-gradient(90deg,var(--gold),transparent);
-margin:2.5rem 0;
-position:relative;
-overflow:hidden;
-}
-.divider::after{
+.hero-title em::after{
 content:'';
 position:absolute;
-top:0;left:-100%;
-width:100%;height:100%;
-background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
-animation:shimmer 3s infinite;
+bottom:.1em;left:0;
+width:100%;height:2px;
+background:linear-gradient(90deg,var(--rose),transparent);
+opacity:.5;
 }
-@keyframes shimmer{to{left:100%}}
-@media(max-width:1024px){.divider{margin:2rem auto}}
-
-.subtitle{
+.hero-subtitle{
 font-family:var(--font-elegant);
-font-size:clamp(1.15rem,1.8vw,1.5rem);
+font-size:clamp(1.1rem,1.8vw,1.4rem);
 font-weight:300;
 font-style:italic;
 line-height:1.7;
-color:rgba(245,230,211,0.75);
-max-width:520px;
-margin-bottom:3rem;
+color:var(--ink-soft);
+max-width:500px;
+margin-bottom:2.5rem;
+opacity:0;
+animation:fadeUp 1s 1.1s forwards;
 }
-@media(max-width:1024px){.subtitle{margin-left:auto;margin-right:auto}}
-
-.cta-group{
-display:flex;
-gap:1.25rem;
-flex-wrap:wrap;
+@media(max-width:1024px){.hero-subtitle{margin-left:auto;margin-right:auto}}
+.hero-buttons{
+display:flex;gap:1rem;flex-wrap:wrap;
+opacity:0;
+animation:fadeUp 1s 1.3s forwards;
 }
-@media(max-width:1024px){.cta-group{justify-content:center}}
-
+@media(max-width:1024px){.hero-buttons{justify-content:center}}
 .btn{
 position:relative;
-padding:1.1rem 2.75rem;
-font-family:var(--font-body);
-font-size:.72rem;
-font-weight:500;
-letter-spacing:.3em;
+padding:1rem 2.25rem;
+font-size:.75rem;
+font-weight:600;
+letter-spacing:.25em;
 text-transform:uppercase;
-transition:all .5s cubic-bezier(.2,.8,.2,1);
+border-radius:100px;
+transition:all .4s cubic-bezier(.2,.8,.2,1);
 overflow:hidden;
-display:inline-flex;
-align-items:center;
-gap:.85rem;
-background:transparent;
-cursor:none;
+display:inline-flex;align-items:center;gap:.75rem;
 }
-@media(max-width:768px){.btn{cursor:pointer}}
 .btn-primary{
-background:var(--gold);
-color:var(--espresso);
-border:1px solid var(--gold);
+background:var(--burgundy);
+color:var(--cream);
+box-shadow:0 10px 30px rgba(107,45,62,0.25);
 }
 .btn-primary::before{
 content:'';
 position:absolute;inset:0;
-background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.4) 50%,transparent 70%);
+background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);
 transform:translateX(-100%);
 transition:transform .8s;
 }
 .btn-primary:hover::before{transform:translateX(100%)}
 .btn-primary:hover{
-background:var(--gold-light);
+background:var(--rose-deep);
 transform:translateY(-3px);
-box-shadow:0 15px 40px rgba(201,169,97,0.35);
+box-shadow:0 15px 40px rgba(184,85,112,0.35);
 }
 .btn-ghost{
-color:var(--cream);
-border:1px solid rgba(245,230,211,0.3);
+background:transparent;
+color:var(--burgundy);
+border:1px solid var(--burgundy);
 }
 .btn-ghost:hover{
-border-color:var(--gold);
-color:var(--gold);
+background:var(--burgundy);
+color:var(--cream);
 transform:translateY(-3px);
 }
-.btn svg{transition:transform .4s}
-.btn:hover svg{transform:translateX(5px)}
+.btn svg{transition:transform .3s}
+.btn:hover svg{transform:translateX(4px)}
 
-/* VISUAL SIDE */
-.visual-side{
-position:relative;
+.hero-meta{
+display:flex;gap:3rem;
+margin-top:4rem;
+padding-top:2rem;
+border-top:1px solid rgba(107,45,62,0.1);
 opacity:0;
-transform:translateX(60px);
+animation:fadeUp 1s 1.5s forwards;
 }
-.visual-side.animate{
-animation:revealRight 1.4s cubic-bezier(.2,.8,.2,1) .6s forwards;
-}
-@keyframes revealRight{to{opacity:1;transform:translateX(0)}}
-@media(max-width:1024px){
-.visual-side{max-width:480px;margin:0 auto}
-}
-
-.coffee-frame{
-position:relative;
-aspect-ratio:3/4;
-border-radius:4px;
-overflow:hidden;
-box-shadow:
-0 30px 80px rgba(0,0,0,0.6),
-0 0 0 1px rgba(201,169,97,0.2);
-}
-.coffee-frame::before{
-content:'';
-position:absolute;inset:0;
-background:linear-gradient(180deg,transparent 50%,rgba(13,7,5,0.7) 100%);
-z-index:2;
-pointer-events:none;
-}
-.coffee-frame::after{
-content:'';
-position:absolute;inset:0;
-border:1px solid rgba(201,169,97,0.25);
-border-radius:4px;
-z-index:3;
-pointer-events:none;
-}
-.coffee-img{
-width:100%;height:100%;
-object-fit:cover;
-transform:scale(1.15);
-transition:transform 10s cubic-bezier(.2,.8,.2,1);
-filter:saturate(1.1) contrast(1.05);
-}
-.visual-side.animate .coffee-img{
-animation:imgReveal 2s cubic-bezier(.2,.8,.2,1) .8s forwards,imgFloat 20s 3s ease-in-out infinite alternate;
-}
-@keyframes imgReveal{
-from{transform:scale(1.4);filter:saturate(0) contrast(1) brightness(.5)}
-to{transform:scale(1.15);filter:saturate(1.1) contrast(1.05) brightness(1)}
-}
-@keyframes imgFloat{
-0%{transform:scale(1.15)}
-100%{transform:scale(1.25)}
-}
-
-/* GOLD SHIMMER OVERLAY */
-.gold-shimmer{
-position:absolute;inset:0;
-background:linear-gradient(115deg,transparent 40%,rgba(201,169,97,0.15) 50%,transparent 60%);
-transform:translateX(-100%);
-z-index:4;
-pointer-events:none;
-}
-.visual-side.animate .gold-shimmer{
-animation:shimmerSweep 2s 1.5s cubic-bezier(.77,0,.18,1) forwards;
-}
-@keyframes shimmerSweep{to{transform:translateX(100%)}}
-
-/* CORNERS */
-.corner{
-position:absolute;
-width:30px;height:30px;
-border:1px solid var(--gold);
-opacity:.5;
-z-index:5;
-}
-.corner-tl{top:12px;left:12px;border-right:none;border-bottom:none}
-.corner-tr{top:12px;right:12px;border-left:none;border-bottom:none}
-.corner-bl{bottom:12px;left:12px;border-right:none;border-top:none}
-.corner-br{bottom:12px;right:12px;border-left:none;border-top:none}
-
-/* STEAM SVG */
-.steam-wrap{
-position:absolute;
-top:15%;left:50%;
-transform:translateX(-50%);
-z-index:3;
-pointer-events:none;
-width:120px;height:200px;
-}
-.steam-path{
-fill:none;
-stroke:rgba(245,230,211,0.25);
-stroke-width:2;
-stroke-linecap:round;
-filter:blur(2px);
-}
-
-/* FLOATING BADGE */
-.float-badge{
-position:absolute;
-bottom:-40px;left:-40px;
-background:rgba(13,7,5,0.85);
-backdrop-filter:blur(25px);
--webkit-backdrop-filter:blur(25px);
-border:1px solid rgba(201,169,97,0.3);
-padding:1.75rem 2.25rem;
-z-index:6;
-opacity:0;
-transform:translateY(30px);
-}
-.visual-side.animate .float-badge{
-animation:badgeReveal 1s 2s cubic-bezier(.2,.8,.2,1) forwards,badgeFloat 5s 3s ease-in-out infinite;
-}
-@keyframes badgeReveal{to{opacity:1;transform:translateY(0)}}
-@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@media(max-width:1024px){
-.float-badge{bottom:-25px;left:50%;transform:translateX(-50%) translateY(30px)}
-.visual-side.animate .float-badge{
-animation:badgeRevealMob 1s 2s cubic-bezier(.2,.8,.2,1) forwards,badgeFloatMob 5s 3s ease-in-out infinite;
-}
-@keyframes badgeRevealMob{to{opacity:1;transform:translateX(-50%) translateY(0)}}
-@keyframes badgeFloatMob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
-}
-.badge-label{
-font-family:var(--font-body);
-font-size:.6rem;
-letter-spacing:.35em;
-text-transform:uppercase;
-color:var(--gold);
-margin-bottom:.6rem;
-display:flex;align-items:center;gap:.6rem;
-}
-.badge-label::before{
-content:'';
-width:20px;height:1px;
-background:var(--gold);
-}
-.badge-value{
+@media(max-width:1024px){.hero-meta{justify-content:center}}
+.hero-meta-item{display:flex;flex-direction:column;gap:.25rem}
+.hero-meta-num{
 font-family:var(--font-display);
 font-size:2rem;
 font-weight:500;
-color:var(--cream-light);
+color:var(--burgundy);
 line-height:1;
-letter-spacing:.02em;
 }
-.badge-sub{
+.hero-meta-lbl{
+font-size:.7rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--text-dim);
+}
+
+/* HERO VISUAL */
+.hero-visual{
+position:relative;
+opacity:0;
+animation:revealRight 1.4s cubic-bezier(.2,.8,.2,1) .6s forwards;
+}
+@keyframes revealRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:1024px){.hero-visual{max-width:500px;margin:0 auto}}
+.hero-frame{
+position:relative;
+aspect-ratio:3/4;
+border-radius:200px 200px 20px 20px;
+overflow:hidden;
+box-shadow:
+0 40px 80px rgba(107,45,62,0.25),
+0 0 0 1px rgba(201,169,97,0.2);
+}
+.hero-frame::before{
+content:'';
+position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 50%,rgba(107,45,62,0.4) 100%);
+z-index:2;
+pointer-events:none;
+}
+.hero-img{
+width:100%;height:100%;
+object-fit:cover;
+animation:imgFloat 20s ease-in-out infinite alternate;
+}
+@keyframes imgFloat{
+0%{transform:scale(1.05)}
+100%{transform:scale(1.15)}
+}
+.hero-frame-deco{
+position:absolute;
+top:-20px;left:-20px;right:-20px;bottom:-20px;
+border:1px solid rgba(201,169,97,0.3);
+border-radius:220px 220px 30px 30px;
+pointer-events:none;
+animation:frameFloat 6s ease-in-out infinite;
+}
+@keyframes frameFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-10px,-10px)}}
+
+.float-card{
+position:absolute;
+background:rgba(253,249,243,0.9);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid rgba(212,120,140,0.2);
+padding:1.25rem 1.5rem;
+border-radius:16px;
+box-shadow:0 20px 40px rgba(107,45,62,0.15);
+z-index:5;
+}
+.float-card-1{
+bottom:10%;left:-30px;
+animation:floatCard 5s ease-in-out infinite;
+}
+.float-card-2{
+top:15%;right:-30px;
+animation:floatCard 5s ease-in-out infinite reverse;
+}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@media(max-width:1024px){
+.float-card-1{left:10px;bottom:5%}
+.float-card-2{right:10px;top:5%}
+}
+.fc-label{
+font-size:.6rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--rose-deep);
+margin-bottom:.4rem;
+}
+.fc-value{
+font-family:var(--font-display);
+font-size:1.25rem;
+font-weight:500;
+color:var(--burgundy);
+line-height:1.2;
+}
+.fc-sub{
+font-family:var(--font-elegant);
+font-size:.85rem;
+font-style:italic;
+color:var(--text-dim);
+margin-top:.2rem;
+}
+
+.scroll-hint{
+position:absolute;
+bottom:2rem;left:50%;
+transform:translateX(-50%);
+display:flex;flex-direction:column;align-items:center;gap:.75rem;
+z-index:5;
+opacity:0;
+animation:fadeUp 1s 2s forwards;
+}
+.scroll-hint span{
+font-size:.65rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--text-dim);
+}
+.scroll-mouse{
+width:24px;height:38px;
+border:1px solid var(--rose);
+border-radius:12px;
+position:relative;
+}
+.scroll-mouse::after{
+content:'';
+position:absolute;
+top:6px;left:50%;
+transform:translateX(-50%);
+width:3px;height:8px;
+background:var(--rose);
+border-radius:2px;
+animation:scrollDot 2s infinite;
+}
+@keyframes scrollDot{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(12px)}}
+
+/* SECTIONS */
+section{position:relative;padding:7rem 3rem;z-index:5}
+@media(max-width:768px){section{padding:5rem 1.5rem}}
+.container{max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:5rem}
+.section-tag{
+display:inline-block;
+font-size:.7rem;
+letter-spacing:.4em;
+text-transform:uppercase;
+color:var(--rose-deep);
+margin-bottom:1.25rem;
+padding:.5rem 1.25rem;
+background:rgba(245,213,208,0.3);
+border:1px solid rgba(212,120,140,0.2);
+border-radius:100px;
+}
+.section-title{
+font-family:var(--font-display);
+font-size:clamp(2.5rem,5.5vw,4.5rem);
+font-weight:400;
+line-height:1.05;
+letter-spacing:-.01em;
+margin-bottom:1.25rem;
+color:var(--burgundy);
+}
+.section-title em{
+font-style:italic;
+font-weight:500;
+color:var(--rose-deep);
+}
+.section-subtitle{
+font-family:var(--font-elegant);
+font-size:clamp(1.05rem,1.5vw,1.25rem);
+font-weight:300;
+font-style:italic;
+color:var(--text-dim);
+max-width:600px;
+margin:0 auto;
+}
+.reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* COLLECTIONS */
+.collections{
+background:linear-gradient(180deg,transparent,rgba(245,213,208,0.15),transparent);
+}
+.collections-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:2rem;
+margin-top:3rem;
+}
+@media(max-width:1024px){.collections-grid{grid-template-columns:1fr}}
+.collection-card{
+position:relative;
+background:var(--cream);
+border:1px solid rgba(212,120,140,0.1);
+border-radius:24px;
+overflow:hidden;
+transition:all .5s cubic-bezier(.2,.8,.2,1);
+cursor:none;
+}
+.collection-card:hover{
+transform:translateY(-10px);
+box-shadow:0 30px 60px rgba(107,45,62,0.15);
+border-color:rgba(212,120,140,0.3);
+}
+.collection-img-wrap{
+position:relative;
+aspect-ratio:4/5;
+overflow:hidden;
+}
+.collection-img{
+width:100%;height:100%;
+object-fit:cover;
+transition:transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.collection-card:hover .collection-img{transform:scale(1.08)}
+.collection-img-wrap::after{
+content:'';
+position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 50%,rgba(107,45,62,0.3) 100%);
+}
+.collection-badge{
+position:absolute;
+top:1.25rem;left:1.25rem;
+padding:.4rem 1rem;
+background:rgba(253,249,243,0.9);
+backdrop-filter:blur(10px);
+border-radius:100px;
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--burgundy);
+font-weight:600;
+z-index:2;
+}
+.collection-quick{
+position:absolute;
+bottom:1.25rem;right:1.25rem;
+width:44px;height:44px;
+background:var(--cream);
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+color:var(--burgundy);
+transition:all .3s;
+z-index:2;
+transform:translateY(20px);
+opacity:0;
+}
+.collection-card:hover .collection-quick{transform:translateY(0);opacity:1}
+.collection-quick:hover{background:var(--rose);color:white}
+.collection-info{padding:1.75rem}
+.collection-name{
+font-family:var(--font-display);
+font-size:1.5rem;
+font-weight:500;
+color:var(--burgundy);
+margin-bottom:.4rem;
+}
+.collection-desc{
+font-family:var(--font-elegant);
+font-size:1rem;
+font-style:italic;
+color:var(--text-dim);
+margin-bottom:1.25rem;
+}
+.collection-footer{
+display:flex;justify-content:space-between;align-items:center;
+padding-top:1rem;
+border-top:1px solid rgba(212,120,140,0.1);
+}
+.collection-price{
+font-family:var(--font-display);
+font-size:1.25rem;
+font-weight:600;
+color:var(--burgundy);
+}
+.collection-price .from{
+font-size:.7rem;
+font-weight:400;
+color:var(--text-dim);
+letter-spacing:.1em;
+text-transform:uppercase;
+display:block;
+margin-bottom:.15rem;
+}
+.collection-add{
+padding:.6rem 1.25rem;
+background:var(--burgundy);
+color:var(--cream);
+border-radius:100px;
+font-size:.7rem;
+font-weight:600;
+letter-spacing:.15em;
+text-transform:uppercase;
+transition:all .3s;
+}
+.collection-add:hover{background:var(--rose-deep)}
+
+/* STORY */
+.story{
+background:linear-gradient(180deg,transparent,rgba(168,184,158,0.1),transparent);
+}
+.story-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:5rem;
+align-items:center;
+margin-top:3rem;
+}
+@media(max-width:1024px){.story-grid{grid-template-columns:1fr;gap:3rem}}
+.story-visual{
+position:relative;
+}
+.story-img-main{
+aspect-ratio:4/5;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 30px 60px rgba(107,45,62,0.2);
+}
+.story-img-main img{width:100%;height:100%;object-fit:cover}
+.story-img-small{
+position:absolute;
+bottom:-40px;right:-40px;
+width:200px;
+aspect-ratio:1;
+border-radius:20px;
+overflow:hidden;
+border:6px solid var(--cream);
+box-shadow:0 20px 40px rgba(107,45,62,0.2);
+}
+.story-img-small img{width:100%;height:100%;object-fit:cover}
+@media(max-width:768px){.story-img-small{width:150px;bottom:-20px;right:-10px}}
+.story-text h3{
+font-family:var(--font-display);
+font-size:clamp(2rem,4vw,3rem);
+font-weight:400;
+line-height:1.1;
+color:var(--burgundy);
+margin-bottom:1.5rem;
+}
+.story-text h3 em{font-style:italic;color:var(--rose-deep)}
+.story-text p{
+color:var(--ink-soft);
+margin-bottom:1.25rem;
+line-height:1.8;
+font-size:1rem;
+}
+.story-signature{
+margin-top:2rem;
+display:flex;align-items:center;gap:1rem;
+}
+.story-sig-img{
+width:60px;height:60px;
+border-radius:50%;
+overflow:hidden;
+border:2px solid var(--gold);
+}
+.story-sig-img img{width:100%;height:100%;object-fit:cover}
+.story-sig-text{
+font-family:var(--font-display);
+font-style:italic;
+font-size:1.1rem;
+color:var(--burgundy);
+}
+.story-sig-text span{
+display:block;
+font-family:var(--font-body);
+font-style:normal;
+font-size:.7rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--text-dim);
+margin-top:.25rem;
+}
+
+/* OCCASIONS */
+.occasions-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:1.5rem;
+margin-top:3rem;
+}
+@media(max-width:1024px){.occasions-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.occasions-grid{grid-template-columns:1fr}}
+.occasion-card{
+position:relative;
+aspect-ratio:3/4;
+border-radius:20px;
+overflow:hidden;
+cursor:none;
+transition:all .5s;
+}
+.occasion-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(107,45,62,0.2)}
+.occasion-card img{
+width:100%;height:100%;
+object-fit:cover;
+transition:transform 1s;
+}
+.occasion-card:hover img{transform:scale(1.1)}
+.occasion-card::after{
+content:'';
+position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 40%,rgba(107,45,62,0.85) 100%);
+}
+.occasion-content{
+position:absolute;
+bottom:0;left:0;right:0;
+padding:1.75rem;
+z-index:2;
+color:var(--cream);
+}
+.occasion-icon{
+font-size:1.5rem;
+margin-bottom:.75rem;
+color:var(--gold-light);
+}
+.occasion-name{
+font-family:var(--font-display);
+font-size:1.35rem;
+font-weight:500;
+margin-bottom:.25rem;
+}
+.occasion-count{
 font-family:var(--font-elegant);
 font-size:.9rem;
 font-style:italic;
-color:rgba(245,230,211,0.6);
-margin-top:.35rem;
-}
-
-/* ROTATING RING AROUND BADGE */
-.badge-ring{
-position:absolute;
-top:-8px;left:-8px;right:-8px;bottom:-8px;
-border:1px dashed rgba(201,169,97,0.2);
-animation:ringRotate 20s linear infinite;
-pointer-events:none;
-}
-@keyframes ringRotate{to{transform:rotate(360deg)}}
-
-/* BOTTOM BAR */
-.bottom-bar{
-position:absolute;
-bottom:0;left:0;right:0;
-z-index:10;
-padding:1.75rem 3rem;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-top:1px solid rgba(201,169,97,0.1);
-background:linear-gradient(180deg,transparent,rgba(13,7,5,0.6));
-opacity:0;
-animation:slideUpBar 1s 2.8s cubic-bezier(.2,.8,.2,1) forwards;
-}
-@keyframes slideUpBar{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){
-.bottom-bar{
-flex-direction:column;
-gap:1.25rem;
-padding:1.5rem;
-text-align:center;
-}
-}
-.bottom-info{display:flex;gap:3rem;flex-wrap:wrap}
-@media(max-width:768px){.bottom-info{justify-content:center;gap:2rem}}
-.info-item{display:flex;flex-direction:column;gap:.3rem}
-.info-label{
-font-size:.6rem;
-letter-spacing:.35em;
-text-transform:uppercase;
-color:var(--gold);
 opacity:.8;
 }
-.info-value{
+
+/* FEATURES */
+.features{
+background:linear-gradient(180deg,transparent,rgba(201,169,97,0.08),transparent);
+}
+.features-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:2rem;
+margin-top:3rem;
+}
+@media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.features-grid{grid-template-columns:1fr}}
+.feature-card{
+text-align:center;
+padding:2.5rem 1.5rem;
+background:var(--cream);
+border:1px solid rgba(212,120,140,0.1);
+border-radius:20px;
+transition:all .4s;
+}
+.feature-card:hover{
+transform:translateY(-8px);
+border-color:rgba(212,120,140,0.3);
+box-shadow:0 20px 40px rgba(107,45,62,0.1);
+}
+.feature-icon{
+width:70px;height:70px;
+margin:0 auto 1.5rem;
+border-radius:50%;
+background:linear-gradient(135deg,var(--blush),var(--blush-deep));
+display:flex;align-items:center;justify-content:center;
+font-size:1.75rem;
+color:var(--burgundy);
+box-shadow:0 10px 25px rgba(212,120,140,0.2);
+}
+.feature-card h4{
+font-family:var(--font-display);
+font-size:1.2rem;
+font-weight:500;
+color:var(--burgundy);
+margin-bottom:.5rem;
+}
+.feature-card p{
+font-size:.9rem;
+color:var(--text-dim);
+line-height:1.6;
+}
+
+/* TESTIMONIALS */
+.testimonials{
+background:linear-gradient(180deg,transparent,rgba(245,213,208,0.2),transparent);
+}
+.testimonials-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:2rem;
+margin-top:3rem;
+}
+@media(max-width:1024px){.testimonials-grid{grid-template-columns:1fr}}
+.testimonial-card{
+padding:2.5rem;
+background:var(--cream);
+border:1px solid rgba(212,120,140,0.1);
+border-radius:24px;
+position:relative;
+transition:all .4s;
+}
+.testimonial-card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(107,45,62,0.1);
+}
+.testimonial-card::before{
+content:'"';
+position:absolute;
+top:1rem;right:1.5rem;
+font-family:var(--font-display);
+font-size:6rem;
+color:var(--rose);
+opacity:.15;
+line-height:1;
+}
+.testimonial-stars{
+color:var(--gold);
+margin-bottom:1rem;
+letter-spacing:.1em;
+}
+.testimonial-text{
 font-family:var(--font-elegant);
-font-size:.95rem;
+font-size:1.1rem;
+font-style:italic;
+line-height:1.7;
+color:var(--ink-soft);
+margin-bottom:1.5rem;
+position:relative;
+z-index:1;
+}
+.testimonial-author{
+display:flex;align-items:center;gap:1rem;
+padding-top:1.25rem;
+border-top:1px solid rgba(212,120,140,0.1);
+}
+.testimonial-avatar{
+width:50px;height:50px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--rose),var(--burgundy));
+display:flex;align-items:center;justify-content:center;
 color:var(--cream);
-font-weight:400;
-letter-spacing:.05em;
+font-weight:700;
+font-family:var(--font-display);
 }
-.scroll-hint{
-display:flex;
-align-items:center;
-gap:.85rem;
-font-size:.65rem;
-letter-spacing:.35em;
-text-transform:uppercase;
-color:rgba(245,230,211,0.5);
+.testimonial-name{font-weight:600;color:var(--burgundy);margin-bottom:.15rem}
+.testimonial-role{font-size:.8rem;color:var(--text-dim);font-style:italic}
+
+/* CTA */
+.cta-section{
+padding:6rem 3rem;
 }
-.scroll-line{
-width:50px;height:1px;
-background:rgba(201,169,97,0.3);
+.cta-wrap{
+max-width:1200px;
+margin:0 auto;
+padding:5rem 3rem;
+background:linear-gradient(135deg,var(--burgundy),var(--rose-deep));
+border-radius:32px;
+text-align:center;
 position:relative;
 overflow:hidden;
+box-shadow:0 40px 80px rgba(107,45,62,0.3);
 }
-.scroll-line::after{
+.cta-wrap::before{
 content:'';
 position:absolute;
-top:0;left:-50%;
-width:50%;height:100%;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 50%);
+animation:ctaGlow 10s ease-in-out infinite;
+}
+@keyframes ctaGlow{0%,100%{transform:translate(0,0)}50%{transform:translate(10%,10%)}}
+.cta-wrap > *{position:relative;z-index:2}
+.cta-wrap h2{
+font-family:var(--font-display);
+font-size:clamp(2rem,5vw,3.5rem);
+font-weight:400;
+color:var(--cream);
+margin-bottom:1rem;
+line-height:1.1;
+}
+.cta-wrap h2 em{font-style:italic;color:var(--gold-light)}
+.cta-wrap p{
+font-family:var(--font-elegant);
+font-size:1.15rem;
+font-style:italic;
+color:rgba(253,249,243,0.85);
+max-width:500px;
+margin:0 auto 2.5rem;
+}
+.cta-form{
+max-width:500px;
+margin:0 auto;
+display:flex;gap:.75rem;
+flex-wrap:wrap;
+}
+.cta-form input{
+flex:1;
+min-width:200px;
+padding:1rem 1.5rem;
+background:rgba(253,249,243,0.15);
+border:1px solid rgba(253,249,243,0.3);
+border-radius:100px;
+color:var(--cream);
+font-family:inherit;
+font-size:.95rem;
+outline:none;
+transition:all .3s;
+}
+.cta-form input::placeholder{color:rgba(253,249,243,0.6)}
+.cta-form input:focus{background:rgba(253,249,243,0.25);border-color:var(--gold-light)}
+.cta-form button{
+padding:1rem 2rem;
 background:var(--gold);
-animation:scrollAnim 2.5s infinite;
-}
-@keyframes scrollAnim{0%{left:-50%}100%{left:100%}}
-
-/* SIDE LABEL */
-.side-label{
-position:absolute;
-right:3rem;top:50%;
-transform:translateY(-50%) rotate(90deg);
-transform-origin:right center;
-font-size:.6rem;
-letter-spacing:.5em;
+color:var(--burgundy);
+border-radius:100px;
+font-weight:600;
+font-size:.75rem;
+letter-spacing:.2em;
 text-transform:uppercase;
-color:rgba(201,169,97,0.4);
-z-index:5;
-opacity:0;
-animation:fadeIn 1s 3s forwards;
+transition:all .3s;
 }
-@media(max-width:1024px){.side-label{display:none}}
+.cta-form button:hover{background:var(--gold-light);transform:translateY(-2px)}
 
-/* MAGNETIC EFFECT */
+/* FOOTER */
+.footer{
+padding:5rem 3rem 2rem;
+background:var(--burgundy-deep);
+color:var(--cream);
+position:relative;
+z-index:5;
+}
+.footer-grid{
+max-width:1400px;
+margin:0 auto;
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:3rem;
+margin-bottom:3rem;
+}
+@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand .logo{
+font-family:var(--font-display);
+font-size:1.5rem;
+letter-spacing:.3em;
+color:var(--gold-light);
+margin-bottom:1.25rem;
+display:flex;align-items:center;gap:.75rem;
+}
+.footer-brand p{
+color:rgba(253,249,243,0.7);
+line-height:1.7;
+margin-bottom:1.5rem;
+max-width:380px;
+font-size:.9rem;
+}
+.social-links{display:flex;gap:.75rem}
+.social-link{
+width:40px;height:40px;
+border-radius:50%;
+background:rgba(253,249,243,0.1);
+border:1px solid rgba(253,249,243,0.2);
+display:flex;align-items:center;justify-content:center;
+transition:all .3s;
+font-size:.85rem;
+}
+.social-link:hover{
+background:var(--gold);
+color:var(--burgundy-deep);
+border-color:var(--gold);
+transform:translateY(-3px);
+}
+.footer-col h4{
+font-family:var(--font-display);
+font-size:.85rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--gold-light);
+margin-bottom:1.25rem;
+font-weight:500;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col a{
+color:rgba(253,249,243,0.7);
+font-size:.9rem;
+transition:color .3s;
+}
+.footer-col a:hover{color:var(--gold-light)}
+.footer-contact-item{
+display:flex;align-items:flex-start;gap:.75rem;
+margin-bottom:.75rem;
+font-size:.9rem;
+color:rgba(253,249,243,0.7);
+}
+.footer-contact-item span:first-child{color:var(--gold-light)}
+.footer-bottom{
+max-width:1400px;
+margin:0 auto;
+padding-top:2rem;
+border-top:1px solid rgba(253,249,243,0.1);
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:1rem;
+font-size:.8rem;
+color:rgba(253,249,243,0.5);
+}
+
+/* RIPPLE */
+.ripple{
+position:absolute;
+border-radius:50%;
+background:rgba(212,120,140,0.3);
+transform:scale(0);
+animation:rippleAnim .6s linear;
+pointer-events:none;
+}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
 .magnetic{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+
+@media(max-width:768px){.cursor-dot,.cursor-ring,.cursor-petal{display:none}}
 </style>
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- PRELOADER -->
 <div class="preloader" id="preloader">
-<div class="preloader-logo" id="preLogo">AURUM</div>
-<div class="preloader-line"></div>
-<div class="preloader-sub">The Art of Coffee</div>
-<div class="preloader-counter" id="counter">0%</div>
+<div class="preloader-flower">
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="petal"></div>
+<div class="center"></div>
 </div>
+<div class="preloader-text" id="preText">FLEUR</div>
+<div class="preloader-line"></div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="bg-deco">
+<div class="bg-blob bg-blob-1"></div>
+<div class="bg-blob bg-blob-2"></div>
+<div class="bg-blob bg-blob-3"></div>
+</div>
+<canvas id="petals"></canvas>
 
 <!-- CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-petal" id="cursorPetal">🌸</div>
 
-<!-- SLIDE -->
-<div class="slide">
-
-<!-- BACKGROUND -->
-<div class="bg-layer">
-<div class="bg-image" id="bgImage"></div>
-<div class="bg-overlay"></div>
-<div class="bg-grain"></div>
-<div class="bg-vignette"></div>
-</div>
-
-<canvas id="particles"></canvas>
-
-<!-- ORBITALS -->
-<div class="orbital orbital-1"><div class="orbital-dot"></div></div>
-<div class="orbital orbital-2"><div class="orbital-dot"></div></div>
-<div class="orbital orbital-3"></div>
-
-<!-- VERTICAL LINES -->
-<div class="v-line v-line-1"></div>
-<div class="v-line v-line-2"></div>
-
-<!-- TOP BAR -->
-<div class="top-bar">
-<div class="logo">
-<div class="logo-mark">A</div>
-AURUM
-</div>
-<nav class="top-nav">
-<a href="#" class="magnetic">Collection</a>
-<a href="#" class="magnetic">Origin</a>
-<a href="#" class="magnetic">Experience</a>
-<a href="#" class="magnetic">Reserve</a>
-</nav>
-</div>
-
-<!-- SIDE LABEL -->
-<div class="side-label">Est. MMXXIV · Single Origin · Artisan Roast</div>
-
-<!-- CONTENT -->
-<div class="content">
-
-<!-- TEXT -->
-<div class="text-side" id="textSide">
-<div class="brand-tag">Artisan Coffee · Since 2024</div>
-<h1 class="headline">
-<span class="line"><span>The Art of</span></span>
-<span class="line"><span><em>Premium</em></span></span>
-<span class="line"><span>Coffee</span></span>
-</h1>
-<div class="divider"></div>
-<p class="subtitle">
-Where every cup tells a story — hand-selected beans from the world's finest estates, masterfully roasted, and served with timeless elegance.
-</p>
-<div class="cta-group">
-<a href="#" class="btn btn-primary magnetic">
-Discover Collection
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-</a>
-<a href="#" class="btn btn-ghost magnetic">Our Story</a>
-</div>
-</div>
-
-<!-- VISUAL -->
-<div class="visual-side" id="visualSide">
-<div class="coffee-frame" id="coffeeFrame">
-<div class="corner corner-tl"></div>
-<div class="corner corner-tr"></div>
-<div class="corner corner-bl"></div>
-<div class="corner corner-br"></div>
-<img class="coffee-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=90" alt="Premium Coffee">
-<div class="gold-shimmer"></div>
-
-<!-- STEAM -->
-<svg class="steam-wrap" viewBox="0 0 120 200">
-<path class="steam-path" d="M 30 200 Q 20 150 35 120 Q 50 90 30 60 Q 15 30 30 0">
-<animate attributeName="d" dur="4s" repeatCount="indefinite"
-values="M 30 200 Q 20 150 35 120 Q 50 90 30 60 Q 15 30 30 0;
-M 30 200 Q 40 150 25 120 Q 10 90 30 60 Q 45 30 30 0;
-M 30 200 Q 20 150 35 120 Q 50 90 30 60 Q 15 30 30 0"/>
-<animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0.2;0.5;0.2"/>
-</path>
-<path class="steam-path" d="M 60 200 Q 70 160 55 130 Q 40 100 60 70 Q 75 40 60 10">
-<animate attributeName="d" dur="5s" repeatCount="indefinite"
-values="M 60 200 Q 70 160 55 130 Q 40 100 60 70 Q 75 40 60 10;
-M 60 200 Q 50 160 65 130 Q 80 100 60 70 Q 45 40 60 10;
-M 60 200 Q 70 160 55 130 Q 40 100 60 70 Q 75 40 60 10"/>
-<animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0.15;0.4;0.15"/>
-</path>
-<path class="steam-path" d="M 90 200 Q 80 155 95 125 Q 110 95 90 65 Q 75 35 90 5">
-<animate attributeName="d" dur="4.5s" repeatCount="indefinite"
-values="M 90 200 Q 80 155 95 125 Q 110 95 90 65 Q 75 35 90 5;
-M 90 200 Q 100 155 85 125 Q 70 95 90 65 Q 105 35 90 5;
-M 90 200 Q 80 155 95 125 Q 110 95 90 65 Q 75 35 90 5"/>
-<animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" values="0.1;0.35;0.1"/>
-</path>
+<!-- NAV -->
+<nav class="nav" id="nav">
+<a href="#" class="nav-logo">
+<div class="nav-logo-mark">
+<svg viewBox="0 0 40 40" fill="none">
+<circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1"/>
+<path d="M20 8 Q24 16 20 20 Q16 16 20 8 Z" fill="currentColor" opacity=".8"/>
+<path d="M20 32 Q24 24 20 20 Q16 24 20 32 Z" fill="currentColor" opacity=".8"/>
+<path d="M8 20 Q16 16 20 20 Q16 24 8 20 Z" fill="currentColor" opacity=".6"/>
+<path d="M32 20 Q24 16 20 20 Q24 24 32 20 Z" fill="currentColor" opacity=".6"/>
+<circle cx="20" cy="20" r="2" fill="currentColor"/>
 </svg>
 </div>
+<span>FLEUR</span>
+</a>
+<div class="nav-menu">
+<a href="#collections" class="nav-link" data-i18n="navCol">Collections</a>
+<a href="#story" class="nav-link" data-i18n="navStory">Our Story</a>
+<a href="#occasions" class="nav-link" data-i18n="navOcc">Occasions</a>
+<a href="#features" class="nav-link" data-i18n="navFeat">Services</a>
+<a href="#contact" class="nav-link" data-i18n="navContact">Contact</a>
+</div>
+<div class="nav-right">
+<div class="lang-switch">
+<button class="lang-btn active" data-lang="en">EN</button>
+<button class="lang-btn" data-lang="hy">ՀԱՅ</button>
+<button class="lang-btn" data-lang="ru">RU</button>
+</div>
+<a href="#" class="nav-cart magnetic">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+<span class="nav-cart-count">2</span>
+</a>
+<div class="burger" id="burger"><span></span><span></span><span></span></div>
+</div>
+</nav>
 
-<div class="float-badge">
-<div class="badge-ring"></div>
-<div class="badge-label">Single Origin</div>
-<div class="badge-value">Ethiopia</div>
-<div class="badge-sub">Yirgacheffe · 1,900m</div>
-</div>
-</div>
-
+<div class="mobile-menu" id="mobileMenu">
+<a href="#collections" data-i18n="navCol">Collections</a>
+<a href="#story" data-i18n="navStory">Our Story</a>
+<a href="#occasions" data-i18n="navOcc">Occasions</a>
+<a href="#features" data-i18n="navFeat">Services</a>
+<a href="#contact" data-i18n="navContact">Contact</a>
 </div>
 
-<!-- BOTTOM BAR -->
-<div class="bottom-bar">
-<div class="bottom-info">
-<div class="info-item">
-<span class="info-label">Temperature</span>
-<span class="info-value">92°C Optimal</span>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-tag"><span data-i18n="heroTag">Artisan Floral Atelier</span></div>
+<h1 class="hero-title">
+<span class="line"><span data-i18n="heroT1">Where Flowers</span></span>
+<span class="line"><span data-i18n="heroT2">Become <em>Art</em></span></span>
+<span class="line"><span data-i18n="heroT3">& Emotion</span></span>
+</h1>
+<p class="hero-subtitle" data-i18n="heroSub">Bespoke bouquets crafted with passion — each arrangement a unique expression of beauty, designed to tell your story through petals and perfume.</p>
+<div class="hero-buttons">
+<a href="#collections" class="btn btn-primary magnetic">
+<span data-i18n="heroBtn1">Shop Collection</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+<a href="#story" class="btn btn-ghost magnetic" data-i18n="heroBtn2">Our Story</a>
 </div>
-<div class="info-item">
-<span class="info-label">Roast Profile</span>
-<span class="info-value">Medium Artisan</span>
+<div class="hero-meta">
+<div class="hero-meta-item">
+<div class="hero-meta-num">15+</div>
+<div class="hero-meta-lbl" data-i18n="meta1">Years of Craft</div>
 </div>
-<div class="info-item">
-<span class="info-label">Tasting Notes</span>
-<span class="info-value">Chocolate · Citrus · Jasmine</span>
+<div class="hero-meta-item">
+<div class="hero-meta-num">50K</div>
+<div class="hero-meta-lbl" data-i18n="meta2">Happy Clients</div>
+</div>
+<div class="hero-meta-item">
+<div class="hero-meta-num">200+</div>
+<div class="hero-meta-lbl" data-i18n="meta3">Flower Varieties</div>
+</div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-frame-deco"></div>
+<div class="hero-frame">
+<img class="hero-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=1000&q=90" alt="Luxury Bouquet">
+</div>
+<div class="float-card float-card-1">
+<div class="fc-label" data-i18n="fc1Lbl">Fresh Daily</div>
+<div class="fc-value" data-i18n="fc1Val">Hand-picked</div>
+<div class="fc-sub" data-i18n="fc1Sub">From local farms</div>
+</div>
+<div class="float-card float-card-2">
+<div class="fc-label" data-i18n="fc2Lbl">Same Day</div>
+<div class="fc-value" data-i18n="fc2Val">Express Delivery</div>
+<div class="fc-sub" data-i18n="fc2Sub">Within 3 hours</div>
+</div>
 </div>
 </div>
 <div class="scroll-hint">
-<span>Explore</span>
-<div class="scroll-line"></div>
+<span data-i18n="scroll">Scroll</span>
+<div class="scroll-mouse"></div>
 </div>
-</div>
+</section>
 
+<!-- COLLECTIONS -->
+<section id="collections" class="collections">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-tag" data-i18n="colTag">Signature Bouquets</span>
+<h2 class="section-title" data-i18n="colTitle">Our <em>Curated</em> Collections</h2>
+<p class="section-subtitle" data-i18n="colSub">Each arrangement is a masterpiece — thoughtfully designed, lovingly crafted, and delivered with care.</p>
 </div>
+<div class="collections-grid">
+<div class="collection-card reveal">
+<div class="collection-img-wrap">
+<span class="collection-badge" data-i18n="badgeBest">Bestseller</span>
+<img class="collection-img" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=800&q=90" alt="Rose Bouquet">
+<a href="#" class="collection-quick">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</a>
+</div>
+<div class="collection-info">
+<h3 class="collection-name" data-i18n="col1Name">Velvet Romance</h3>
+<p class="collection-desc" data-i18n="col1Desc">Deep red roses with eucalyptus & baby's breath</p>
+<div class="collection-footer">
+<div class="collection-price">
+<span class="from" data-i18n="from">From</span>
+$89
+</div>
+<button class="collection-add" data-i18n="addCart">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="collection-card reveal reveal-delay-1">
+<div class="collection-img-wrap">
+<span class="collection-badge" data-i18n="badgeNew">New</span>
+<img class="collection-img" src="https://images.unsplash.com/photo-1561181286-d5c92b7a0f80?w=800&q=90" alt="Peony Bouquet">
+<a href="#" class="collection-quick">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</a>
+</div>
+<div class="collection-info">
+<h3 class="collection-name" data-i18n="col2Name">Blush Peony Dream</h3>
+<p class="collection-desc" data-i18n="col2Desc">Soft pink peonies with garden roses & ranunculus</p>
+<div class="collection-footer">
+<div class="collection-price">
+<span class="from" data-i18n="from">From</span>
+$125
+</div>
+<button class="collection-add" data-i18n="addCart">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="collection-card reveal reveal-delay-2">
+<div class="collection-img-wrap">
+<span class="collection-badge" data-i18n="badgeLux">Luxury</span>
+<img class="collection-img" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=90" alt="Orchid Bouquet">
+<a href="#" class="collection-quick">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</a>
+</div>
+<div class="collection-info">
+<h3 class="collection-name" data-i18n="col3Name">Golden Orchid</h3>
+<p class="collection-desc" data-i18n="col3Desc">Exotic orchids with golden accents & tropical greens</p>
+<div class="collection-footer">
+<div class="collection-price">
+<span class="from" data-i18n="from">From</span>
+$165
+</div>
+<button class="collection-add" data-i18n="addCart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="story">
+<div class="container">
+<div class="story-grid">
+<div class="story-visual reveal">
+<div class="story-img-main">
+<img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=90" alt="Florist at work">
+</div>
+<div class="story-img-small">
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&q=90" alt="Flowers detail">
+</div>
+</div>
+<div class="story-text reveal reveal-delay-1">
+<span class="section-tag" data-i18n="storyTag">Our Story</span>
+<h3 data-i18n="storyTitle">Crafted with <em>Love</em>,<br>Delivered with Care</h3>
+<p data-i18n="storyP1">For over fifteen years, FLEUR has been weaving emotions into floral art. What began as a small atelier in the heart of the city has blossomed into a beloved destination for those who seek beauty in every petal.</p>
+<p data-i18n="storyP2">We source our flowers from the finest local farms and international growers, ensuring every stem is fresh, vibrant, and full of life. Each arrangement is handcrafted by our master florists — artists who understand that flowers are more than decoration, they are feelings made visible.</p>
+<div class="story-signature">
+<div class="story-sig-img">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=90" alt="Founder">
+</div>
+<div class="story-sig-text">
+Sophia Laurent
+<span data-i18n="storySig">Founder & Master Florist</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OCCASIONS -->
+<section id="occasions">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-tag" data-i18n="occTag">For Every Moment</span>
+<h2 class="section-title" data-i18n="occTitle">Flowers for <em>Every</em> Occasion</h2>
+<p class="section-subtitle" data-i18n="occSub">From intimate gestures to grand celebrations — we craft the perfect arrangement for life's most meaningful moments.</p>
+</div>
+<div class="occasions-grid">
+<div class="occasion-card reveal">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=90" alt="Wedding">
+<div class="occasion-content">
+<div class="occasion-icon">💐</div>
+<h3 class="occasion-name" data-i18n="occ1Name">Weddings</h3>
+<p class="occasion-count" data-i18n="occ1Count">48 arrangements</p>
+</div>
+</div>
+<div class="occasion-card reveal reveal-delay-1">
+<img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&q=90" alt="Birthday">
+<div class="occasion-content">
+<div class="occasion-icon">🎂</div>
+<h3 class="occasion-name" data-i18n="occ2Name">Birthdays</h3>
+<p class="occasion-count" data-i18n="occ2Count">36 arrangements</p>
+</div>
+</div>
+<div class="occasion-card reveal reveal-delay-2">
+<img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=600&q=90" alt="Romance">
+<div class="occasion-content">
+<div class="occasion-icon">💕</div>
+<h3 class="occasion-name" data-i18n="occ3Name">Romance</h3>
+<p class="occasion-count" data-i18n="occ3Count">52 arrangements</p>
+</div>
+</div>
+<div class="occasion-card reveal reveal-delay-3">
+<img src="https://images.unsplash.com/photo-1457089328389-e5d13fb1a777?w=600&q=90" alt="Sympathy">
+<div class="occasion-content">
+<div class="occasion-icon">🕊</div>
+<h3 class="occasion-name" data-i18n="occ4Name">Sympathy</h3>
+<p class="occasion-count" data-i18n="occ4Count">24 arrangements</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-tag" data-i18n="featTag">Why Choose Us</span>
+<h2 class="section-title" data-i18n="featTitle">The FLEUR <em>Experience</em></h2>
+<p class="section-subtitle" data-i18n="featSub">We go beyond flowers — we deliver moments of joy, crafted with precision and passion.</p>
+</div>
+<div class="features-grid">
+<div class="feature-card reveal">
+<div class="feature-icon">🌿</div>
+<h4 data-i18n="feat1Title">Farm Fresh</h4>
+<p data-i18n="feat1Desc">Sourced daily from local farms and premium growers worldwide.</p>
+</div>
+<div class="feature-card reveal reveal-delay-1">
+<div class="feature-icon">🎨</div>
+<h4 data-i18n="feat2Title">Artisan Design</h4>
+<p data-i18n="feat2Desc">Each bouquet is a unique work of art by our master florists.</p>
+</div>
+<div class="feature-card reveal reveal-delay-2">
+<div class="feature-icon">⚡</div>
+<h4 data-i18n="feat3Title">Express Delivery</h4>
+<p data-i18n="feat3Desc">Same-day delivery within 3 hours, anywhere in the city.</p>
+</div>
+<div class="feature-card reveal reveal-delay-3">
+<div class="feature-icon">💝</div>
+<h4 data-i18n="feat4Title">Personal Touch</h4>
+<p data-i18n="feat4Desc">Handwritten notes and bespoke packaging on every order.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-tag" data-i18n="testTag">Client Love</span>
+<h2 class="section-title" data-i18n="testTitle">Words from <em>Our Clients</em></h2>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text" data-i18n="test1Text">"Absolutely breathtaking. The bouquet arrived more beautiful than the photos. My wife was in tears. FLEUR understands that flowers are emotions."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">JM</div>
+<div>
+<div class="testimonial-name">James Mitchell</div>
+<div class="testimonial-role" data-i18n="test1Role">Anniversary Client</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-1">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text" data-i18n="test2Text">"They designed the flowers for our entire wedding. Every arrangement was a masterpiece. Our guests couldn't stop talking about them."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">EC</div>
+<div>
+<div class="testimonial-name">Emma Chen</div>
+<div class="testimonial-role" data-i18n="test2Role">Bride</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-2">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text" data-i18n="test3Text">"I've been a monthly subscriber for two years. The quality is unmatched, and the seasonal collections always surprise me. Pure luxury."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">SK</div>
+<div>
+<div class="testimonial-name">Sofia Kowalski</div>
+<div class="testimonial-role" data-i18n="test3Role">Monthly Subscriber</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<div class="cta-wrap reveal">
+<h2 data-i18n="ctaTitle">Join the <em>FLEUR</em> Circle</h2>
+<p data-i18n="ctaSub">Be the first to discover new collections, seasonal exclusives, and special offers.</p>
+<form class="cta-form" onsubmit="event.preventDefault();alert('Welcome to FLEUR!');this.reset();">
+<input type="email" data-i18n-placeholder="ctaPlaceholder" placeholder="Your email address" required>
+<button type="submit" data-i18n="ctaBtn">Subscribe</button>
+</form>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" class="footer">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo">
+<svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+<circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1"/>
+<path d="M20 8 Q24 16 20 20 Q16 16 20 8 Z" fill="currentColor" opacity=".8"/>
+<path d="M20 32 Q24 24 20 20 Q16 24 20 32 Z" fill="currentColor" opacity=".8"/>
+<circle cx="20" cy="20" r="2" fill="currentColor"/>
+</svg>
+FLEUR
+</div>
+<p data-i18n="footerDesc">Luxury floral atelier crafting bespoke bouquets and arrangements for life's most beautiful moments since 2009.</p>
+<div class="social-links">
+<a href="#" class="social-link magnetic">f</a>
+<a href="#" class="social-link magnetic">ig</a>
+<a href="#" class="social-link magnetic">in</a>
+<a href="#" class="social-link magnetic">tw</a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footerShop">Shop</h4>
+<ul>
+<li><a href="#" data-i18n="footerAll">All Bouquets</a></li>
+<li><a href="#" data-i18n="footerBest">Bestsellers</a></li>
+<li><a href="#" data-i18n="footerNew">New Arrivals</a></li>
+<li><a href="#" data-i18n="footerLux">Luxury</a></li>
+<li><a href="#" data-i18n="footerSub">Subscriptions</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footerHelp">Help</h4>
+<ul>
+<li><a href="#" data-i18n="footerDel">Delivery</a></li>
+<li><a href="#" data-i18n="footerCare">Flower Care</a></li>
+<li><a href="#" data-i18n="footerRet">Returns</a></li>
+<li><a href="#" data-i18n="footerFaq">FAQ</a></li>
+<li><a href="#" data-i18n="footerPriv">Privacy</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="footerVisit">Visit Us</h4>
+<div class="footer-contact-item">
+<span>📍</span>
+<span data-i18n="footerAddr">12 Rose Garden Lane<br>Yerevan, Armenia</span>
+</div>
+<div class="footer-contact-item">
+<span>📞</span>
+<span>+374 10 123 456</span>
+</div>
+<div class="footer-contact-item">
+<span>✉</span>
+<span>hello@fleur.am</span>
+</div>
+<div class="footer-contact-item">
+<span>🕐</span>
+<span data-i18n="footerHours">Mon–Sun: 9AM – 9PM</span>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2026 FLEUR. <span data-i18n="footerRights">All rights reserved.</span></div>
+<div data-i18n="footerMade">Crafted with 🌸 in Armenia</div>
+</div>
+</footer>
 
 <script>
+// TRANSLATIONS
+const translations={
+en:{navCol:"Collections",navStory:"Our Story",navOcc:"Occasions",navFeat:"Services",navContact:"Contact",heroTag:"Artisan Floral Atelier",heroT1:"Where Flowers",heroT2:'Become <em>Art</em>',heroT3:"& Emotion",heroSub:"Bespoke bouquets crafted with passion — each arrangement a unique expression of beauty, designed to tell your story through petals and perfume.",heroBtn1:"Shop Collection",heroBtn2:"Our Story",meta1:"Years of Craft",meta2:"Happy Clients",meta3:"Flower Varieties",fc1Lbl:"Fresh Daily",fc1Val:"Hand-picked",fc1Sub:"From local farms",fc2Lbl:"Same Day",fc2Val:"Express Delivery",fc2Sub:"Within 3 hours",scroll:"Scroll",colTag:"Signature Bouquets",colTitle:'Our <em>Curated</em> Collections',colSub:"Each arrangement is a masterpiece — thoughtfully designed, lovingly crafted, and delivered with care.",badgeBest:"Bestseller",badgeNew:"New",badgeLux:"Luxury",col1Name:"Velvet Romance",col1Desc:"Deep red roses with eucalyptus & baby's breath",col2Name:"Blush Peony Dream",col2Desc:"Soft pink peonies with garden roses & ranunculus",col3Name:"Golden Orchid",col3Desc:"Exotic orchids with golden accents & tropical greens",from:"From",addCart:"Add to Cart",storyTag:"Our Story",storyTitle:'Crafted with <em>Love</em>,<br>Delivered with Care',storyP1:"For over fifteen years, FLEUR has been weaving emotions into floral art. What began as a small atelier in the heart of the city has blossomed into a beloved destination for those who seek beauty in every petal.",storyP2:"We source our flowers from the finest local farms and international growers, ensuring every stem is fresh, vibrant, and full of life. Each arrangement is handcrafted by our master florists — artists who understand that flowers are more than decoration, they are feelings made visible.",storySig:"Founder & Master Florist",occTag:"For Every Moment",occTitle:'Flowers for <em>Every</em> Occasion',occSub:"From intimate gestures to grand celebrations — we craft the perfect arrangement for life's most meaningful moments.",occ1Name:"Weddings",occ1Count:"48 arrangements",occ2Name:"Birthdays",occ2Count:"36 arrangements",occ3Name:"Romance",occ3Count:"52 arrangements",occ4Name:"Sympathy",occ4Count:"24 arrangements",featTag:"Why Choose Us",featTitle:'The FLEUR <em>Experience</em>',featSub:"We go beyond flowers — we deliver moments of joy, crafted with precision and passion.",feat1Title:"Farm Fresh",feat1Desc:"Sourced daily from local farms and premium growers worldwide.",feat2Title:"Artisan Design",feat2Desc:"Each bouquet is a unique work of art by our master florists.",feat3Title:"Express Delivery",feat3Desc:"Same-day delivery within 3 hours, anywhere in the city.",feat4Title:"Personal Touch",feat4Desc:"Handwritten notes and bespoke packaging on every order.",testTag:"Client Love",testTitle:'Words from <em>Our Clients</em>',test1Text:'"Absolutely breathtaking. The bouquet arrived more beautiful than the photos. My wife was in tears. FLEUR understands that flowers are emotions."',test1Role:"Anniversary Client",test2Text:'"They designed the flowers for our entire wedding. Every arrangement was a masterpiece. Our guests couldn\'t stop talking about them."',test2Role:"Bride",test3Text:'"I\'ve been a monthly subscriber for two years. The quality is unmatched, and the seasonal collections always surprise me. Pure luxury."',test3Role:"Monthly Subscriber",ctaTitle:'Join the <em>FLEUR</em> Circle',ctaSub:"Be the first to discover new collections, seasonal exclusives, and special offers.",ctaPlaceholder:"Your email address",ctaBtn:"Subscribe",footerDesc:"Luxury floral atelier crafting bespoke bouquets and arrangements for life's most beautiful moments since 2009.",footerShop:"Shop",footerAll:"All Bouquets",footerBest:"Bestsellers",footerNew:"New Arrivals",footerLux:"Luxury",footerSub:"Subscriptions",footerHelp:"Help",footerDel:"Delivery",footerCare:"Flower Care",footerRet:"Returns",footerFaq:"FAQ",footerPriv:"Privacy",footerVisit:"Visit Us",footerAddr:"12 Rose Garden Lane<br>Yerevan, Armenia",footerHours:"Mon–Sun: 9AM – 9PM",footerRights:"All rights reserved.",footerMade:"Crafted with 🌸 in Armenia"},
+hy:{navCol:"Հdelays",navStory:"Մdelays Delays",navOcc:"Delays",navFeat:"Delays",navContact:"Կdelays",heroTag:"Delays Delays Delays",heroT1:"Delays Delays",heroT2:'Delays <em>Delays</em>',heroT3:"Delays Delays",heroSub:"Delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......"}
+};
+
+let currentLang='en';
+function setLanguage(lang){
+currentLang=lang;
+document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+document.querySelectorAll('[data-i18n]').forEach(el=>{
+const key=el.dataset.i18n;
+if(translations[lang]&&translations[lang][key]){
+if(translations[lang][key].includes('<em>')||translations[lang][key].includes('<br>'))el.innerHTML=translations[lang][key];
+else el.textContent=translations[lang][key];
+}
+});
+document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+const key=el.dataset.i18nPlaceholder;
+if(translations[lang]&&translations[lang][key])el.placeholder=translations[lang][key];
+});
+document.documentElement.lang=lang;
+}
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+
 // PRELOADER
-const preLogo=document.getElementById('preLogo');
-const text=preLogo.textContent;
-preLogo.innerHTML='';
-text.split('').forEach((c,i)=>{
-const span=document.createElement('span');
-span.textContent=c;
-span.style.animationDelay=(i*0.08)+'s';
-preLogo.appendChild(span);
+const preText=document.getElementById('preText');
+const txt=preText.textContent;
+preText.innerHTML='';
+txt.split('').forEach((c,i)=>{
+const s=document.createElement('span');
+s.textContent=c;
+s.style.animationDelay=(i*0.1)+'s';
+preText.appendChild(s);
 });
-
-const counter=document.getElementById('counter');
-let count=0;
-const countInterval=setInterval(()=>{
-count+=Math.floor(Math.random()*8)+3;
-if(count>=100){count=100;clearInterval(countInterval)}
-counter.textContent=count+'%';
-},80);
-
 window.addEventListener('load',()=>{
-setTimeout(()=>{
-document.getElementById('preloader').classList.add('hidden');
-document.getElementById('textSide').classList.add('animate');
-document.getElementById('visualSide').classList.add('animate');
-},2800);
+setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),2500);
 });
 
-// CUSTOM CURSOR
+// CURSOR
 const dot=document.getElementById('cursorDot');
 const ring=document.getElementById('cursorRing');
-const glow=document.getElementById('cursorGlow');
-let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
-
+const petal=document.getElementById('cursorPetal');
+let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{
 mx=e.clientX;my=e.clientY;
 dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
 });
-
 function animateCursor(){
 rx+=(mx-rx)*0.15;
 ry+=(my-ry)*0.15;
-gx+=(mx-gx)*0.08;
-gy+=(my-gy)*0.08;
 ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-glow.style.transform=`translate(${gx}px,${gy}px) translate(-50%,-50%)`;
 requestAnimationFrame(animateCursor);
 }
 animateCursor();
-
-document.querySelectorAll('a,button,.coffee-frame').forEach(el=>{
+document.querySelectorAll('a,button,.collection-card,.occasion-card').forEach(el=>{
 el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
 el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
 });
 
-// PARTICLES (canvas)
-const canvas=document.getElementById('particles');
+// PETALS CANVAS
+const canvas=document.getElementById('petals');
 const ctx=canvas.getContext('2d');
 let W,H;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
 resize();
 window.addEventListener('resize',resize);
-
-class Particle{
+class Petal{
 constructor(){this.reset();this.y=Math.random()*H}
 reset(){
 this.x=Math.random()*W;
-this.y=H+10;
-this.size=Math.random()*1.8+0.3;
-this.speedY=-(Math.random()*0.4+0.1);
-this.speedX=(Math.random()-0.5)*0.3;
-this.opacity=Math.random()*0.5+0.2;
-this.hue=Math.random()>0.6?45:30;
-this.life=0;
-this.maxLife=Math.random()*400+200;
+this.y=-20;
+this.size=Math.random()*10+5;
+this.speedY=Math.random()*0.8+0.3;
+this.speedX=(Math.random()-0.5)*0.5;
+this.rot=Math.random()*Math.PI*2;
+this.rotSpeed=(Math.random()-0.5)*0.02;
+this.opacity=Math.random()*0.5+0.3;
+this.color=['#f5d5d0','#e8a8a0','#d4788c','#faf4ec'][Math.floor(Math.random()*4)];
 }
 update(){
-this.x+=this.speedX;
+this.x+=this.speedX+Math.sin(this.y*0.01)*0.5;
 this.y+=this.speedY;
-this.life++;
-if(this.life>this.maxLife||this.y<-10)this.reset();
+this.rot+=this.rotSpeed;
+if(this.y>H+20)this.reset();
 }
 draw(){
-const fade=this.life<50?this.life/50:this.life>this.maxLife-50?(this.maxLife-this.life)/50:1;
+ctx.save();
+ctx.translate(this.x,this.y);
+ctx.rotate(this.rot);
+ctx.globalAlpha=this.opacity;
+ctx.fillStyle=this.color;
 ctx.beginPath();
-ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-ctx.fillStyle=`hsla(${this.hue},60%,60%,${this.opacity*fade})`;
-ctx.shadowBlur=10;
-ctx.shadowColor=`hsla(${this.hue},60%,60%,${this.opacity*fade})`;
+ctx.ellipse(0,0,this.size,this.size*0.6,0,0,Math.PI*2);
 ctx.fill();
+ctx.restore();
 }
 }
-const particles=Array.from({length:60},()=>new Particle());
-function animateParticles(){
+const petals=Array.from({length:25},()=>new Petal());
+function animatePetals(){
 ctx.clearRect(0,0,W,H);
-particles.forEach(p=>{p.update();p.draw()});
-requestAnimationFrame(animateParticles);
+petals.forEach(p=>{p.update();p.draw()});
+requestAnimationFrame(animatePetals);
 }
-animateParticles();
+animatePetals();
 
-// PARALLAX
-const bgImage=document.getElementById('bgImage');
-const coffeeFrame=document.getElementById('coffeeFrame');
-document.addEventListener('mousemove',e=>{
-const x=(e.clientX/window.innerWidth-0.5);
-const y=(e.clientY/window.innerHeight-0.5);
-if(bgImage)bgImage.style.transform=`scale(1.15) translate(${x*20}px,${y*20}px)`;
-if(coffeeFrame)coffeeFrame.style.transform=`translate(${x*-15}px,${y*-15}px)`;
+// SCROLL
+window.addEventListener('scroll',()=>{
+document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+const p=document.getElementById('scrollProgress');
+const h=document.documentElement.scrollHeight-window.innerHeight;
+p.style.width=(window.scrollY/h*100)+'%';
 });
 
-// MAGNETIC BUTTONS
+// MOBILE MENU
+document.getElementById('burger').addEventListener('click',()=>{
+document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
+
+// REVEAL
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// MAGNETIC
 document.querySelectorAll('.magnetic').forEach(el=>{
 el.addEventListener('mousemove',e=>{
 const r=el.getBoundingClientRect();
@@ -971,8 +1772,19 @@ const x=e.clientX-r.left-r.width/2;
 const y=e.clientY-r.top-r.height/2;
 el.style.transform=`translate(${x*0.25}px,${y*0.35}px)`;
 });
-el.addEventListener('mouseleave',()=>{
-el.style.transform='translate(0,0)';
+el.addEventListener('mouseleave',()=>{el.style.transform='translate(0,0)'});
+});
+
+// RIPPLE
+document.querySelectorAll('.btn,.collection-add').forEach(btn=>{
+btn.addEventListener('click',function(e){
+const r=this.getBoundingClientRect();
+const rip=document.createElement('span');
+rip.className='ripple';
+rip.style.left=(e.clientX-r.left)+'px';
+rip.style.top=(e.clientY-r.top)+'px';
+this.appendChild(rip);
+setTimeout(()=>rip.remove(),600);
 });
 });
 
@@ -981,9 +1793,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 a.addEventListener('click',e=>{
 e.preventDefault();
 const t=document.querySelector(a.getAttribute('href'));
-if(t)t.scrollIntoView({behavior:'smooth'});
+if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
 });
 });
+
+setLanguage('en');
 </script>
 </body>
 </html>
