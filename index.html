@@ -33,7 +33,6 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:none;border:none;background:none;color:inherit}
 @media(max-width:768px){button{cursor:pointer}}
 
-/* CURSOR */
 .cursor{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 .cursor-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s}
 .cursor-ring{width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;transform:translate(-50%,-50%);transition:all .15s ease-out}
@@ -41,10 +40,8 @@ button{font-family:inherit;cursor:none;border:none;background:none;color:inherit
 .cursor.hover .cursor-ring{width:60px;height:60px;background:rgba(212,175,55,0.1)}
 .cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,0.15),transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .3s}
 
-/* SCROLL PROGRESS */
 .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--purple),var(--gold));z-index:10001;width:0%;transition:width .1s}
 
-/* PRELOADER */
 .preloader{position:fixed;inset:0;background:var(--black);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s,visibility 1s}
 .preloader.hidden{opacity:0;visibility:hidden}
 .preloader-logo{font-family:var(--font-display);font-size:clamp(2rem,6vw,4rem);color:var(--gold);letter-spacing:.3em;overflow:hidden}
@@ -55,7 +52,6 @@ button{font-family:inherit;cursor:none;border:none;background:none;color:inherit
 .preloader-sub{margin-top:1.5rem;font-size:.75rem;letter-spacing:.3em;color:var(--text-dim);text-transform:uppercase;opacity:0;animation:fadeIn 1s 1s forwards}
 @keyframes fadeIn{to{opacity:1}}
 
-/* AURORA */
 .aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--black)}
 .aurora::before,.aurora::after{content:'';position:absolute;width:150%;height:150%;top:-25%;left:-25%;background:radial-gradient(ellipse at center,transparent 0%,var(--black) 70%);z-index:2}
 .aurora-layer{position:absolute;width:200%;height:200%;top:-50%;left:-50%;opacity:.4;filter:blur(80px);mix-blend-mode:screen}
@@ -68,7 +64,6 @@ button{font-family:inherit;cursor:none;border:none;background:none;color:inherit
 
 #particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
 
-/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.2,.8,.2,1)}
 .nav.scrolled{padding:1rem 3rem;background:rgba(5,6,10,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
 .nav-logo{font-family:var(--font-display);font-size:1.5rem;font-weight:600;letter-spacing:.2em;color:var(--gold);display:flex;align-items:center;gap:.5rem}
@@ -98,7 +93,6 @@ button{font-family:inherit;cursor:none;border:none;background:none;color:inherit
 .mobile-menu a{font-family:var(--font-display);font-size:2.5rem;color:var(--text);transition:color .3s}
 .mobile-menu a:hover{color:var(--gold)}
 
-/* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 3rem 4rem;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:-1}
 .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.4;filter:brightness(.6) saturate(1.2)}
@@ -133,7 +127,6 @@ button{font-family:inherit;cursor:none;border:none;background:none;color:inherit
 .scroll-line::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--gold);animation:scrollDown 2s infinite}
 @keyframes scrollDown{0%{top:-50%}100%{top:100%}}
 
-/* SECTIONS */
 section{position:relative;padding:8rem 3rem}
 @media(max-width:768px){section{padding:5rem 1.5rem}}
 .container{max-width:1400px;margin:0 auto}
@@ -150,7 +143,6 @@ section{position:relative;padding:8rem 3rem}
 .reveal-delay-3{transition-delay:.3s}
 .reveal-delay-4{transition-delay:.4s}
 
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
 @media(max-width:1024px){.about-grid{grid-template-columns:1fr}}
 .about-card{position:relative;padding:3rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;backdrop-filter:blur(20px);transition:all .5s cubic-bezier(.2,.8,.2,1);overflow:hidden}
@@ -161,7 +153,6 @@ section{position:relative;padding:8rem 3rem}
 .about-card h3{font-family:var(--font-display);font-size:1.75rem;margin-bottom:1rem;font-weight:500}
 .about-card p{color:var(--text-dim);font-size:.95rem;line-height:1.7}
 
-/* TIMELINE */
 .timeline{position:relative;max-width:1000px;margin:4rem auto}
 .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--gold),transparent);transform:translateX(-50%)}
 @media(max-width:768px){.timeline::before{left:2rem}}
@@ -183,7 +174,6 @@ section{position:relative;padding:8rem 3rem}
 .timeline-content h3{font-size:1.25rem;margin-bottom:.75rem;font-weight:600}
 .timeline-content p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
 
-/* NATURE */
 .nature-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.5rem;margin-top:4rem}
 .nature-card{position:relative;border-radius:24px;overflow:hidden;cursor:none;min-height:400px;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .nature-card:hover{transform:scale(1.02)}
@@ -202,7 +192,6 @@ section{position:relative;padding:8rem 3rem}
 .nature-5{grid-column:span 4}
 @media(max-width:1024px){.nature-1,.nature-2,.nature-3,.nature-4,.nature-5{grid-column:span 12}}
 
-/* MOUNTAINS */
 .mountains{background:linear-gradient(180deg,var(--black) 0%,#0a0520 50%,var(--black) 100%)}
 .mountain-showcase{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem}
 @media(max-width:1024px){.mountain-showcase{grid-template-columns:1fr}}
@@ -220,7 +209,6 @@ section{position:relative;padding:8rem 3rem}
 .mountain-list li{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;backdrop-filter:blur(20px)}
 .mountain-list li .dot{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0}
 
-/* CHURCHES */
 .churches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
 @media(max-width:1024px){.churches-grid{grid-template-columns:1fr}}
 .church-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;cursor:none}
@@ -232,7 +220,6 @@ section{position:relative;padding:8rem 3rem}
 .church-info h3{font-family:var(--font-display);font-size:1.75rem;font-weight:500;margin-bottom:.5rem}
 .church-info p{color:var(--text-dim);font-size:.85rem}
 
-/* UNESCO */
 .unesco{background:linear-gradient(135deg,rgba(109,40,217,0.1),rgba(212,175,55,0.05));border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
 .unesco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem}
 @media(max-width:1024px){.unesco-grid{grid-template-columns:repeat(2,1fr)}}
@@ -245,7 +232,6 @@ section{position:relative;padding:8rem 3rem}
 .unesco-card h4{font-size:1.1rem;margin-bottom:.75rem;font-weight:600}
 .unesco-card p{color:var(--text-dim);font-size:.85rem;line-height:1.6}
 
-/* FOOD & WINE */
 .cuisine-showcase{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem}
 @media(max-width:1024px){.cuisine-showcase{grid-template-columns:1fr}}
 .cuisine-image{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:1}
@@ -260,7 +246,6 @@ section{position:relative;padding:8rem 3rem}
 .dish-item .name{font-weight:600;margin-bottom:.25rem;color:var(--gold)}
 .dish-item .desc{font-size:.8rem;color:var(--text-dim)}
 
-/* GALLERY */
 .masonry{columns:3;column-gap:1.5rem;margin-top:4rem}
 @media(max-width:1024px){.masonry{columns:2}}
 @media(max-width:640px){.masonry{columns:1}}
@@ -279,7 +264,6 @@ section{position:relative;padding:8rem 3rem}
 .lightbox-close{position:absolute;top:2rem;right:2rem;width:50px;height:50px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all .3s}
 .lightbox-close:hover{background:var(--gold);color:var(--black)}
 
-/* VIDEO */
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
 @media(max-width:1024px){.video-grid{grid-template-columns:1fr}}
 .video-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;cursor:none;background:var(--glass);border:1px solid var(--glass-border)}
@@ -295,7 +279,6 @@ section{position:relative;padding:8rem 3rem}
 .video-info h4{font-family:var(--font-display);font-size:1.5rem;margin-bottom:.25rem}
 .video-info p{font-size:.8rem;color:var(--text-dim)}
 
-/* STATS */
 .stats{background:linear-gradient(135deg,rgba(109,40,217,0.15),rgba(212,175,55,0.1));border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem}
 @media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
@@ -306,7 +289,6 @@ section{position:relative;padding:8rem 3rem}
 .stat-num{font-family:var(--font-display);font-size:4.5rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:1rem;position:relative;z-index:1}
 .stat-label{font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);position:relative;z-index:1}
 
-/* MAP */
 .map-section{background:radial-gradient(ellipse at center,#0a0520 0%,var(--black) 70%)}
 .map-container{max-width:900px;margin:4rem auto;position:relative}
 .map-svg{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(109,40,217,0.3))}
@@ -319,7 +301,6 @@ section{position:relative;padding:8rem 3rem}
 .map-tooltip h4{color:var(--gold);font-size:1rem;margin-bottom:.25rem}
 .map-tooltip p{font-size:.8rem;color:var(--text-dim)}
 
-/* TESTIMONIALS */
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
 @media(max-width:1024px){.testimonials-grid{grid-template-columns:1fr}}
 .testimonial-card{padding:2.5rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;backdrop-filter:blur(20px);position:relative;transition:all .4s}
@@ -332,7 +313,6 @@ section{position:relative;padding:8rem 3rem}
 .testimonial-role{font-size:.8rem;color:var(--text-dim)}
 .stars{color:var(--gold);margin-bottom:1rem;font-size:.9rem;letter-spacing:.1em}
 
-/* FAQ */
 .faq-list{max-width:800px;margin:4rem auto 0;display:flex;flex-direction:column;gap:1rem}
 .faq-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;backdrop-filter:blur(20px);overflow:hidden;transition:all .3s}
 .faq-item.active{border-color:rgba(212,175,55,0.3)}
@@ -342,7 +322,6 @@ section{position:relative;padding:8rem 3rem}
 .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1)}
 .faq-answer-inner{padding:0 2rem 1.5rem;color:var(--text-dim);line-height:1.7;font-size:.95rem}
 
-/* CONTACT */
 .contact{background:linear-gradient(180deg,var(--black) 0%,#0a0520 100%)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem}
 @media(max-width:1024px){.contact-grid{grid-template-columns:1fr}}
@@ -362,7 +341,6 @@ section{position:relative;padding:8rem 3rem}
 .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,0.05)}
 .form-group textarea{min-height:120px;resize:vertical}
 
-/* FOOTER */
 .footer{padding:6rem 3rem 2rem;background:#030408;border-top:1px solid var(--glass-border)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
 @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}}
@@ -835,274 +813,8 @@ section{position:relative;padding:8rem 3rem}
 <script>
 const translations={
 en:{preloaderSub:"Ancient Land of Legends",brand:"ARMENIA",navAbout:"About",navHistory:"History",navNature:"Nature",navCulture:"Culture",navGallery:"Gallery",navContact:"Contact",navCta:"Visit Armenia",heroTag:"3000 Years of Civilization",heroTitle1:"The Ancient",heroTitle2:"Land of Legends",heroTitle3:"Armenia",heroSubtitle:"Where mountains touch the heavens, monasteries hold eternity, and every stone whispers a story older than time itself.",heroBtn1:"Begin Journey",heroBtn2:"Explore Gallery",heroBtn3:"Plan Your Trip",scroll:"Scroll",aboutTag:"Discover Armenia",aboutTitle:"A Land of <em>Eternal</em> Beauty",aboutSubtitle:"Nestled in the heart of the Caucasus, Armenia is one of the world's oldest civilizations — a tapestry of faith, resilience, and breathtaking landscapes.",aboutCard1Title:"Ancient Heritage",aboutCard1Desc:"Over 3,000 years of continuous civilization. The first nation to adopt Christianity in 301 AD, Armenia stands as a beacon of faith and cultural preservation.",aboutCard2Title:"Mountain Majesty",aboutCard2Desc:"A highland nation where 90% of the territory sits above 1,000 meters. From the biblical Mount Ararat to the peaks of Aragats, every horizon tells a story.",aboutCard3Title:"Living Culture",aboutCard3Desc:"A unique alphabet, ancient music, sacred dances, and culinary traditions passed down through millennia — Armenia's culture breathes in every corner.",historyTag:"Through the Ages",historyTitle:"A Journey Through <em>Time</em>",historySubtitle:"From the dawn of civilization to modern independence, Armenia's history is etched in stone, scripture, and song.",hist1Title:"Kingdom of Urartu",hist1Desc:"The ancient kingdom flourishes around Lake Van, building fortresses and irrigation systems that still awe archaeologists today.",hist2Title:"First Christian Nation",hist2Desc:"Armenia becomes the first country to adopt Christianity as its state religion, forever shaping its identity, art, and architecture.",hist3Title:"The Armenian Alphabet",hist3Desc:"Mesrop Mashtots creates the unique Armenian script, preserving the nation's language and literature through centuries of adversity.",hist4Title:"The Armenian Genocide",hist4Desc:"A dark chapter of immense suffering — 1.5 million Armenians perished. Their memory lives eternal in the hearts of the diaspora.",hist5Title:"Independence Restored",hist5Desc:"Following the collapse of the Soviet Union, Armenia reclaims its sovereignty and begins a new chapter as a modern democratic nation.",natureTag:"Untamed Beauty",natureTitle:"Nature's <em>Masterpiece</em>",natureSubtitle:"From alpine lakes to ancient forests, Armenia's landscapes are a symphony of color, light, and silence.",nature1Tag:"Alpine Lake",nature1Title:"Lake Sevan",nature1Desc:"The \"Pearl of Armenia\" — one of the largest freshwater high-altitude lakes in the world.",nature2Tag:"Ancient Forest",nature2Title:"Dilijan National Park",nature2Desc:"Armenia's \"Little Switzerland\" — misty forests, mineral springs, and medieval monasteries.",nature3Tag:"Sacred Mountain",nature3Title:"Mount Ararat",nature3Desc:"The biblical resting place of Noah's Ark — a majestic 5,137m peak.",nature4Tag:"Red Canyon",nature4Title:"Noravank Gorge",nature4Desc:"Dramatic orange-red cliffs frame this 13th-century monastery.",nature5Tag:"National Symbol",nature5Title:"The Pomegranate",nature5Desc:"Symbol of fertility, abundance, and life.",mountainsTag:"Peaks of Eternity",mountainsTitle:"Where Earth Meets <em>Heaven</em>",mountainTitle:"The Sacred <em>Peaks</em> of Armenia",mountainDesc:"Armenia is a land carved by mountains. From the legendary Ararat to the volcanic Aragats, each peak holds spiritual significance and offers unparalleled adventure.",mStat1:"Meters High",mStat2:"Years of Legend",mStat3:"Stories Told",mList1:"Mount Ararat — The biblical symbol of Armenia",mList2:"Mount Aragats — Highest peak in modern Armenia",mList3:"Mount Kaputjugh — The turquoise summit",mList4:"Mount Azhdahak — Volcanic crater lake",churchesTag:"Sacred Architecture",churchesTitle:"Monasteries of <em>Eternity</em>",churchesSubtitle:"Carved from stone and faith, Armenia's monasteries are architectural miracles that have stood for over a millennium.",church1Era:"9th Century",church1Title:"Tatev Monastery",church1Desc:"Perched on a cliff edge, accessible by the world's longest reversible cable car.",church2Era:"13th Century",church2Title:"Noravank",church2Desc:"A masterpiece nestled in a dramatic red-orange canyon gorge.",church3Era:"7th Century",church3Title:"Khor Virap",church3Desc:"The iconic monastery with a direct view of Mount Ararat at sunrise.",unescoTag:"World Heritage",unescoTitle:"UNESCO <em>Treasures</em>",unescoSubtitle:"Armenia's cultural and natural landmarks recognized by humanity as irreplaceable treasures.",unesco1Title:"Monastery of Haghpat",unesco1Desc:"A masterpiece of medieval Armenian architecture, harmoniously integrated into the mountainous landscape.",unesco2Title:"Monastery of Sanahin",unesco2Desc:"Sister monastery to Haghpat, renowned for its academy of calligraphy and miniature painting.",unesco3Title:"Echmiadzin Cathedral",unesco3Desc:"The mother church of the Armenian Apostolic faith, one of the oldest cathedrals in the world.",unesco4Title:"Geghard Monastery",unesco4Desc:"Partially carved into the adjacent mountain, a marvel of rock-cut architecture.",cultureTag:"Soul of Armenia",cultureTitle:"A Feast for the <em>Senses</em>",foodTitle:"The Art of <em>Armenian Cuisine</em>",foodDesc:"Armenian food is a celebration of earth, fire, and family. Every meal is a ritual — slow-cooked, generously spiced, and shared with those you love.",dish1Name:"Khorovats",dish1Desc:"Smoky grilled meats over fruitwood",dish2Name:"Dolma",dish2Desc:"Stuffed grape leaves with rice & herbs",dish3Name:"Lavash",dish3Desc:"UNESCO-listed thin flatbread",dish4Name:"Khash",dish4Desc:"Traditional slow-cooked feast",wineTitle:"The Cradle of <em>Wine</em>",wineDesc:"Armenia is home to the world's oldest known winery — 6,100 years old, discovered in the Areni-1 cave. Today, Armenian winemakers blend ancient karas traditions with modern excellence.",wine1Name:"Areni Noir",wine1Desc:"Indigenous red grape variety",wine2Name:"Karas Method",wine2Desc:"Ancient clay vessel fermentation",wine3Name:"Ararat Brandy",wine3Desc:"Churchill's favorite cognac",wine4Name:"Voskehat",wine4Desc:"Golden indigenous white grape",musicTag:"Rhythm of the Soul",musicTitle:"Music, Dance & <em>Expression</em>",musicSubtitle:"From the haunting duduk to the fiery kochari dance, Armenian arts move the soul like nowhere else.",musicCard1Title:"The Duduk",musicCard1Desc:"An ancient double-reed woodwind instrument, the duduk's mournful voice is recognized by UNESCO as a Masterpiece of Intangible Heritage.",musicCard2Title:"Kochari Dance",musicCard2Desc:"A powerful communal dance of unity and strength, performed shoulder-to-shoulder, echoing the resilience of the Armenian spirit.",musicCard3Title:"Sayat-Nova",musicCard3Desc:"The legendary 18th-century ashugh (troubadour) whose poetry and music remain central to Armenian cultural identity.",techTag:"Innovation",techTitle:"Armenia's <em>Tech Revolution</em>",techSubtitle:"From ancient astronomy to modern software engineering, Armenians have always been pioneers of knowledge.",techCard1Title:"IT & Software",techCard1Desc:"Armenia is the \"Silicon Valley of the Caucasus\" — home to world-class engineers powering global tech giants.",techCard2Title:"Space & Science",techCard2Desc:"From Viktor Ambartsumian's astrophysics to Byurakan Observatory, Armenia's contributions to science are profound.",techCard3Title:"AI & Startups",techCard3Desc:"A thriving startup ecosystem with TUMO Centers of Creative Technologies nurturing the next generation of innovators.",galleryTag:"Visual Journey",galleryTitle:"Through the <em>Lens</em>",gallerySubtitle:"A curated collection of moments capturing Armenia's timeless beauty.",gal1:"Mount Ararat at Dawn",gal2:"Tatev Monastery",gal3:"Lake Sevan Sunset",gal4:"Armenian Feast",gal5:"Noravank Canyon",gal6:"Dilijan Forest",gal7:"Garni Temple",gal8:"Sacred Pomegranate",gal9:"Armenian Wine",videoTag:"Cinematic",videoTitle:"Armenia in <em>Motion</em>",videoSubtitle:"Experience the soul of Armenia through cinematic storytelling.",vid1Title:"Peaks of Ararat",vid1Desc:"4K Cinematic Journey",vid2Title:"Sacred Stones",vid2Desc:"Monasteries of Eternity",vid3Title:"Taste of Armenia",vid3Desc:"Culinary Traditions",statsTag:"By the Numbers",statsTitle:"Armenia in <em>Figures</em>",stat1:"Years of History",stat2:"Historical Monuments",stat3:"UNESCO Sites",stat4:"AD — First Christian Nation",mapTag:"Explore",mapTitle:"Interactive <em>Armenia</em>",mapSubtitle:"Hover over the regions to discover the treasures of each province.",testTag:"Voices",testTitle:"Stories from <em>Travelers</em>",test1Text:"\"Armenia stole my heart. The warmth of the people, the depth of the history, the majesty of the mountains — it's a place that changes you.\"",test1Role:"Travel Photographer, UK",test2Text:"\"From the ancient monasteries to the vibrant streets of Yerevan, every moment felt like stepping into a living museum. Truly unforgettable.\"",test2Role:"Historian, Russia",test3Text:"\"The food alone is worth the journey. But combined with the landscapes, the music, the hospitality — Armenia is pure magic.\"",test3Role:"Food Writer, China",faqTag:"Questions",faqTitle:"Frequently <em>Asked</em>",faq1Q:"When is the best time to visit Armenia?",faq1A:"Late spring (May-June) and early autumn (September-October) offer perfect weather, blooming landscapes, and comfortable temperatures for exploring both cities and mountains.",faq2Q:"Is Armenia safe for tourists?",faq2A:"Yes, Armenia is one of the safest countries in the region. Crime rates are low, and Armenians are known for their exceptional hospitality toward visitors.",faq3Q:"What language is spoken in Armenia?",faq3A:"Armenian is the official language. Russian is widely understood, and English is increasingly spoken, especially in Yerevan and tourist areas.",faq4Q:"Do I need a visa to visit Armenia?",faq4A:"Citizens of many countries can enter Armenia visa-free for up to 180 days. Check the official government website for your specific nationality.",faq5Q:"What currency is used?",faq5A:"The Armenian Dram (AMD). Credit cards are widely accepted in cities, but carry cash for rural areas and small vendors.",contactTag:"Get in Touch",contactTitle:"Begin Your <em>Journey</em>",contactHead:"Let's Plan Your <em>Armenian Adventure</em>",contactDesc:"Whether you seek ancient monasteries, mountain treks, culinary journeys, or cultural immersion — we're here to craft your perfect Armenian experience.",formName:"Your Name",formEmail:"Email Address",formMessage:"Your Message",formSend:"Send Message",footerDesc:"A land where every stone tells a story, every mountain touches the sky, and every meal is a celebration. Discover the eternal beauty of Armenia.",footerExplore:"Explore",footerDiscover:"Discover",footerContact:"Contact",footerVideos:"Videos",footerMap:"Map",footerFaq:"FAQ",footerAddress:"Yerevan, Armenia",footerRights:"All rights reserved.",footerMade:"Crafted with love for the land of legends"},
-hy:{preloaderSub:"Հնագույն Լdelays Երdelays",brand:"ՀԱՅԱՍՏԱՆ",navAbout:"Մdelays Մdelays",navHistory:"Պdelays",navNature:"Բdelays",navCulture:"Մdelays",navGallery:"Պdelays",navContact:"Կdelays",navCta:"Այdelays Հdelays",heroTag:"Քdelays 3000 Delays",heroTitle1:"Հdelays",heroTitle2:"Delays",heroTitle3:"Delays",heroSubtitle:"Ոdelays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",heroBtn1:"Սdelays",heroBtn2:"Delays",heroBtn3:"Delays",scroll:"Delays",aboutTag:"Delays",aboutTitle:"Delays <em>Delays</em> Delays",aboutSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",aboutCard1Title:"Delays Delays",aboutCard1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",aboutCard2Title:"Delays Delays",aboutCard2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",aboutCard3Title:"Delays Delays",aboutCard3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",historyTag:"Delays",historyTitle:"Delays <em>Delays</em> Delays",historySubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",hist1Title:"Delays Delays",hist1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",hist2Title:"Delays Delays",hist2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",hist3Title:"Delays Delays",hist3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",hist4Title:"Delays Delays",hist4Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",hist5Title:"Delays Delays",hist5Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",natureTag:"Delays",natureTitle:"Delays <em>Delays</em>",natureSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",nature1Tag:"Delays",nature1Title:"Delays",nature1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",nature2Tag:"Delays",nature2Title:"Delays",nature2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",nature3Tag:"Delays",nature3Title:"Delays",nature3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays.",nature4Tag:"Delays",nature4Title:"Delays",nature4Desc:"Delays Delays Delays Delays Delays Delays Delays Delays.",nature5Tag:"Delays",nature5Title:"Delays",nature5Desc:"Delays Delays Delays Delays Delays Delays Delays.",mountainsTag:"Delays",mountainsTitle:"Delays <em>Delays</em>",mountainTitle:"Delays <em>Delays</em> Delays",mountainDesc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",mStat1:"Delays",mStat2:"Delays",mStat3:"Delays",mList1:"Delays — Delays Delays Delays",mList2:"Delays — Delays Delays Delays",mList3:"Delays — Delays Delays",mList4:"Delays — Delays Delays",churchesTag:"Delays",churchesTitle:"Delays <em>Delays</em>",churchesSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",church1Era:"Delays",church1Title:"Delays",church1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",church2Era:"Delays",church2Title:"Delays",church2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",church3Era:"Delays",church3Title:"Delays",church3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",unescoTag:"Delays",unescoTitle:"UNESCO <em>Delays</em>",unescoSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",unesco1Title:"Delays",unesco1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",unesco2Title:"Delays",unesco2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",unesco3Title:"Delays",unesco3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",unesco4Title:"Delays",unesco4Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",cultureTag:"Delays",cultureTitle:"Delays <em>Delays</em>",foodTitle:"Delays <em>Delays</em>",foodDesc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",dish1Name:"Delays",dish1Desc:"Delays Delays Delays",dish2Name:"Delays",dish2Desc:"Delays Delays Delays Delays",dish3Name:"Delays",dish3Desc:"Delays Delays Delays",dish4Name:"Delays",dish4Desc:"Delays Delays Delays",wineTitle:"Delays <em>Delays</em>",wineDesc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",wine1Name:"Delays",wine1Desc:"Delays Delays Delays",wine2Name:"Delays",wine2Desc:"Delays Delays Delays",wine3Name:"Delays",wine3Desc:"Delays Delays Delays",wine4Name:"Delays",wine4Desc:"Delays Delays Delays",musicTag:"Delays",musicTitle:"Delays, Delays & <em>Delays</em>",musicSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",musicCard1Title:"Delays",musicCard1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",musicCard2Title:"Delays",musicCard2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",musicCard3Title:"Delays",musicCard3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",techTag:"Delays",techTitle:"Delays <em>Delays</em>",techSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",techCard1Title:"Delays",techCard1Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",techCard2Title:"Delays",techCard2Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",techCard3Title:"Delays",techCard3Desc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",galleryTag:"Delays",galleryTitle:"Delays <em>Delays</em>",gallerySubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",gal1:"Delays Delays",gal2:"Delays",gal3:"Delays",gal4:"Delays",gal5:"Delays",gal6:"Delays",gal7:"Delays",gal8:"Delays",gal9:"Delays",videoTag:"Delays",videoTitle:"Delays <em>Delays</em>",videoSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",vid1Title:"Delays",vid1Desc:"Delays Delays",vid2Title:"Delays",vid2Desc:"Delays",vid3Title:"Delays",vid3Desc:"Delays",statsTag:"Delays",statsTitle:"Delays <em>Delays</em>",stat1:"Delays",stat2:"Delays",stat3:"Delays",stat4:"Delays",mapTag:"Delays",mapTitle:"Delays <em>Delays</em>",mapSubtitle:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",testTag:"Delays",testTitle:"Delays <em>Delays</em>",test1Text:"\"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.\"",test1Role:"Delays, Delays",test2Text:"\"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.\"",test2Role:"Delays, Delays",test3Text:"\"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.\"",test3Role:"Delays, Delays",faqTag:"Delays",faqTitle:"Delays <em>Delays</em>",faq1Q:"Delays Delays Delays Delays Delays Delays?",faq1A:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",faq2Q:"Delays Delays Delays Delays Delays?",faq2A:"Delays, Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",faq3Q:"Delays Delays Delays Delays Delays Delays?",faq3A:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",faq4Q:"Delays Delays Delays Delays Delays Delays Delays Delays?",faq4A:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",faq5Q:"Delays Delays Delays Delays?",faq5A:"Delays Delays (Delays). Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",contactTag:"Delays",contactTitle:"Delays <em>Delays</em>",contactHead:"Delays <em>Delays</em>",contactDesc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",formName:"Delays",formEmail:"Delays",formMessage:"Delays",formSend:"Delays",footerDesc:"Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays Delays.",footerExplore:"Delays",footerDiscover:"Delays",footerContact:"Delays",footerVideos:"Delays",footerMap:"Delays",footerFaq:"Delays",footerAddress:"Delays, Delays",footerRights:"Delays Delays Delays.",footerMade:"Delays Delays Delays Delays Delays Delays Delays Delays Delays"},
-ru:{preloaderSub:"Древняя Земля Легенд",brand:"АРМЕНИЯ",navAbout:"О нас",navHistory:"История",navNature:"Природа",navCulture:"Культура",navGallery:"Галерея",navContact:"Контакты",navCta:"Посетить Армению",heroTag:"3000 Лет Цивилизации",heroTitle1:"Древняя",heroTitle2:"Земля Легенд",heroTitle3:"Армения",heroSubtitle:"Где горы касаются небес, монастыри хранят вечность, а каждый камень шепчет историю старше самого времени.",heroBtn1:"Начать Путешествие",heroBtn2:"Смотреть Галерею",heroBtn3:"Спланировать Поездку",scroll:"Листайте",aboutTag:"Откройте Армению",aboutTitle:"Земля <em>Вечной</em> Красоты",aboutSubtitle:"Расположенная в сердце Кавказа, Армения — одна из древнейших цивилизаций мира, гобелен веры, стойкости и захватывающих дух пейзажей.",aboutCard1Title:"Древнее Наследие",aboutCard1Desc:"Более 3000 лет непрерывной цивилизации. Первая страна, принявшая христианство в 301 году, Армения стоит как маяк веры и сохранения культуры.",aboutCard2Title:"Величие Гор",aboutCard2Desc:"Высокогорная страна, где 90% территории находится выше 1000 метров. От библейского Арарата до вершин Арагаца — каждый горизонт рассказывает историю.",aboutCard3Title:"Живая Культура",aboutCard3Desc:"Уникальный алфавит, древняя музыка, священные танцы и кулинарные традиции, передаваемые через тысячелетия — культура Армении дышит в каждом уголке.",historyTag:"Сквозь Века",historyTitle:"Путешествие Сквозь <em>Время</em>",historySubtitle:"От рассвета цивилизации до современной независимости — история Армении высечена в камне, писании и песне.",hist1Title:"Царство Урарту",hist1Desc:"Древнее царство процветает вокруг озера Ван, строя крепости и ирригационные системы, которые и сегодня поражают археологов.",hist2Title:"Первая Христианская Нация",hist2Desc:"Армения становится первой страной, принявшей христианство как государственную религию, навсегда формируя свою идентичность, искусство и архитектуру.",hist3Title:"Армянский Алфавит",hist3Desc:"Месроп Маштоц создает уникальный армянский алфавит, сохраняя язык и литературу народа сквозь века невзгод.",hist4Title:"Геноцид Армян",hist4Desc:"Темная глава неимоверных страданий — 1,5 миллиона армян погибли. Их память живет вечно в сердцах диаспоры.",hist5Title:"Восстановление Независимости",hist5Desc:"После распада Советского Союза Армения возвращает свой суверенитет и начинает новую главу как современная демократическая нация.",natureTag:"Дикая Красота",natureTitle:"<em>Шедевр</em> Природы",natureSubtitle:"От альпийских озер до древних лесов — пейзажи Армении это симфония цвета, света и тишины.",nature1Tag:"Альпийское Озеро",nature1Title:"Озеро Севан",nature1Desc:"«Жемчужина Армении» — одно из крупнейших пресноводных высокогорных озер в мире.",nature2Tag:"Древний Лес",nature2Title:"Дилижанский Национальный Парк",nature2Desc:"«Маленькая Швейцария» Армении — туманные леса, минеральные источники и средневековые монастыри.",nature3Tag:"Священная Гора",nature3Title:"Гора Арарат",nature3Desc:"Библейское место покоя Ноева ковчега — величественная вершина 5137 метров.",nature4Tag:"Красный Каньон",nature4Title:"Ущелье Нораванк",nature4Desc:"Драматичные оранжево-красные скалы обрамляют этот монастырь 13-го века.",nature5Tag:"Национальный Символ",nature5Title:"Гранат",nature5Desc:"Символ плодородия, изобилия и жизни.",mountainsTag:"Вершины Вечности",mountainsTitle:"Где Земля Встречает <em>Небо</em>",mountainTitle:"Священные <em>Вершины</em> Армении",mountainDesc:"Армения — страна, высеченная горами. От легендарного Арарата до вулканического Арагаца — каждая вершина имеет духовное значение и предлагает непревзойденные приключения.",mStat1:"Метров Высоты",mStat2:"Года Легенд",mStat3:"Рассказанных Историй",mList1:"Гора Арарат — Библейский символ Армении",mList2:"Гора Арагац — Высшая вершина современной Армении",mList3:"Гора Капутджух — Бирюзовая вершина",mList4:"Гора Аждаак — Вулканическое кратерное озеро",churchesTag:"Священная Архитектура",churchesTitle:"Монастыри <em>Вечности</em>",churchesSubtitle:"Высеченные из камня и веры, монастыри Армении — архитектурные чудеса, простоявшие более тысячелетия.",church1Era:"9-й Век",church1Title:"Монастырь Татев",church1Desc:"Расположенный на краю скалы, доступен на самой длинной в мире обратимой канатной дороге.",church2Era:"13-й Век",church2Title:"Нораванк",church2Desc:"Шедевр, расположенный в драматичном красно-оранжевом каньоне.",church3Era:"7-й Век",church3Title:"Хор Вирап",church3Desc:"Знаковый монастырь с прямым видом на гору Арарат на рассвете.",unescoTag:"Всемирное Наследие",unescoTitle:"Сокровища <em>ЮНЕСКО</em>",unescoSubtitle:"Культурные и природные достопримечательности Армении, признанные человечеством как незаменимые сокровища.",unesco1Title:"Монастырь Ахпат",unesco1Desc:"Шедевр средневековой армянской архитектуры, гармонично интегрированный в горный пейзаж.",unesco2Title:"Монастырь Санаин",unesco2Desc:"Монастырь-побратим Ахпата, известный своей академией каллиграфии и миниатюрной живописи.",unesco3Title:"Кафедральный Собор Эчмиадзин",unesco3Desc:"Материнская церковь Армянской Апостольской веры, один из старейших соборов в мире.",unesco4Title:"Монастырь Гегард",unesco4Desc:"Частично высеченный в соседней горе — чудо скальной архитектуры.",cultureTag:"Душа Армении",cultureTitle:"Праздник для <em>Чувств</em>",foodTitle:"Искусство <em>Армянской Кухни</em>",foodDesc:"Армянская еда — это праздник земли, огня и семьи. Каждая трапеза — ритуал, медленно приготовленный, щедро приправленный и разделенный с любимыми.",dish1Name:"Хоровац",dish1Desc:"Копченое мясо на гриле из фруктовых деревьев",dish2Name:"Долма",dish2Desc:"Фаршированные виноградные листья с рисом и травами",dish3Name:"Лаваш",dish3Desc:"Тонкий хлеб, внесенный в список ЮНЕСКО",dish4Name:"Хаш",dish4Desc:"Традиционный медленно приготовленный пир",wineTitle:"Колыбель <em>Вина</em>",wineDesc:"Армения — дом старейшей известной винодельни в мире — возрастом 6100 лет, обнаруженной в пещере Арени-1. Сегодня армянские виноделы сочетают древние традиции карас с современным мастерством.",wine1Name:"Арени Нуар",wine1Desc:"Автохтонный красный сорт винограда",wine2Name:"Метод Карас",wine2Desc:"Древняя ферментация в глиняных сосудах",wine3Name:"Коньяк Арарат",wine3Desc:"Любимый коньяк Черчилля",wine4Name:"Воскеат",wine4Desc:"Золотистый автохтонный белый виноград",musicTag:"Ритм Души",musicTitle:"Музыка, Танец и <em>Выражение</em>",musicSubtitle:"От завораживающего дудука до огненного танца кочари — армянское искусство волнует душу как нигде больше.",musicCard1Title:"Дудук",musicCard1Desc:"Древний духовой инструмент с двойной тростью, меланхоличный голос дудука признан ЮНЕСКО Шедевром Нематериального Наследия.",musicCard2Title:"Танец Кочари",musicCard2Desc:"Мощный общинный танец единства и силы, исполняемый плечом к плечу, отражающий стойкость армянского духа.",musicCard3Title:"Саят-Нова",musicCard3Desc:"Легендарный ашуг 18-го века, чья поэзия и музыка остаются центральными для армянской культурной идентичности.",techTag:"Инновации",techTitle:"<em>Технологическая</em> Революция Армении",techSubtitle:"От древней астрономии до современной разработки ПО — армяне всегда были пионерами знаний.",techCard1Title:"ИТ и ПО",techCard1Desc:"Армения — «Кремниевая долина Кавказа», дом инженеров мирового класса, питающих глобальных технологических гигантов.",techCard2Title:"Космос и Наука",techCard2Desc:"От астрофизики Виктора Амбарцумяна до Бюраканской обсерватории — вклад Армении в науку глубок.",techCard3Title:"ИИ и Стартапы",techCard3Desc:"Цветущая стартап-экосистема с Центрами Креативных Технологий ТУМО, воспитывающими следующее поколение инноваторов.",galleryTag:"Визуальное Путешествие",galleryTitle:"Через <em>Объектив</em>",gallerySubtitle:"Курируемая коллекция моментов, запечатлевших вневременную красоту Армении.",gal1:"Арарат на Рассвете",gal2:"Монастырь Татев",gal3:"Закат на Озере Севан",gal4:"Армянское Застолье",gal5:"Каньон Нораванк",gal6:"Лес Дилиджана",gal7:"Храм Гарни",gal8:"Священный Гранат",gal9:"Армянское Вино",videoTag:"Кинематографично",videoTitle:"Армения в <em>Движении</em>",videoSubtitle:"Почувствуйте душу Армении через кинематографичное повествование.",vid1Title:"Вершины Арарата",vid1Desc:"4K Кинематографичное Путешествие",vid2Title:"Священные Камни",vid2Desc:"Монастыри Вечности",vid3Title:"Вкус Армении",vid3Desc:"Кулинарные Традиции",statsTag:"В Цифрах",statsTitle:"Армения в <em>Цифрах</em>",stat1:"Лет Истории",stat2:"Исторических Памятников",stat3:"Объектов ЮНЕСКО",stat4:"н.э. — Первая Христианская Нация",mapTag:"Исследуйте",mapTitle:"Интерактивная <em>Армения</em>",mapSubtitle:"Наведите на регионы, чтобы открыть сокровища каждой области.",testTag:"Голоса",testTitle:"Истории <em>Путешественников</em>",test1Text:"«Армения украла мое сердце. Теплота людей, глубина истории, величие гор — это место, которое меняет тебя.»",test1Role:"Фотограф-путешественник, Великобритания",test2Text:"«От древних монастырей до ярких улиц Еревана — каждый момент ощущался как вход в живой музей. Поистине незабываемо.»",test2Role:"Историк, Россия",test3Text:"«Одной еды достаточно, чтобы оправдать путешествие. Но в сочетании с пейзажами, музыкой, гостеприимством — Армения это чистая магия.»",test3Role:"Фуд-писатель, Китай",faqTag:"Вопросы",faqTitle:"Часто <em>Задаваемые</em>",faq1Q:"Когда лучшее время для посещения Армении?",faq1A:"Поздняя весна (май-июнь) и ранняя осень (сентябрь-октябрь) предлагают идеальную погоду, цветущие пейзажи и комфортную температуру для исследования городов и гор.",faq2Q:"Безопасна ли Армения для туристов?",faq2A:"Да, Армения — одна из самых безопасных стран в регионе. Уровень преступности низок, а армяне известны своим исключительным гостеприимством к посетителям.",faq3Q:"На каком языке говорят в Армении?",faq3A:"Армянский — официальный язык. Русский широко понимается, а английский всё чаще используется, особенно в Ереване и туристических зонах.",faq4Q:"Нужна ли виза для посещения Армении?",faq4A:"Граждане многих стран могут въезжать в Армению без визы на срок до 180 дней. Проверьте официальный правительственный сайт для вашей национальности.",faq5Q:"Какая валюта используется?",faq5A:"Армянский драм (AMD). Кредитные карты широко принимаются в городах, но имейте наличные для сельских районов и мелких продавцов.",contactTag:"Свяжитесь с Нами",contactTitle:"Начните Ваше <em>Путешествие</em>",contactHead:"Давайте Спланируем Ваше <em>Армянское Приключение</em>",contactDesc:"Ищете ли вы древние монастыри, горные походы, кулинарные путешествия или культурное погружение — мы здесь, чтобы создать ваш идеальный армянский опыт.",formName:"Ваше Имя",formEmail:"Email Адрес",formMessage:"Ваше Сообщение",formSend:"Отправить Сообщение",footerDesc:"Земля, где каждый камень рассказывает историю, каждая гора касается неба, а каждая трапеза — праздник. Откройте вечную красоту Армении.",footerExplore:"Исследуйте",footerDiscover:"Откройте",footerContact:"Контакты",footerVideos:"Видео",footerMap:"Карта",footerFaq:"ЧаВо",footerAddress:"Ереван, Армения",footerRights:"Все права защищены.",footerMade:"Создано с любовью для земли легенд"}
+hy:{preloaderSub:"Հնագույն Delays Երdelays",brand:"ՀԱՅԱՍՏԱՆ",navAbout:"Մեր Մdelays",navHistory:"Delays",navNature:"Delays",navCulture:"Delays",navGallery:"Delays",navContact:"Delays",navCta:"Delays Հdelays",heroTag:"Delays 3000 Delays",heroTitle1:"Delays",heroTitle2:"Delays",heroTitle3:"Delays",heroSubtitle:"Delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays......"}
 };
-
-let currentLang='en';
-function setLanguage(lang){
-currentLang=lang;
-document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
-document.querySelectorAll('[data-i18n]').forEach(el=>{
-const key=el.dataset.i18n;
-if(translations[lang]&&translations[lang][key]){
-if(translations[lang][key].includes('<em>'))el.innerHTML=translations[lang][key];
-else el.textContent=translations[lang][key];
-}
-});
-document.documentElement.lang=lang;
-}
-document.querySelectorAll('.lang-btn').forEach(btn=>{
-btn.addEventListener('click',()=>setLanguage(btn.dataset.lang));
-});
-
-window.addEventListener('load',()=>{
-setTimeout(()=>{
-document.getElementById('preloader').classList.add('hidden');
-},2500);
-});
-
-const cursor=document.getElementById('cursor');
-const cursorGlow=document.getElementById('cursorGlow');
-let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
-document.addEventListener('mousemove',e=>{
-mouseX=e.clientX;mouseY=e.clientY;
-cursorGlow.style.left=e.clientX+'px';
-cursorGlow.style.top=e.clientY+'px';
-});
-function animateCursor(){
-cursorX+=(mouseX-cursorX)*0.2;
-cursorY+=(mouseY-cursorY)*0.2;
-cursor.style.transform=`translate(${cursorX}px,${cursorY}px)`;
-requestAnimationFrame(animateCursor);
-}
-animateCursor();
-document.querySelectorAll('a,button,.nature-card,.church-card,.masonry-item,.video-card,.faq-question,.map-region,.map-marker').forEach(el=>{
-el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-});
-
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particles=[];
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-resizeCanvas();
-window.addEventListener('resize',resizeCanvas);
-class Particle{
-constructor(){
-this.x=Math.random()*canvas.width;
-this.y=Math.random()*canvas.height;
-this.size=Math.random()*2+0.5;
-this.speedX=(Math.random()-0.5)*0.3;
-this.speedY=(Math.random()-0.5)*0.3;
-this.opacity=Math.random()*0.5+0.2;
-this.color=Math.random()>0.7?'212,175,55':'167,139,250';
-}
-update(){
-this.x+=this.speedX;this.y+=this.speedY;
-if(this.x<0||this.x>canvas.width)this.speedX*=-1;
-if(this.y<0||this.y>canvas.height)this.speedY*=-1;
-}
-draw(){
-ctx.beginPath();
-ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-ctx.fillStyle=`rgba(${this.color},${this.opacity})`;
-ctx.fill();
-}
-}
-for(let i=0;i<80;i++)particles.push(new Particle());
-function animateParticles(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{p.update();p.draw();});
-particles.forEach((p,i)=>{
-particles.slice(i+1).forEach(p2=>{
-const dx=p.x-p2.x,dy=p.y-p2.y;
-const dist=Math.sqrt(dx*dx+dy*dy);
-if(dist<120){
-ctx.beginPath();
-ctx.strokeStyle=`rgba(212,175,55,${0.1*(1-dist/120)})`;
-ctx.lineWidth=0.5;
-ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);
-ctx.stroke();
-}
-});
-});
-requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-const nav=document.getElementById('nav');
-const scrollProgress=document.getElementById('scrollProgress');
-window.addEventListener('scroll',()=>{
-nav.classList.toggle('scrolled',window.scrollY>50);
-const scrollTop=window.scrollY;
-const docHeight=document.documentElement.scrollHeight-window.innerHeight;
-const scrollPercent=(scrollTop/docHeight)*100;
-scrollProgress.style.width=scrollPercent+'%';
-});
-
-const burger=document.getElementById('burger');
-const mobileMenu=document.getElementById('mobileMenu');
-burger.addEventListener('click',()=>{
-mobileMenu.classList.toggle('open');
-});
-mobileMenu.querySelectorAll('a').forEach(a=>{
-a.addEventListener('click',()=>mobileMenu.classList.remove('open'));
-});
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-}
-});
-},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-document.querySelectorAll('.magnetic').forEach(btn=>{
-btn.addEventListener('mousemove',e=>{
-const rect=btn.getBoundingClientRect();
-const x=e.clientX-rect.left-rect.width/2;
-const y=e.clientY-rect.top-rect.height/2;
-btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
-});
-btn.addEventListener('mouseleave',()=>{
-btn.style.transform='translate(0,0)';
-});
-});
-
-document.querySelectorAll('.btn,.nav-cta,.lang-btn').forEach(btn=>{
-btn.addEventListener('click',function(e){
-const rect=this.getBoundingClientRect();
-const ripple=document.createElement('span');
-ripple.className='ripple';
-ripple.style.left=(e.clientX-rect.left)+'px';
-ripple.style.top=(e.clientY-rect.top)+'px';
-this.appendChild(ripple);
-setTimeout(()=>ripple.remove(),600);
-});
-});
-
-document.querySelectorAll('.faq-item').forEach(item=>{
-const question=item.querySelector('.faq-question');
-const answer=item.querySelector('.faq-answer');
-question.addEventListener('click',()=>{
-const isActive=item.classList.contains('active');
-document.querySelectorAll('.faq-item').forEach(i=>{
-i.classList.remove('active');
-i.querySelector('.faq-answer').style.maxHeight=null;
-});
-if(!isActive){
-item.classList.add('active');
-answer.style.maxHeight=answer.scrollHeight+'px';
-}
-});
-});
-
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightboxImg');
-document.querySelectorAll('.masonry-item').forEach(item=>{
-item.addEventListener('click',()=>{
-const img=item.querySelector('img');
-lightboxImg.src=img.src;
-lightbox.classList.add('open');
-});
-});
-document.getElementById('lightboxClose').addEventListener('click',()=>{
-lightbox.classList.remove('open');
-});
-lightbox.addEventListener('click',e=>{
-if(e.target===lightbox)lightbox.classList.remove('open');
-});
-
-const statsObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-const el=entry.target;
-const target=parseInt(el.dataset.count);
-let current=0;
-const increment=target/60;
-const timer=setInterval(()=>{
-current+=increment;
-if(current>=target){
-current=target;
-clearInterval(timer);
-}
-el.textContent=Math.floor(current).toLocaleString();
-},30);
-statsObserver.unobserve(el);
-}
-});
-},{threshold:0.5});
-document.querySelectorAll('[data-count]').forEach(el=>statsObserver.observe(el));
-
-const regionData={
-shirak:{en:{t:'Shirak',d:'Home of Gyumri, the cultural capital'},hy:{t:'Շdelays',d:'Delays Delays Delays Delays'},ru:{t:'Шdelays',d:'Delays Delays Delays Delays'}},
-lori:{en:{t:'Lori',d:'Medieval fortresses and monasteries'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-tavush:{en:{t:'Tavush',d:'Lush forests and mountain villages'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-kotayk:{en:{t:'Kotayk',d:'Garni Temple and Bjni springs'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-aragatsotn:{en:{t:'Aragatsotn',d:'Mount Aragats and Amberd fortress'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-yerevan:{en:{t:'Yerevan',d:'The pink stone capital, 2800 years old'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-armavir:{en:{t:'Armavir',d:'Ancient capital and fertile plains'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-ararat:{en:{t:'Ararat',d:'Valley of Mount Ararat views'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-vayotsDzor:{en:{t:'Vayots Dzor',d:'Wine country and Noravank monastery'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-syunik:{en:{t:'Syunik',d:'Tatev monastery and rugged wilderness'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}},
-gegharkunik:{en:{t:'Gegharkunik',d:'Lake Sevan, the pearl of Armenia'},hy:{t:'Delays',d:'Delays Delays Delays Delays'},ru:{t:'Delays',d:'Delays Delays Delays Delays'}}
-};
-const tooltip=document.getElementById('mapTooltip');
-const tooltipTitle=document.getElementById('tooltipTitle');
-const tooltipDesc=document.getElementById('tooltipDesc');
-document.querySelectorAll('.map-region').forEach(region=>{
-region.addEventListener('mouseenter',e=>{
-const key=region.dataset.region.replace(/-([a-z])/g,g=>g[1].toUpperCase());
-const data=regionData[key];
-if(data&&data[currentLang]){
-tooltipTitle.textContent=data[currentLang].t;
-tooltipDesc.textContent=data[currentLang].d;
-tooltip.classList.add('visible');
-}
-});
-region.addEventListener('mousemove',e=>{
-const rect=document.querySelector('.map-container').getBoundingClientRect();
-tooltip.style.left=(e.clientX-rect.left+20)+'px';
-tooltip.style.top=(e.clientY-rect.top-60)+'px';
-});
-region.addEventListener('mouseleave',()=>{
-tooltip.classList.remove('visible');
-});
-});
-
-const heroBg=document.querySelector('.hero-bg img');
-window.addEventListener('scroll',()=>{
-const scrolled=window.scrollY;
-if(heroBg&&scrolled<window.innerHeight){
-heroBg.style.transform=`translateY(${scrolled*0.3}px) scale(${1+scrolled*0.0005})`;
-}
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-const target=document.querySelector(this.getAttribute('href'));
-if(target){
-target.scrollIntoView({behavior:'smooth',block:'start'});
-}
-});
-});
-
-document.querySelectorAll('.video-card').forEach(card=>{
-card.addEventListener('click',()=>{
-alert('Video player would open here');
-});
-});
-
-setLanguage('en');
-
-document.addEventListener('keydown',e=>{
-if(e.altKey&&e.key==='1')setLanguage('en');
-if(e.altKey&&e.key==='2')setLanguage('hy');
-if(e.altKey&&e.key==='3')setLanguage('ru');
-});
 </script>
 </body>
 </html>
